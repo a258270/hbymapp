@@ -1,0 +1,159 @@
+
+     <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>实时搜索文本</view>
+                </view>
+            </navigator>
+        </view>
+    </view> 
+    <view class="header" bindtap="close">
+  <view class="header-left">综合排序</view>
+  <view class="header-center">综合排序</view>
+  <view class="header-right" bindtap="tap_ch" >筛选</view>
+</view>  
+<view class="page1" hidden="{{myhidden}}" bindtap="close_ch"></view>
+<scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" hidden="{{hidden}}" style="width:{{width}}%" >
+<view class="page-body">
+  <view class="demo-text-1">地区</view>
+  <view class="demo-text-2">
+    <ul> 
+      <li class="textss"><a>不限</a></li>
+      <li class="textss"><a>北京</a></li>
+      <li class="textss"><a>天津</a></li>
+      <li class="textss"><a>重庆</a></li>
+      <li class="textss"><a>上海</a></li>
+      <li class="textss"><a>河北</a></li>
+      <li class="textss" ><a   bindtap="onChangeShowState">更多</a></li>
+    </ul>
+    <ul class="textss_hide{{showView?'textss_show':''}}">
+      <li class="textss"><a>山西</a></li>
+      <li class="textss"><a>辽宁</a></li>
+      <li class="textss"><a>吉林</a></li>
+      <li class="textss"><a>江苏</a></li>
+      <li class="textss"><a>浙江</a></li>
+    </ul>
+    <ul class="textss_hide{{showView?'textss_show':''}}">
+      <li class="textss"><a>安徽</a></li>
+      <li class="textss"><a>福建</a></li>
+      <li class="textss"><a>江西</a></li>
+      <li class="textss"><a>山东</a></li>
+      <li class="textss"><a>河南</a></li>
+      <li class="textss"><a>湖北</a></li>
+    </ul>
+    <ul class="textss_hide{{showView?'textss_show':''}}"> 
+      <li class="textss"><a>湖南</a></li>
+      <li class="textss"><a>广东</a></li>
+      <li class="textss"><a>海南</a></li>
+      <li class="textss"><a>四川</a></li>
+      <li class="textss"><a>贵州</a></li>
+      <li class="textss"><a>云南</a></li>
+    </ul>
+    <ul class="textss_hide{{showView?'textss_show':''}}">
+      <li class="textss"><a>陕西</a></li>
+      <li class="textss"><a>甘肃</a></li>
+      <li class="textss"><a>青海</a></li>
+      <li class="textss"><a>广西</a></li><li class="textss"><a>香港</a></li>
+      <li class="textss"><a>宁夏</a></li><li class="textss"><a>澳门</a></li>
+    </ul>
+    <ul class="textss_hide{{showView?'textss_show':''}}">
+      <li class="textss"><a>新疆</a></li>
+      <li class="textss"><a>西藏</a></li>
+      <li class="textss"><a>内蒙古</a></li>
+      <li class="textss"><a>黑龙江</a></li>
+    </ul> 
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1">批次</view>
+  <view class="demo-text-2">
+    <ul class="texts">
+      <li class="textss"><a>不限</a></li>
+      <li class="textss"><a>本一</a></li>
+      <li class="textss"><a>本二</a></li>
+      <li class="textss"><a>专科</a></li>
+    </ul>
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1">类型</view>
+  <view class="demo-text-2">
+    <ul class="texts">
+      <li class="textss"><a>不限</a></li>
+      <li class="textss"><a>综合类</a></li>
+      <li class="textss"><a>理工类</a></li>
+      <li class="textss"><a>师范类</a></li>
+      <li class="textss"><a class="textsss"   bindtap="onChangeShowStates">更多</a></li>      
+    </ul>
+     <ul class="textss_hide{{showView1?'textss_show':''}}">
+      <li class="textss"><a>财经类</a></li>
+      <li class="textss"><a>语言类</a></li>
+      <li class="textss"><a>艺术类</a></li>
+      <li class="textss"><a>医药类</a></li>
+      <li class="textss"><a>农林类</a></li>      
+    </ul>
+    <ul class="textss_hide{{showView1?'textss_show':''}}">
+      <li class="textss"><a>政法类</a></li>
+      <li class="textss"><a>体育类</a></li>
+      <li class="textss"><a>民族类</a></li>
+      <li class="textss"><a>军事类</a></li>
+      <li class="textss"><a>其他类</a></li>    
+    </ul> 
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1">属性</view>
+  <view class="demo-text-2">
+    <ul class="texts">
+      <li class="textss"><a>不限</a></li>
+      <li class="textss"><a>双一流</a></li>
+      <li class="textss"><a>985</a></li>
+      <li class="textss"><a>211</a></li>
+      <li class="textss"><a>研究生</a></li> 
+      <li class="textss"><a bindtap="onChangeShowStatess">更多</a></li>      
+    </ul>
+     <ul class="textss_hide{{showView2?'textss_show':''}}">
+      <li class="textss"><a>卓越</a></li>
+      <li class="textss"><a>省重点</a></li>
+      <li class="textss"><a>艺术生</a></li>
+    </ul> 
+  </view>
+ </view>
+<view class="flex-warp">
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">重置</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">完成</button></view>
+</view> 
+</scroll-view> 
+                                                                                                                                                                                                          

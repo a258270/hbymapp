@@ -1,0 +1,97 @@
+/* pages/consult/consult.wxss */
+.header{
+  margin-top: 20rpx;
+  margin-left:50rpx;
+  width:100%;
+  overflow:hidden;
+  font-size: 28rpx;
+  z-index: 1;
+}
+.header-left{
+  width:32%;
+  float:left;
+
+}
+.header-center{
+  width:32%;
+  float:left;
+}
+.header-right{
+  width:32%;
+  float:left;
+}
+.page-body{
+  width: 100%;
+  height: auto;
+  font-size:28rpx;
+}
+.demo-text-1{
+  width:100%;
+  margin-left: 40rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+.image{
+  width:54px;
+  height:20px;
+}
+.demo-text-2{
+  margin-left: 20rpx;
+  width:100%; 
+}
+.textss{
+  margin-left:20rpx;
+  margin-top:10rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  width:20%;
+  height:50rpx;
+  background-color: gray;
+  border-radius:5px;
+}
+a{
+  text-align: center;
+  display: block;
+}
+.flex-warp{
+  display: flex;
+  flex-direction:row;
+  position:fixed;
+  bottom:0;
+  width:80%;
+}
+.weui-btn{
+  font-size:28rpx;
+  border-radius: 0;
+  border:1rpx solid gray;
+}
+.flex-item{
+  width:50%;
+}
+.textss_hide{  
+    display: none;  
+}  
+.textss_show{  
+    display: block;  
+}
+.page{
+  position: fixed;
+  top:0;
+  right:0;
+  z-index:2;
+  height: 100%;
+  background-color:bisque;
+}
+ul{
+  width:100%;
+}
+.page1{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:2;
+  width:20%;
+  height: 100%;
+  background-color:gray;
+  opacity: 0.1;
+}
