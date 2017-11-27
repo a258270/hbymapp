@@ -1,8 +1,13 @@
-.log-list {
+.text{
+  width:100%;
+  margin-top:20rpx;
+}
+text{
+  text-align: center;
+  display: block;
+}
+.flex-warp{
   display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+  flex-direction:row;
 }
-.log-item {
-  margin: 10rpx;
-}
+

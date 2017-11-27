@@ -1,6 +1,14 @@
 <!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<view  class="text"><text>关联账号</text></view>
+<view class="page-body">
+  <view class="weui-cell weui-cell_input">
+    用户名：<input class="weui-input" maxlength="10" placeholder="用户名" />
+  </view>
+  <view class="weui-cell weui-cell_input">
+    密码：<input class="weui-input" password type="text" placeholder="密码" />
+  </view>
+</view>
+<view class="flex-warp">
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">登录</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">注册</button></view>
 </view>
