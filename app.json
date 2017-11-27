@@ -2,8 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/consult/consult",
-    "pages/consult/cousultlist/cousultlist"
+    "pages/consult/consult"
   ],
   "window":{
     "backgroundTextStyle":"light",
