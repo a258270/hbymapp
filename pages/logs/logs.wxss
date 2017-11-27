@@ -11,3 +11,10 @@ text{
   flex-direction:row;
 }
 
+.formbox{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
