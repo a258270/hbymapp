@@ -57,10 +57,10 @@ var login = function () {
     success: function (res) {
       if (res.code) {
         //发起网络请求
-        sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (res) {
+        sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           //存储session_id
-          setInfoToStorage('session_id', res.thirdSessionId);
-          if (!res.isCompleted) {
+          setInfoToStorage('session_id', obj.data.thirdSessionId);
+          if (!obj.data.isCompleted) {
             toComplete();
           }
         });
@@ -73,9 +73,9 @@ var login = function () {
 
 /**
  * 完善信息操作
- */
+ */333
 var toComplete = function () {
-  console.log("需要完善信息");
+  navigateTo('../login/login')
 }
 
 /**
@@ -258,6 +258,10 @@ var redirect = function () {
 
 }
 
+var setStaticUrl = function(url) {
+  return baseurl.content + url;
+}
+
 module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
@@ -269,5 +273,6 @@ module.exports = {
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
   toComplete: toComplete,
-  navigateTo: navigateTo
+  navigateTo: navigateTo,
+  setStaticUrl: setStaticUrl
 }

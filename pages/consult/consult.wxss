@@ -95,3 +95,8 @@ ul{
   background-color:gray;
   opacity: 0.1;
 }
+.flex-wrps{
+  display: flex;
+  flex-direction: column;
+  margin-left:40rpx;
+}

@@ -156,4 +156,10 @@
   <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">完成</button></view>
 </view> 
 </scroll-view> 
-                                                                                                                                                                                                          
+<view class="flex-wrps">
+  <view class="flex-item flex-item-V demo-text-3">
+    
+  </view>
+  <view class="flex-item flex-item-V demo-text-3">2</view>
+  <view class="flex-item flex-item-V demo-text-3">3</view>
+</view>                                                                                                                                                                                                      

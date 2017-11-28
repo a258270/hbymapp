@@ -71,19 +71,19 @@ Page({
     })
   },
   tap_ch:function(){
-    
     if(widthTimer != null) {
       clearInterval(widthTimer);
       this.setData({
         width: 0
       });
-    }
-    
+    } 
     widthTimer = setInterval(this.openTm, 10)
-
     this.setData({
       hidden: !this.data.hidden,
       myhidden: !this.data.hidden,
+    })
+    util.sendRequest('/wechat/applet/school/gethasteachers',{},'POST',function(res){
+      
     })
   },
   close_ch:function(){

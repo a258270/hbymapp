@@ -8,7 +8,7 @@
                     <view class="weui-label">用户名</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入用户名"/>
+                    <input class="weui-input" placeholder="请输入用户名" bindinput="bindUsername"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -16,7 +16,7 @@
                     <view class="weui-label">密码</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input password class="weui-input" placeholder="请输入密码"/>
+                    <input password class="weui-input" placeholder="请输入密码" bindinput="bindPassword"/>
                 </view>
             </view>
         </view>
@@ -26,7 +26,7 @@
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default">还没有账户？点此注册</button>
+            <button class="weui-btn" type="default" bindtap="start">还没有账户？点此注册</button>
         </view>
     </view>
 </view>
