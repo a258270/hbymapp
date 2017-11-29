@@ -225,17 +225,7 @@ var showSuccess = function () {
  * completeFn: 完成处理函数（选填）
  */
 var navigateTo = function (url, param, successFn, failFn, completeFn) {
-  if (param) {
-    var attrArr = Object.keys(param);
-    if (attrArr) {
-      attrArr.forEach(function (value) {
-        if (url.indexOf("?") >= 0)
-          url += "&" + value + "=" + param[value];
-        else
-          url += "?" + value + "=" + param[value];
-      });
-    }
-  }
+  url = setParamToUrl(url, param);
   wx.navigateTo({
     url: url,
     success: function () {
@@ -254,8 +244,40 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
   });
 }
 
-var redirect = function () {
+var redirectTo = function () {
+  url = setParamToUrl(url, param);
+  wx.redirectTo({
+    url: url,
+    success: function () {
+      if (successFn)
+        successFn();
+    },
+    fail: function () {
+      showError("网络请求超时，请稍后再试");
+      if (failFn)
+        failFn();
+    },
+    complete: function () {
+      if (completeFn)
+        completeFn();
+    }
+  });
+}
 
+var setParamToUrl = function(url, param){
+  if (param) {
+    var attrArr = Object.keys(param);
+    if (attrArr) {
+      attrArr.forEach(function (value) {
+        if (url.indexOf("?") >= 0)
+          url += "&" + value + "=" + param[value];
+        else
+          url += "?" + value + "=" + param[value];
+      });
+    }
+  }
+
+  return url;
 }
 
 var setStaticUrl = function(url) {
