@@ -218,7 +218,7 @@ var showSuccess = function () {
 }
 
 /**
- * 页面跳转
+ * 保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。
  * url：跳转页面url
  * param： 请求参数
  * successFn: 成功处理函数（选填）
@@ -245,6 +245,9 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
   });
 }
 
+/**
+ * 关闭当前页面，跳转到应用内的某个页面。
+ */
 var redirectTo = function (url, param, successFn, failFn, completeFn) {
   url = setParamToUrl(url, param);
   wx.redirectTo({
@@ -265,6 +268,32 @@ var redirectTo = function (url, param, successFn, failFn, completeFn) {
   });
 }
 
+/**
+ * 关闭所有页面，打开到应用内的某个页面。
+ */
+var reLaunch = function (url, param, successFn, failFn, completeFn) {
+  url = setParamToUrl(url, param);
+  wx.reLaunch({
+    url: url,
+    success: function () {
+      if (successFn)
+        successFn();
+    },
+    fail: function () {
+      showError("网络请求超时，请稍后再试");
+      if (failFn)
+        failFn();
+    },
+    complete: function () {
+      if (completeFn)
+        completeFn();
+    }
+  });
+}
+
+/**
+ * 将param以get形式添加到url中
+ */
 var setParamToUrl = function(url, param){
   if (param) {
     var attrArr = Object.keys(param);
@@ -298,5 +327,6 @@ module.exports = {
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,
-  redirectTo: redirectTo
+  redirectTo: redirectTo,
+  reLaunch: reLaunch
 }
