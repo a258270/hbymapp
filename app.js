@@ -2,6 +2,6 @@
 var utils = require('utils/util.js')
 App({
   onLaunch: function () {
-    utils.login();
+    // utils.login();
   }
 })
