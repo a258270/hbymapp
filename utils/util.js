@@ -75,7 +75,7 @@ var login = function () {
  * 完善信息操作
  */333
 var toComplete = function () {
-  navigateTo('../login/login')
+  redirectTo('../login/login')
 }
 
 /**
@@ -244,7 +244,7 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
   });
 }
 
-var redirectTo = function () {
+var redirectTo = function (url, param, successFn, failFn, completeFn) {
   url = setParamToUrl(url, param);
   wx.redirectTo({
     url: url,
@@ -295,6 +295,7 @@ module.exports = {
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
   toComplete: toComplete,
+  setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,
-  setStaticUrl: setStaticUrl
+  redirectTo: redirectTo
 }

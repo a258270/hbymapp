@@ -32,6 +32,6 @@ Page({
       util.login();
       
     })
-    util.navigateTo("../index/index");
+    util.redirectTo("../index/index");
   }
 })
