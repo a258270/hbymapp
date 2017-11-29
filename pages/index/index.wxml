@@ -73,3 +73,131 @@
     <span class="more" style="font-size:25rpx;">更多></span>
  </view> 
 <!-- 公告 结束-->
+
+<!-- 高考动态 开始 -->
+<view class="notice">
+  <image class='icon' src='../../images/dynamic.png'></image>
+  <view style='font-size:30rpx;;'>高考动态</view>
+  <span class="more" style="font-size:25rpx;">更多></span>
+</view>
+<view style='padding:15rpx 0;display:flex;flex-direction:row;'>
+  <view class='news'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+  </view>
+  <view class='headlines'>
+    <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
+    <view class="flex-x" style='margin-top:40rpx;'>
+      <view class='flex-x' style='margin-right: 20rpx;'>
+        <image class='icon' src='../../images/time.png'></image>
+        <span class='time-t'>2017-11-28</span>
+      </view>
+      <view class='flex-x'>
+        <image class='icon' src='../../images/browse.png'></image>
+        <span class='time-t'>31</span>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='padding:15rpx 0;display:flex;flex-direction:row;'>
+  <view class='news'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+  </view>
+  <view class='headlines'>
+    <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
+    <view class="flex-x" style='margin-top:40rpx;'>
+      <view class='flex-x' style='margin-right: 20rpx;'>
+        <image class='icon' src='../../images/time.png'></image>
+        <span class='time-t'>2017-11-28</span>
+      </view>
+      <view class='flex-x'>
+        <image class='icon' src='../../images/browse.png'></image>
+        <span class='time-t'>31</span>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='padding:15rpx 0;display:flex;flex-direction:row;'>
+  <view class='news'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+  </view>
+  <view class='headlines'>
+    <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
+    <view class="flex-x" style='margin-top:40rpx;'>
+      <view class='flex-x' style='margin-right: 20rpx;'>
+        <image class='icon' src='../../images/time.png'></image>
+        <span class='time-t'>2017-11-28</span>
+      </view>
+      <view class='flex-x'>
+        <image class='icon' src='../../images/browse.png'></image>
+        <span class='time-t'>31</span>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='padding:15rpx 0;display:flex;flex-direction:row;'>
+  <view class='news'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+  </view>
+  <view class='headlines'>
+    <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
+    <view class="flex-x" style='margin-top:40rpx;'>
+      <view class='flex-x' style='margin-right: 20rpx;'>
+        <image class='icon' src='../../images/time.png'></image>
+        <span class='time-t'>2017-11-28</span>
+      </view>
+      <view class='flex-x'>
+        <image class='icon' src='../../images/browse.png'></image>
+        <span class='time-t'>31</span>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 高考动态 结束 -->
+
+<!-- 线下活动 开始 -->
+<view class="notice">
+  <image class='icon' src='../../images/line.png'></image>
+  <view style='font-size:30rpx;;'>线下活动</view>
+  <span class="more" style="font-size:25rpx;">更多></span>
+</view>
+
+<!-- <view class='flex-x' style='padding:15rpx 0;'>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+  </view>
+</view> -->
+<view class='flex-x' style='padding: 15rpx;'>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+  <view class='activity'>
+    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+  </view>
+</view>
+<!-- 线下活动 结束 -->
