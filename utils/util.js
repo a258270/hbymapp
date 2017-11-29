@@ -59,8 +59,9 @@ var login = function () {
         //发起网络请求
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           //存储session_id
-          setInfoToStorage('session_id', obj.data.thirdSessionId);
-          if (!obj.data.isCompleted) {
+          console.log(obj);
+          setInfoToStorage('session_id', obj.thirdSessionId);
+          if (!obj.isCompleted) {
             toComplete();
           }
         });
@@ -160,21 +161,21 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           if (loadingType) {
             wx.hideLoading();
           }
-          if (res.hasErrors) {
+          if (res.data.hasErrors) {
             //需要登录，详情查看后台LoginIntercetor
-            if (res.errorCode == noLoginCode)
+            if (res.data.errorCode == noLoginCode)
               login();
-            else if (res.errorCode == noCompleteCode)
+            else if (res.data.errorCode == noCompleteCode)
               toComplete();
-            else if (res.errorCode == notAcceptCode)
+            else if (res.data.errorCode == notAcceptCode)
               console.error("接口：" + url + "缺少参数");
             else
-              showError(res.errorMessage);
+              showError(res.data.errorMessage);
 
             return false;
           }
           if (successFn)
-            successFn(res);
+            successFn(res.data);
         },
         fail: function (res) {
           if (loadingType) {
@@ -182,7 +183,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           }
           showError("网络连接错误，请稍后重试");
           if (errorFn)
-            errorFn(res);
+            errorFn(res.data);
         }
       })
     },
