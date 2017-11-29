@@ -11,7 +11,7 @@ Page({
     src1:"../../images/batchs.png",
     src2: "../../images/types.png",
     src3: "../../images/attributes.png",
-    srcs:"../../images/screen.png",
+    srcs:"../../images/arrow.png",
     showView: false,
     showView1: false,
     showView2: false,
@@ -40,9 +40,6 @@ Page({
       widthTimer = null;
     }
 
-  },
-  start:function(){
-    util.navigateTo("cousultlist/cousultlist");
   },
   /**
    * 生命周期函数--监听页面加载
@@ -81,10 +78,12 @@ Page({
     this.setData({
       hidden: !this.data.hidden,
       myhidden: !this.data.hidden,
-    })
-    util.sendRequest('/wechat/applet/school/gethasteachers',{},'POST',function(res){
-      
-    })
+    });
+    // util.sendRequest('/wechat/applet/school/gethasteachers',{},'POST',function(res){
+    //   this.setData({
+        
+    //   });
+    // })
   },
   close_ch:function(){
     widthTimer = setInterval(this.closeTm, 10)

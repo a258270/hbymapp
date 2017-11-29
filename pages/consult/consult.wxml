@@ -39,7 +39,7 @@
             </navigator>
         </view>
     </view> 
-    <view class="header" bindtap="close">
+<view class="header">
   <view class="header-left">综合排序</view>
   <view class="header-center">综合排序</view>
   <view class="header-right" bindtap="tap_ch" >筛选</view>
@@ -47,7 +47,7 @@
 <view class="page1" hidden="{{myhidden}}" bindtap="close_ch"></view>
 <scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" hidden="{{hidden}}" style="width:{{width}}%" >
 <view class="page-body">
-  <view class="demo-text-1">地区</view>
+  <view class="demo-text-1"><text>地区</text><image class='image' src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
     <ul> 
       <li class="textss"><a>不限</a></li>
@@ -56,7 +56,6 @@
       <li class="textss"><a>重庆</a></li>
       <li class="textss"><a>上海</a></li>
       <li class="textss"><a>河北</a></li>
-      <li class="textss" ><a   bindtap="onChangeShowState">更多</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
       <li class="textss"><a>山西</a></li>
@@ -85,8 +84,10 @@
       <li class="textss"><a>陕西</a></li>
       <li class="textss"><a>甘肃</a></li>
       <li class="textss"><a>青海</a></li>
-      <li class="textss"><a>广西</a></li><li class="textss"><a>香港</a></li>
-      <li class="textss"><a>宁夏</a></li><li class="textss"><a>澳门</a></li>
+      <li class="textss"><a>广西</a></li>
+      <li class="textss"><a>香港</a></li>
+      <li class="textss"><a>宁夏</a></li>
+      <li class="textss"><a>澳门</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
       <li class="textss"><a>新疆</a></li>
@@ -108,14 +109,13 @@
   </view>
 </view>
 <view class="page-body">
-  <view class="demo-text-1">类型</view>
+  <view class="demo-text-1"><text>类型</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStates"></image></view>
   <view class="demo-text-2">
     <ul class="texts">
       <li class="textss"><a>不限</a></li>
       <li class="textss"><a>综合类</a></li>
       <li class="textss"><a>理工类</a></li>
-      <li class="textss"><a>师范类</a></li>
-      <li class="textss"><a class="textsss"   bindtap="onChangeShowStates">更多</a></li>      
+      <li class="textss"><a>师范类</a></li>    
     </ul>
      <ul class="textss_hide{{showView1?'textss_show':''}}">
       <li class="textss"><a>财经类</a></li>
@@ -134,15 +134,14 @@
   </view>
 </view>
 <view class="page-body">
-  <view class="demo-text-1">属性</view>
+  <view class="demo-text-1"><text>属性</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStatess"></image></view>
   <view class="demo-text-2">
     <ul class="texts">
       <li class="textss"><a>不限</a></li>
       <li class="textss"><a>双一流</a></li>
       <li class="textss"><a>985</a></li>
       <li class="textss"><a>211</a></li>
-      <li class="textss"><a>研究生</a></li> 
-      <li class="textss"><a bindtap="onChangeShowStatess">更多</a></li>      
+      <li class="textss"><a>研究生</a></li>      
     </ul>
      <ul class="textss_hide{{showView2?'textss_show':''}}">
       <li class="textss"><a>卓越</a></li>
@@ -151,15 +150,44 @@
     </ul> 
   </view>
  </view>
+ <view class="page-body1" style="width:100%;height:100rpx;">
+ </view>
 <view class="flex-warp">
-  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">重置</button></view>
-  <view class="flex-item"><button class="weui-btn" type="primary" bindtap="start">完成</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" >重置</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" >完成</button></view>
 </view> 
 </scroll-view> 
 <view class="flex-wrps">
-  <view class="flex-item flex-item-V demo-text-3">
-    
-  </view>
-  <view class="flex-item flex-item-V demo-text-3">2</view>
-  <view class="flex-item flex-item-V demo-text-3">3</view>
+  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">河北师范大学</view>
+      <view class="weui-media-box__desc">
+        <image src="../../images/account.png" style="width:35rpx;height:35rpx"></image>
+        <text>2</text>
+        <image src="../../images/985.png" style="width:35rpx;height:35rpx"></image>
+        <image src="../../images/211.png" style="width:35rpx;height:35rpx"></image>
+      </view>
+    </view>
+  </navigator>
+  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">标题一</view>
+      <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+    </view>
+  </navigator>
+  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">标题一</view>
+      <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+    </view>
+  </navigator>
 </view>                                                                                                                                                                                                      
