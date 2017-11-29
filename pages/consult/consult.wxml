@@ -1,5 +1,5 @@
-
-     <view class="page__bd">
+<view class="page2">
+    <view class="page__bd">
         <view class="weui-search-bar">
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
@@ -38,10 +38,11 @@
                 </view>
             </navigator>
         </view>
-    </view> 
+    </view>
+</view>
 <view class="header">
-  <view class="header-left">综合排序</view>
-  <view class="header-center">综合排序</view>
+  <view class="header-left">浏览量</view>
+  <view class="header-center">分数</view>
   <view class="header-right" bindtap="tap_ch" >筛选</view>
 </view>  
 <view class="page1" hidden="{{myhidden}}" bindtap="close_ch"></view>
@@ -50,7 +51,7 @@
   <view class="demo-text-1"><text>地区</text><image class='image' src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
     <ul> 
-      <li class="textss"><a>不限</a></li>
+      <li class="textss"><a >不限</a></li>
       <li class="textss"><a>北京</a></li>
       <li class="textss"><a>天津</a></li>
       <li class="textss"><a>重庆</a></li>
@@ -153,41 +154,25 @@
  <view class="page-body1" style="width:100%;height:100rpx;">
  </view>
 <view class="flex-warp">
-  <view class="flex-item"><button class="weui-btn" type="primary" >重置</button></view>
-  <view class="flex-item"><button class="weui-btn" type="primary" >完成</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap=''>重置</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap='close_ch'>完成</button></view>
 </view> 
-</scroll-view> 
+</scroll-view>
+<block wx:for="{{zhihu}}"> 
 <view class="flex-wrps">
-  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+  <navigator url="consultlist/consultlist" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
+      <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">河北师范大学</view>
+      <view class="weui-media-box__title">{{item.NAME}}</view>
       <view class="weui-media-box__desc">
-        <image src="../../images/account.png" style="width:35rpx;height:35rpx"></image>
+        <image src="{{item.properties}}" style="width:35rpx;height:35rpx"></image>
         <text>2</text>
         <image src="../../images/985.png" style="width:35rpx;height:35rpx"></image>
         <image src="../../images/211.png" style="width:35rpx;height:35rpx"></image>
       </view>
     </view>
   </navigator>
-  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
-    </view>
-    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">标题一</view>
-      <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
-    </view>
-  </navigator>
-  <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="../../images/logoun.png" />
-    </view>
-    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">标题一</view>
-      <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
-    </view>
-  </navigator>
-</view>                                                                                                                                                                                                      
+</view> 
+</block>                                                                                                                                                                                                     

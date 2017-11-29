@@ -19,6 +19,27 @@ Page({
     myhidden:true,
     width:0
   },
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
   openTm: function(){
     var that = this;
     this.setData({
@@ -41,13 +62,34 @@ Page({
     }
 
   },
+  toDto: function(list) {
+    if(!list) return list;
+    list.forEach(function(obj){
+      if(obj.HEADURL){
+        obj.HEADURL = util.setStaticUrl(obj.HEADURL);
+      }
+
+      if (obj.LHEADURL) {
+        obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
+      }
+    });
+
+    return list;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
     showView: (options.showView == "true" ? true : false);
     showView1: (options.showView1 == "true" ? true : false);
-    showView2: (options.showView2== "true" ? true : false) 
+    showView2: (options.showView2== "true" ? true : false);
+    util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST',false, function (res) {
+      console.log(res)
+      that.setData({
+        zhihu: that.toDto(res.data.results)
+      });
+    })
   },
   onChangeShowState: function () {
     var that = this;
@@ -78,17 +120,12 @@ Page({
     this.setData({
       hidden: !this.data.hidden,
       myhidden: !this.data.hidden,
-    });
-    // util.sendRequest('/wechat/applet/school/gethasteachers',{},'POST',function(res){
-    //   this.setData({
-        
-    //   });
-    // })
+    })
   },
   close_ch:function(){
     widthTimer = setInterval(this.closeTm, 10)
     this.setData({
-      myhidden: !this.data.hidden,
+    myhidden: !this.data.hidden,
     })
   },
   /**

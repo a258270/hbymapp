@@ -66,10 +66,12 @@ a{
   bottom:0;
   width:80%;
 }
+button[type="primary"] {
+  background-color:#00BE9F;
+}
 .weui-btn{
   font-size:28rpx;
   border-radius: 0;
-  border:1rpx solid gray;
 }
 .flex-item{
   width:50%;
@@ -112,15 +114,19 @@ ul{
   margin-top:20rpx;
 }
 .weui-media-box__desc text{
-  padding-left:20rpx;
+  padding-right:20rpx;
   font-size:35rpx;
 }
 .weui-media-box__desc image{
-  padding-left:20rpx;
+  padding-right:20rpx;
 }
 .weui-media-box__title{
   font-size:28rpx;
 }
 .weui-media-box{
-  padding:50rpx;
+  padding:25rpx 50rpx;
 }
+.weui-search-bar__cancel-btn {
+  font-size:28rpx;
+  color:#999999;
+} 
