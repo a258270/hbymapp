@@ -51,103 +51,117 @@
   <view class="demo-text-1"><text>地区</text><image class='image' src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
     <ul> 
-      <li class="textss"><a >不限</a></li>
-      <li class="textss"><a>北京</a></li>
-      <li class="textss"><a>天津</a></li>
-      <li class="textss"><a>重庆</a></li>
-      <li class="textss"><a>上海</a></li>
-      <li class="textss"><a>河北</a></li>
+      <li class="textss" bindtap="add" id="1"><a>不限</a></li>
+      <li class="textss" bindtap="add" id="2"><a>北京</a></li>
+      <li class="textss" bindtap="add" id="3"><a>天津</a></li>
+      <li class="textss" bindtap="add" id="4"><a>重庆</a></li>
+      <li class="textss" bindtap="add" id="5"><a>上海</a></li>
+      <li class="textss" bindtap="add" id="1"><a>河北</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss"><a>山西</a></li>
-      <li class="textss"><a>辽宁</a></li>
-      <li class="textss"><a>吉林</a></li>
-      <li class="textss"><a>江苏</a></li>
-      <li class="textss"><a>浙江</a></li>
+      <li class="textss" bindtap="add"><a>山西</a></li>
+      <li class="textss" bindtap="add"><a>辽宁</a></li>
+      <li class="textss" bindtap="add"><a>吉林</a></li>
+      <li class="textss" bindtap="add"><a>江苏</a></li>
+      <li class="textss" bindtap="add"><a>浙江</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss"><a>安徽</a></li>
-      <li class="textss"><a>福建</a></li>
-      <li class="textss"><a>江西</a></li>
-      <li class="textss"><a>山东</a></li>
-      <li class="textss"><a>河南</a></li>
-      <li class="textss"><a>湖北</a></li>
+      <li class="textss" bindtap="add"><a>安徽</a></li>
+      <li class="textss" bindtap="add"><a>福建</a></li>
+      <li class="textss" bindtap="add"><a>江西</a></li>
+      <li class="textss" bindtap="add"><a>山东</a></li>
+      <li class="textss" bindtap="add"><a>河南</a></li>
+      <li class="textss" bindtap="add"><a>湖北</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}"> 
-      <li class="textss"><a>湖南</a></li>
-      <li class="textss"><a>广东</a></li>
-      <li class="textss"><a>海南</a></li>
-      <li class="textss"><a>四川</a></li>
-      <li class="textss"><a>贵州</a></li>
-      <li class="textss"><a>云南</a></li>
+      <li class="textss" bindtap="add"><a>湖南</a></li>
+      <li class="textss" bindtap="add"><a>广东</a></li>
+      <li class="textss" bindtap="add"><a>海南</a></li>
+      <li class="textss" bindtap="add"><a>四川</a></li>
+      <li class="textss" bindtap="add"><a>贵州</a></li>
+      <li class="textss" bindtap="add"><a>云南</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss"><a>陕西</a></li>
-      <li class="textss"><a>甘肃</a></li>
-      <li class="textss"><a>青海</a></li>
-      <li class="textss"><a>广西</a></li>
-      <li class="textss"><a>香港</a></li>
-      <li class="textss"><a>宁夏</a></li>
-      <li class="textss"><a>澳门</a></li>
+      <li class="textss" bindtap="add"><a>陕西</a></li>
+      <li class="textss" bindtap="add"><a>甘肃</a></li>
+      <li class="textss" bindtap="add"><a>青海</a></li>
+      <li class="textss" bindtap="add"><a>广西</a></li>
+      <li class="textss" bindtap="add"><a>香港</a></li>
+      <li class="textss" bindtap="add"><a>宁夏</a></li>
+      <li class="textss" bindtap="add"><a>澳门</a></li>
     </ul>
     <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss"><a>新疆</a></li>
-      <li class="textss"><a>西藏</a></li>
-      <li class="textss"><a>内蒙古</a></li>
-      <li class="textss"><a>黑龙江</a></li>
+      <li class="textss" bindtap="add"><a>新疆</a></li>
+      <li class="textss" bindtap="add"><a>西藏</a></li>
+      <li class="textss" bindtap="add"><a>内蒙古</a></li>
+      <li class="textss" bindtap="add"><a>黑龙江</a></li>
     </ul> 
   </view>
 </view>
 <view class="page-body">
   <view class="demo-text-1">批次</view>
   <view class="demo-text-2">
-    <ul class="texts">
-      <li class="textss"><a>不限</a></li>
-      <li class="textss"><a>本一</a></li>
-      <li class="textss"><a>本二</a></li>
-      <li class="textss"><a>专科</a></li>
-    </ul>
+    <checkbox-group bindchange="serviceValChange">  
+        <view class="service_selection flex">  
+          <block wx:for="{{bath}}" wx:key="NAME">  
+            <view class="item">  
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>  
+            </view>  
+          </block>  
+        </view>  
+  </checkbox-group> 
+    <!-- <ul>
+       <block wx:for="{{bath}}" wx:key="NAME"  >  
+       <checkbox value='{{item.NAME}}' checked="{{item.checked}}" >
+         <a>{{item.NAME}}</a>
+       </li>
+       </block> 
+    </ul> -->
   </view>
 </view>
 <view class="page-body">
   <view class="demo-text-1"><text>类型</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStates"></image></view>
   <view class="demo-text-2">
     <ul class="texts">
-      <li class="textss"><a>不限</a></li>
-      <li class="textss"><a>综合类</a></li>
-      <li class="textss"><a>理工类</a></li>
-      <li class="textss"><a>师范类</a></li>    
+      <li class="textss" bindtap="add"><a>不限</a></li>
+      <li class="textss" bindtap="add"><a>综合类</a></li>
+      <li class="textss" bindtap="add"><a>理工类</a></li>
+      <li class="textss" bindtap="add"><a>师范类</a></li>    
     </ul>
      <ul class="textss_hide{{showView1?'textss_show':''}}">
-      <li class="textss"><a>财经类</a></li>
-      <li class="textss"><a>语言类</a></li>
-      <li class="textss"><a>艺术类</a></li>
-      <li class="textss"><a>医药类</a></li>
-      <li class="textss"><a>农林类</a></li>      
+      <li class="textss" bindtap="add"><a>财经类</a></li>
+      <li class="textss" bindtap="add"><a>语言类</a></li>
+      <li class="textss" bindtap="add"><a>艺术类</a></li>
+      <li class="textss" bindtap="add"><a>医药类</a></li>
+      <li class="textss" bindtap="add"><a>农林类</a></li>      
     </ul>
     <ul class="textss_hide{{showView1?'textss_show':''}}">
-      <li class="textss"><a>政法类</a></li>
-      <li class="textss"><a>体育类</a></li>
-      <li class="textss"><a>民族类</a></li>
-      <li class="textss"><a>军事类</a></li>
-      <li class="textss"><a>其他类</a></li>    
+      <li class="textss" bindtap="add"><a>政法类</a></li>
+      <li class="textss" bindtap="add"><a>体育类</a></li>
+      <li class="textss" bindtap="add"><a>民族类</a></li>
+      <li class="textss" bindtap="add"><a>军事类</a></li>
+      <li class="textss" bindtap="add"><a>其他类</a></li>    
     </ul> 
   </view>
 </view>
 <view class="page-body">
   <view class="demo-text-1"><text>属性</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStatess"></image></view>
   <view class="demo-text-2">
-    <ul class="texts">
-      <li class="textss"><a>不限</a></li>
-      <li class="textss"><a>双一流</a></li>
-      <li class="textss"><a>985</a></li>
-      <li class="textss"><a>211</a></li>
-      <li class="textss"><a>研究生</a></li>      
-    </ul>
-     <ul class="textss_hide{{showView2?'textss_show':''}}">
-      <li class="textss"><a>卓越</a></li>
-      <li class="textss"><a>省重点</a></li>
-      <li class="textss"><a>艺术生</a></li>
+    <checkbox-group bindchange="serviceValChange1">  
+        <view class="service_selection flex">  
+          <block wx:for="{{property}}" wx:key="NAME">   
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>    
+          </block>  
+        </view>  
+  </checkbox-group>   
+    <ul class="textss_hide{{showView2?'textss_show':''}}">
+      <li class="textss" bindtap="add"><a>卓越</a></li>
+      <li class="textss" bindtap="add"><a>省重点</a></li>
+      <li class="textss" bindtap="add"><a>艺术生</a></li>
     </ul> 
   </view>
  </view>
@@ -158,20 +172,26 @@
   <view class="flex-item"><button class="weui-btn" type="primary" bindtap='close_ch'>完成</button></view>
 </view> 
 </scroll-view>
-<block wx:for="{{zhihu}}"> 
+<block wx:for="{{zhihu}}" wx:key="NAME"> 
 <view class="flex-wrps">
   <navigator url="consultlist/consultlist" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+      <image class="weui-media-box__thumb" src="../../images/lig0rk3q90.jpeg" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">{{item.NAME}}</view>
+      <view class="weui-media-box__title">
+        <text>{{item.NAME}}</text>
+        <image src="../../images/zonghe.png"></image>
+      </view>
       <view class="weui-media-box__desc">
-        <image src="{{item.properties}}" style="width:35rpx;height:35rpx"></image>
-        <text>2</text>
+         <text>入驻人数：3人</text><text>地区：{{item.PROVINCE_VALUE}}</text><text>学校性质：{{item.SCTYPE_VALUE}}</text>
+      </view>
+      <view class="weui-media-box__desc">
+        <image src="../../images/卓越计划.png" style="width:35rpx;height:35rpx"></image>
         <image src="../../images/985.png" style="width:35rpx;height:35rpx"></image>
         <image src="../../images/211.png" style="width:35rpx;height:35rpx"></image>
-      </view>
+        <image src="../../images/双一流.png" style="width:35rpx;height:35rpx"></image>
+      </view>  
     </view>
   </navigator>
 </view> 

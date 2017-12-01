@@ -59,7 +59,6 @@ var login = function () {
         //发起网络请求
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           //存储session_id
-          console.log(obj);
           setInfoToStorage('session_id', obj.thirdSessionId);
           if (!obj.isCompleted) {
             toComplete();

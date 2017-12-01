@@ -1,7 +1,7 @@
 // pages/consult/consult.js
 var util = require('../../utils/util.js');
 var widthTimer = null;
-
+var id;
 Page({
   /**
    * 页面的初始数据
@@ -17,7 +17,20 @@ Page({
     showView2: false,
     hidden:true,
     myhidden:true,
-    width:0
+    width:0,
+    checked:false
+    // bath: [
+    //   { name: '不限', value: '0', checked: true },
+    //   { name: '双一流', value: '1', checked: false },
+    //   { name: '985', value: '2', checked: false },
+    //   { name: '211', value: '3', checked: false },
+    // ], 
+  },
+  upper: function (e) {
+  },
+  lower: function (e) {
+  },
+  scroll: function (e) {
   },
   showInput: function () {
     this.setData({
@@ -68,12 +81,10 @@ Page({
       if(obj.HEADURL){
         obj.HEADURL = util.setStaticUrl(obj.HEADURL);
       }
-
       if (obj.LHEADURL) {
         obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
       }
     });
-
     return list;
   },
   /**
@@ -85,11 +96,11 @@ Page({
     showView1: (options.showView1 == "true" ? true : false);
     showView2: (options.showView2== "true" ? true : false);
     util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST',false, function (res) {
-      console.log(res)
       that.setData({
         zhihu: that.toDto(res.data.results)
       });
     })
+    
   },
   onChangeShowState: function () {
     var that = this;
@@ -109,7 +120,8 @@ Page({
       showView2: (!that.data.showView2)
     })
   },
-  tap_ch:function(){
+  tap_ch:function(e){
+    var that = this;
     if(widthTimer != null) {
       clearInterval(widthTimer);
       this.setData({
@@ -121,6 +133,16 @@ Page({
       hidden: !this.data.hidden,
       myhidden: !this.data.hidden,
     })
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {   
+      that.setData({
+        bath: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      that.setData({
+        property: res.data
+      })
+    })
   },
   close_ch:function(){
     widthTimer = setInterval(this.closeTm, 10)
@@ -128,6 +150,40 @@ Page({
     myhidden: !this.data.hidden,
     })
   },
+  // add:function(e){
+  //   var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
+  //   this.setData({
+  //     id:id
+  //   })  
+  // },
+  serviceValChange: function (e) {
+    var bath = this.data.bath;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < bath.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        bath[i].checked = true;
+      } else {
+        bath[i].checked = false;
+      }
+    }
+    this.setData({
+      bath: bath
+    })
+  }, 
+  serviceValChange1: function (e) {
+    var property = this.data.property;
+    var checkArr = e.detail.value;
+      for (var i = 0; i < property.length; i++) {
+        if (checkArr.indexOf(i + "") != -1) {
+          property[i].checked = true;
+        } else {
+          property[i].checked = false;
+        }
+      }
+    this.setData({
+      property: property
+    })
+  }, 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
