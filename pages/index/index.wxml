@@ -1,20 +1,7 @@
-<!--index.wxml-->
-<!-- <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view> -->
  <!-- 轮播图 开始  -->
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
       <image src="{{item}}" style='width:100%;height:100%;' class="slide-image"/>
     </swiper-item>
@@ -27,7 +14,7 @@
     <image class="tpia" src='../../images/consultation.png'></image> 
     <view class='navigation-text'>院校咨询</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap="teacher">
     <image class="tpia" src='../../images/guidance.png'></image> 
     <view class='navigation-text'>名师指导</view>
   </view>
@@ -39,7 +26,7 @@
     <image class="tpia" src='../../images/major.png'></image> 
     <view class='navigation-text'>专业库</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap="analog">
     <image class="tpia" src='../../images/Fill.png'></image> 
     <view class='navigation-text'>模拟填报</view>
   </view>
@@ -62,15 +49,15 @@
  <view class='notice'> 
    <image class="icon" src='../../images/notice.png'></image> 
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-     <block wx:for="{{msgList}}">
-       <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+     <block wx:for="{{notice}}" wx:key="title">
+       <view>
          <swiper-item>
-           <view class="swiper_item">{{item.title}}</view>
+           <view class="swiper_item">{{item.TITLE}}</view>
          </swiper-item>
-       </navigator>
+       </view>
      </block>
     </swiper>
-    <span class="more" style="font-size:25rpx;">更多></span>
+    <span class="more" style="font-size:25rpx;" bindtap="noticemore">更多></span>
  </view> 
 <!-- 公告 结束-->
 
@@ -78,81 +65,29 @@
 <view class="notice">
   <image class='icon' src='../../images/dynamic.png'></image>
   <view style='font-size:30rpx;;'>高考动态</view>
-  <span class="more" style="font-size:25rpx;">更多></span>
+  <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span>
 </view>
-<view class='padding:15rpx 0;'>
+<view style='padding:15rpx 0;'>
+  <block wx:for="{{news}}" wx:key="">
   <view style='display:flex;flex-direction:row;'>
     <view class='news'>
-      <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
+      <image src='{{item.IMGURL}}' style='width:100%;height:100%;'></image>
     </view>
     <view class='headlines'>
-      <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
+      <view style='height:40px;'>{{item.TITLE}}</view>
       <view class="flex-x" style='margin-top:40rpx;'>
         <view class='flex-x' style='margin-right: 20rpx;'>
           <image class='icon' src='../../images/time.png'></image>
-          <span class='time-t'>2017-11-28</span>
+          <span class='time-t'>{{item.MODIFYTIME}}</span>
         </view>
         <view class='flex-x'>
           <image class='icon' src='../../images/browse.png'></image>
-          <span class='time-t'>31</span>
+          <span class='time-t'>{{item.VIEWCOUNT}}</span>
         </view>
       </view>
     </view>
   </view>
-  <view style='display:flex;flex-direction:row;'>
-    <view class='news'>
-      <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-    </view>
-    <view class='headlines'>
-      <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
-      <view class="flex-x" style='margin-top:40rpx;'>
-        <view class='flex-x' style='margin-right: 20rpx;'>
-          <image class='icon' src='../../images/time.png'></image>
-          <span class='time-t'>2017-11-28</span>
-        </view>
-        <view class='flex-x'>
-          <image class='icon' src='../../images/browse.png'></image>
-          <span class='time-t'>31</span>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view style='display:flex;flex-direction:row;'>
-    <view class='news'>
-      <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-    </view>
-    <view class='headlines'>
-      <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
-      <view class="flex-x" style='margin-top:40rpx;'>
-        <view class='flex-x' style='margin-right: 20rpx;'>
-          <image class='icon' src='../../images/time.png'></image>
-          <span class='time-t'>2017-11-28</span>
-        </view>
-        <view class='flex-x'>
-          <image class='icon' src='../../images/browse.png'></image>
-          <span class='time-t'>31</span>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view style='display:flex;flex-direction:row;'>
-    <view class='news'>
-      <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-    </view>
-    <view class='headlines'>
-      <view style='height:40px;'>中东部今迎新一轮冷空气 东北局地降温或超14℃</view>
-      <view class="flex-x" style='margin-top:40rpx;'>
-        <view class='flex-x' style='margin-right: 20rpx;'>
-          <image class='icon' src='../../images/time.png'></image>
-          <span class='time-t'>2017-11-28</span>
-        </view>
-        <view class='flex-x'>
-          <image class='icon' src='../../images/browse.png'></image>
-          <span class='time-t'>31</span>
-        </view>
-      </view>
-    </view>
-  </view>
+  </block>
 </view>
 <!-- 高考动态 结束 -->
 
@@ -162,44 +97,13 @@
   <view style='font-size:30rpx;;'>线下活动</view>
   <span class="more" style="font-size:25rpx;">更多></span>
 </view>
-
-<!-- <view class='flex-x' style='padding:15rpx 0;'>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:100%;'></image>
-  </view>
-</view> -->
 <view class='flex-x' style='padding: 15rpx;'>
+  <block wx:for="{{activity}}" wx:key="">
   <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
+    <image src='{{item.IMGURL}}' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">{{item.TITLE}}</view>
   </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
-  <view class='activity'>
-    <image src='../../img/1.jpg' style='width:100%;height:150rpx;'></image>
-    <view style="font-size:25rpx;">正定中学高考咨询会</view>
-  </view>
+  </block>
 </view>
+<view class='footer'></view>
 <!-- 线下活动 结束 -->

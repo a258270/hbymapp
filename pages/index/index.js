@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var util=require("../../utils/util")
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 const app = getApp()
 var utils = require('../../utils/util.js')
@@ -39,14 +40,46 @@ Page({
   consultation:function(){
     utils.navigateTo("../consult/consult")
   },
-  onLoad(e) {
-    console.log(e.title)
-    this.setData({
-      msgList: [
-        { url: "url", title: "公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代" },
-        { url: "url", title: "公告：悦如公寓三周年生日趴邀你免费吃喝欢唱" },
-        { url: "url", title: "公告：你想和一群有志青年一起过生日嘛？" }]
+  teacher:function(){
+    utils.navigateTo("../teacher/teacher")
+  },
+  analog:function(){
+    utils.navigateTo("../analog/analog")
+  },
+  noticemore:function(){
+    utils.navigateTo("../notice/notice")
+  },
+  newsmore:function(){
+    utils.navigateTo("../news/news")
+  },
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.IMGURL) {
+        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
+      }
+        if (obj.MODIFYTIME){
+          obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
+        }
     });
-
+    return list;
+  },
+  onLoad:function(e) {
+    var that=this;
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+      that.setData({
+        notice: that.toDto(res.data.results)
+      });
+    })
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize:"5"}, 'POST', false, function (res) {
+      that.setData({ 
+        news: that.toDto(res.data.results)
+      });
+    })
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
+      that.setData({
+        activity: that.toDto(res.data.results)
+      });
+    })
   },
 })

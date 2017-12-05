@@ -1,0 +1,474 @@
+<!--pages/analog/analogs/analogs.wxml-->
+<view class='head'><image src="../../../images/banner02.png"></image></view>
+<view class="content1">
+  <view class="content1-left">
+    <text style="color:rgb(125,216,202);font-size:35rpx;">我的分数：</text>
+    <text>河北省　理科</text>
+  </view>
+  <view class="content1-right">
+    <image src="../../../images/icon01.png" style="width:80rpx;height:80rpx;"></image>
+    <text>设置</text>
+  </view>
+</view>
+<view class="content2">
+  <image src="../../../images/icon02.png" style="width:100rpx;height:100rpx;"></image>
+  <text>批次选择</text>
+</view>
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="" hidden="{{activeIndex != 0}}">
+                  <view class='volunteer'><text>志愿A</text></view>
+                    <view class='volunteers'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                  <view class='volunteer'><text>志愿B</text></view>
+                    <view class='volunteers'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                  <view class='volunteer'><text>志愿C</text></view>
+                    <view class='volunteers'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                  <view class='volunteer'><text>志愿D</text></view>
+                    <view class='volunteers'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                  <view class='volunteer'><text>志愿E</text></view>
+                    <view class='volunteers'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                    <view class='volunteerss'>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                      </picker>
+                    </view>
+                  </view>                
+                <view class="" hidden="{{activeIndex != 1}}">
+                  <view class='volunteer'><text>志愿A</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿B</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿C</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿D</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿E</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿F</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿G</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿H</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿I</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteer'><text>志愿J</text></view>
+                  <view class='volunteers'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择院校</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                  <view class='volunteerss'>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                      <button class='button1' type="default" style='background-color:#DFDFB8;font-size:28rpx;'>请选择专业</button>
+                    </picker>
+                  </view>
+                </view>
+          </view>
+    </view>
+</view>
+<view class='content4'> 
+  <button class="button2" type="primary" style="background-color:rgb(251,134,8);color:white" bindtap='start'>确认</button>
+</view>
+<view class='footer'>
+  <view class='footer1'>
+    <icon type="warn" size="23" color="#F43530"></icon><text>重要提示：</text>
+  </view>
+  <view class="footer2">
+    1、本系统提供高考志愿填报智能模拟功能，不等同于实际的网上志愿填报。建议考生在填报志愿时，结合本系统的推荐来完善志愿表；
+  </view>
+  <view class="footer2">
+    2、您正在使用的是河北考生志愿填报智能模拟系统，提供“普通类文理的本科一、本科二批”的志愿填报模拟功能，该功能主要数据来源参考与各省市出版的填报指南以及各本科专科院系官网的历年数据；
+  </view>
+  <view class="footer2">
+    3、当前版本使用的数据已经更新至2017年最新数据；
+  </view>
+  <view class='footer2'>
+    4、本系统推荐结果仅限参考，在正式填报时，以教育考试院公布的最新招生计划为准，具体情况请根据当年招生政策自行判断。
+  </view>
+</view>

@@ -1,64 +1,41 @@
-<view class="page2">
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
+<view class="page__bd">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
                 </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
             </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
         </view>
-        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-        </view>
-    </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">搜索</view>
+    </view>  
 </view>
 <view class="header">
   <view class="header-left">浏览量</view>
-  <view class="header-center">分数</view>
+  <view class="header-center" bindtap='grade'>分数</view>
   <view class="header-right" bindtap="tap_ch" >筛选</view>
 </view>  
 <view class="page1" hidden="{{myhidden}}" bindtap="close_ch"></view>
 <scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" hidden="{{hidden}}" style="width:{{width}}%" >
 <view class="page-body">
-  <view class="demo-text-1"><text>地区</text><image class='image' src='{{srcs}}' bindtap="onChangeShowState"></image></view>
+  <view class="demo-text-1"><text>地区</text><image class="image" src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
-    <ul> 
-      <li class="textss" bindtap="add" id="1"><a>不限</a></li>
-      <li class="textss" bindtap="add" id="2"><a>北京</a></li>
-      <li class="textss" bindtap="add" id="3"><a>天津</a></li>
-      <li class="textss" bindtap="add" id="4"><a>重庆</a></li>
-      <li class="textss" bindtap="add" id="5"><a>上海</a></li>
-      <li class="textss" bindtap="add" id="1"><a>河北</a></li>
-    </ul>
-    <ul class="textss_hide{{showView?'textss_show':''}}">
+    <checkbox-group bindchange="serviceValChange3">  
+        <view class="service_selection2">  
+          <block wx:for="{{province}}" wx:key="NAME">   
+              <label class="checkbox {{item.checked?'is_checked':''}}" >  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false"/>{{item.NAME}}
+              </label>    
+          </block>  
+        </view>  
+  </checkbox-group> 
+    <!-- <ul class="textss_hide{{showView?'textss_show':''}}">
       <li class="textss" bindtap="add"><a>山西</a></li>
       <li class="textss" bindtap="add"><a>辽宁</a></li>
       <li class="textss" bindtap="add"><a>吉林</a></li>
@@ -95,7 +72,7 @@
       <li class="textss" bindtap="add"><a>西藏</a></li>
       <li class="textss" bindtap="add"><a>内蒙古</a></li>
       <li class="textss" bindtap="add"><a>黑龙江</a></li>
-    </ul> 
+    </ul>  -->
   </view>
 </view>
 <view class="page-body">
@@ -111,7 +88,7 @@
             </view>  
           </block>  
         </view>  
-  </checkbox-group> 
+    </checkbox-group> 
     <!-- <ul>
        <block wx:for="{{bath}}" wx:key="NAME"  >  
        <checkbox value='{{item.NAME}}' checked="{{item.checked}}" >
@@ -124,13 +101,16 @@
 <view class="page-body">
   <view class="demo-text-1"><text>类型</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStates"></image></view>
   <view class="demo-text-2">
-    <ul class="texts">
-      <li class="textss" bindtap="add"><a>不限</a></li>
-      <li class="textss" bindtap="add"><a>综合类</a></li>
-      <li class="textss" bindtap="add"><a>理工类</a></li>
-      <li class="textss" bindtap="add"><a>师范类</a></li>    
-    </ul>
-     <ul class="textss_hide{{showView1?'textss_show':''}}">
+    <checkbox-group bindchange="serviceValChange2">  
+        <view class="service_selection1">  
+          <block wx:for="{{style}}" wx:key="NAME">   
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>    
+          </block>  
+        </view>  
+  </checkbox-group>  
+     <!-- <ul class="textss_hide{{showView1?'textss_show':''}}">
       <li class="textss" bindtap="add"><a>财经类</a></li>
       <li class="textss" bindtap="add"><a>语言类</a></li>
       <li class="textss" bindtap="add"><a>艺术类</a></li>
@@ -143,14 +123,14 @@
       <li class="textss" bindtap="add"><a>民族类</a></li>
       <li class="textss" bindtap="add"><a>军事类</a></li>
       <li class="textss" bindtap="add"><a>其他类</a></li>    
-    </ul> 
+    </ul>  -->
   </view>
 </view>
 <view class="page-body">
   <view class="demo-text-1"><text>属性</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStatess"></image></view>
   <view class="demo-text-2">
     <checkbox-group bindchange="serviceValChange1">  
-        <view class="service_selection flex">  
+        <view class="service_selection1">  
           <block wx:for="{{property}}" wx:key="NAME">   
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
@@ -158,11 +138,11 @@
           </block>  
         </view>  
   </checkbox-group>   
-    <ul class="textss_hide{{showView2?'textss_show':''}}">
+    <!-- <ul class="textss_hide{{showView2?'textss_show':''}}">
       <li class="textss" bindtap="add"><a>卓越</a></li>
       <li class="textss" bindtap="add"><a>省重点</a></li>
       <li class="textss" bindtap="add"><a>艺术生</a></li>
-    </ul> 
+    </ul>  -->
   </view>
  </view>
  <view class="page-body1" style="width:100%;height:100rpx;">
@@ -176,7 +156,7 @@
 <view class="flex-wrps">
   <navigator url="consultlist/consultlist" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="../../images/lig0rk3q90.jpeg" />
+      <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
       <view class="weui-media-box__title">
@@ -184,7 +164,7 @@
         <image src="../../images/zonghe.png"></image>
       </view>
       <view class="weui-media-box__desc">
-         <text>入驻人数：3人</text><text>地区：{{item.PROVINCE_VALUE}}</text><text>学校性质：{{item.SCTYPE_VALUE}}</text>
+         <text>入驻人数：3人</text><text>地区：{{item.PROVINCE_VALUE}}</text>
       </view>
       <view class="weui-media-box__desc">
         <image src="../../images/卓越计划.png" style="width:35rpx;height:35rpx"></image>

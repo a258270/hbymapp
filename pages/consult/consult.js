@@ -19,12 +19,6 @@ Page({
     myhidden:true,
     width:0,
     checked:false
-    // bath: [
-    //   { name: '不限', value: '0', checked: true },
-    //   { name: '双一流', value: '1', checked: false },
-    //   { name: '985', value: '2', checked: false },
-    //   { name: '211', value: '3', checked: false },
-    // ], 
   },
   upper: function (e) {
   },
@@ -52,6 +46,38 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
+  },
+  setSearchStorage:function(){
+    var that=this;
+    util.sendRequest('/wechat/applet/school/gethasteachers', { NAME:that.data.inputVal}, 'POST', false, function (res) {
+      that.setData({
+        zhihu: that.toDto(res.data.results)
+      });
+    })
+  },
+  select:function(){
+    var that = this;
+    util.sendRequest('/wechat/applet/school/gethasteachers', { NAME: that.data.inputVal }, 'POST', false, function (res) {
+      that.setData({
+        zhihu: that.toDto(res.data.results)
+      });
+    })
+  },
+  compare:function (property){
+    return function(a, b) {
+      var value1 = a[property];
+      var value2 = b[property];
+      return value1 - value2;
+    }
+  },
+  grade:function(){
+    var that=this;
+    util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST', false, function (res) {
+      console.log(res.data)
+      that.setData({
+        // zhihu: that.toDto(sort(compare('')))
+      });
+    })
   },
   openTm: function(){
     var that = this;
@@ -105,7 +131,8 @@ Page({
   onChangeShowState: function () {
     var that = this;
     that.setData({
-      showView: (!that.data.showView)
+      showView: (!that.data.showView),
+      selectArea: true
     })
   },
   onChangeShowStates: function () {
@@ -133,7 +160,7 @@ Page({
       hidden: !this.data.hidden,
       myhidden: !this.data.hidden,
     })
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {   
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) { 
       that.setData({
         bath: res.data
       })
@@ -141,6 +168,16 @@ Page({
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
       that.setData({
         property: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      that.setData({
+        style: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE'}, 'POST', false, function (res) {
+      that.setData({
+        province: res.data
       })
     })
   },
@@ -170,20 +207,54 @@ Page({
       bath: bath
     })
   }, 
-  serviceValChange1: function (e) {
-    var property = this.data.property;
+  serviceValChange2: function (e) {
+    var style = this.data.style;
     var checkArr = e.detail.value;
-      for (var i = 0; i < property.length; i++) {
+    for (var i = 0; i < style.length; i++) {
         if (checkArr.indexOf(i + "") != -1) {
-          property[i].checked = true;
+          style[i].checked = true;
         } else {
-          property[i].checked = false;
+          style[i].checked = false;
         }
       }
     this.setData({
-      property: property
+      style: style
     })
   }, 
+  serviceValChange1: function (e) {
+    var property = this.data.property;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < property.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        property[i].checked = true;
+      } else {
+        property[i].checked = false;
+      }
+    }
+    this.setData({
+      property: property
+    })
+  },
+  serviceValChange3: function (e) {
+    var province = this.data.province;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < province.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        province[i].checked = true;
+      } else {
+        province[i].checked = false;
+      }
+    }
+    this.setData({
+      province: province
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { NAME }, 'POST', false, function (res) {
+      that.setData({
+        province: res.data
+      })
+    })
+  },  
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

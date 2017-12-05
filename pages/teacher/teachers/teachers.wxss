@@ -1,0 +1,47 @@
+/* pages/teacher/teachers/teachers.wxss */
+.head{
+  width:100%;
+  height:200rpx;
+  background-color: rgb(72,147,240);
+}
+.image{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image image{
+  width:30%;
+  height:200rpx;
+  margin-top:-100rpx;
+}
+.text1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:10rpx;
+}
+.text1 image{
+  width:80rpx;
+  height:80rpx;
+}
+.text2{
+  font-size:28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:10rpx;
+}
+.text2 text{
+  margin-left:23rpx;
+}
+.text3{
+  font-size:28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:10rpx;
+}
+.text3 text{
+  margin-left:23rpx;
+}

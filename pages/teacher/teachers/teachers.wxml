@@ -1,0 +1,21 @@
+<!--pages/teacher/teachers/teachers.wxml-->
+<view class="head"></view>
+<view class="image">
+  <image src="../../../images/01.png"></image>
+</view>
+<view class='text1'>
+  <image src="../../../images/tb01.png"></image>
+  <text>陈老师</text>
+</view>
+<view class='text2'>
+  <text>被询问次数：　次</text>
+  <text>从业时长：　年</text>
+</view>
+<view class='text3'>
+  <text>好评度：</text>
+  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
+  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
+  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
+  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
+  <text>价格：　元/次</text>
+</view>
