@@ -10,3 +10,19 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+/*小图标 开始*/
+.icon-property{
+    width: 22px;
+    height:22px;
+    margin: 0 5rpx;
+    padding: 0;
+}
+
+.icon-subjecttype{
+  width: 40px;
+  height: 20px;
+  margin: 0 5rpx;
+  padding: 0;
+}
+/*小图标 结束*/
