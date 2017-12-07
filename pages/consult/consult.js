@@ -18,7 +18,10 @@ Page({
     hidden:true,
     myhidden:true,
     width:0,
-    checked:false
+    checked:false,
+    isLoadingMore: false,//是否加载更多
+    searchParam:{currentPage: 1},//搜索参数
+    schools:[]//学校结果
   },
   upper: function (e) {
   },
@@ -51,7 +54,7 @@ Page({
     var that=this;
     util.sendRequest('/wechat/applet/school/gethasteachers', { NAME:that.data.inputVal}, 'POST', false, function (res) {
       that.setData({
-        zhihu: that.toDto(res.data.results)
+        schools: that.toDto(res.data.results)
       });
     })
   },
@@ -59,7 +62,7 @@ Page({
     var that = this;
     util.sendRequest('/wechat/applet/school/gethasteachers', { NAME: that.data.inputVal }, 'POST', false, function (res) {
       that.setData({
-        zhihu: that.toDto(res.data.results)
+        schools: that.toDto(res.data.results)
       });
     })
   },
@@ -73,9 +76,8 @@ Page({
   grade:function(){
     var that=this;
     util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST', false, function (res) {
-      console.log(res.data)
       that.setData({
-        // zhihu: that.toDto(sort(compare('')))
+        // schools: that.toDto(sort(compare('')))
       });
     })
   },
@@ -110,6 +112,11 @@ Page({
       if (obj.LHEADURL) {
         obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
       }
+      if(obj.properties) {
+        obj.properties.forEach(function(index, element){
+          
+        });
+      }
     });
     return list;
   },
@@ -121,11 +128,7 @@ Page({
     showView: (options.showView == "true" ? true : false);
     showView1: (options.showView1 == "true" ? true : false);
     showView2: (options.showView2== "true" ? true : false);
-    util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST',false, function (res) {
-      that.setData({
-        zhihu: that.toDto(res.data.results)
-      });
-    })
+    that.pullSchoolInfos();
     
   },
   onChangeShowState: function () {
@@ -294,7 +297,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    if (!this.data.isLoadingMore){
+      this.setData({
+        isLoadingMore: true
+      });
+
+      this.pullSchoolInfos();
+    }
   },
 
   /**
@@ -302,5 +311,64 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  /**
+   * 设置参数
+   */
+  setSearchParam: function() {
+    var that = this;
+    var param = this.data.searchParam;
+    if(param.currentPage) {
+      param.currentPage = parseInt(param.currentPage) + 1;
+    }
+    that.setData({
+      searchParam: param
+    });
+  },
+  /**
+   * 更新参数
+   */
+  reloadSearchParam: function(param) {
+      var that = this;
+      var paramObj = {};
+
+      if (that.data.searchParam.currentPage <= param.totalPage){
+        paramObj.currentPage = param.pageNumber + 1;
+
+        that.setData({
+          searchParam: paramObj
+        });
+      }
+        
+  },
+  setResults(list){
+    var that = this;
+    var oldList = that.data.schools;
+    var newList = that.toDto(list);
+    newList.forEach(function(index, element){
+      oldList.push(index);
+    });
+
+    return oldList;
+  },
+  /**
+   * 拉取新数据
+   */
+  pullSchoolInfos: function() {
+    var that = this;
+
+    that.setSearchParam();
+    
+    util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
+      that.setData({
+        schools: that.setResults(res.data.results)
+      });
+
+      that.reloadSearchParam(res.data);
+
+      that.setData({
+        isLoadingMore: false
+      });
+    });
   }
 })

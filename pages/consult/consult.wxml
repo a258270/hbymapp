@@ -138,11 +138,6 @@
           </block>  
         </view>  
   </checkbox-group>   
-    <!-- <ul class="textss_hide{{showView2?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>卓越</a></li>
-      <li class="textss" bindtap="add"><a>省重点</a></li>
-      <li class="textss" bindtap="add"><a>艺术生</a></li>
-    </ul>  -->
   </view>
  </view>
  <view class="page-body1" style="width:100%;height:100rpx;">
@@ -152,27 +147,29 @@
   <view class="flex-item"><button class="weui-btn" type="primary" bindtap='close_ch'>完成</button></view>
 </view> 
 </scroll-view>
-<block wx:for="{{zhihu}}" wx:key="NAME"> 
-<view class="flex-wrps">
-  <navigator url="consultlist/consultlist" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
-    </view>
-    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">
-        <text>{{item.NAME}}</text>
-        <image src="../../images/zonghe.png"></image>
+<!-- 院校列表 -->
+<block wx:for="{{schools}}" wx:key="SCHOOL_ID" wx:for-item="school"> 
+  <view class="flex-wrps">
+    <navigator url="consultlist/consultlist" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{school.HEADURL}}" />
       </view>
-      <view class="weui-media-box__desc">
-         <text>入驻人数：3人</text><text>地区：{{item.PROVINCE_VALUE}}</text>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view>
+          <text>{{school.NAME}}</text>
+          <image wx:for="{{school.properties}}" class='icon-property' src="../../images/icon/{{item.DIC_ID}}.png"></image>
+        </view>
+        <view class="weui-media-box__desc">
+          <text>入驻人数：{{school.TEACOUNT}}人</text><text>地区：{{school.PROVINCE_VALUE}}</text>
+        </view>
+        <view class="weui-media-box__desc">
+          <image wx:for="{{school.subjecttypes}}" class='icon-subjecttype' src="../../images/icon/{{item.DIC_ID}}.png"></image>
+        </view>  
       </view>
-      <view class="weui-media-box__desc">
-        <image src="../../images/卓越计划.png" style="width:35rpx;height:35rpx"></image>
-        <image src="../../images/985.png" style="width:35rpx;height:35rpx"></image>
-        <image src="../../images/211.png" style="width:35rpx;height:35rpx"></image>
-        <image src="../../images/双一流.png" style="width:35rpx;height:35rpx"></image>
-      </view>  
-    </view>
-  </navigator>
-</view> 
-</block>                                                                                                                                                                                                     
+    </navigator>
+  </view> 
+</block>
+<view class="weui-loadmore" hidden='{{!isLoadingMore}}'>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>                                                                                                                                                                                                    
