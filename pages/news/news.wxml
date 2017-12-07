@@ -1,11 +1,11 @@
 <!--pages/news/news.wxml-->
-<view style='padding:15rpx 0;'>
+<scroll-view scroll-y style="height: 100%;padding:15rpx 0;" bindscrolltolower="lower" bindscroll="scroll">
   <block wx:for="{{news}}" wx:key="">
-  <view style='display:flex;flex-direction:row;'>
+  <view style='display:flex;flex-direction:row;'bindtap='news'>
     <view class='news'>
       <image src='{{item.IMGURL}}' style='width:100%;height:100%;'></image>
     </view>
-    <view class='headlines'>
+    <view class='headlines' >
       <view style='height:40px;'>{{item.TITLE}}</view>
       <view class="flex-x" style='margin-top:40rpx;'>
         <view class='flex-x' style='margin-right: 20rpx;'>
@@ -20,8 +20,6 @@
     </view>
   </view>
   </block>
-</view>
-<view style='padding:15rpx 0;'>
   <block wx:for="{{news2}}" wx:key="">
   <view style='display:flex;flex-direction:row;'>
     <view class='news'>
@@ -42,4 +40,4 @@
     </view>
   </view>
   </block>
-</view>
+</scroll-view>

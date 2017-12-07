@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-var util=require("../../utils/util")
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 const app = getApp()
 var utils = require('../../utils/util.js')
@@ -52,31 +51,34 @@ Page({
   newsmore:function(){
     utils.navigateTo("../news/news")
   },
+  activitymore:function(){
+    utils.navigateTo("../activity/activity")
+  },
   toDto: function (list) {
     if (!list) return list;
     list.forEach(function (obj) {
       if (obj.IMGURL) {
-        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
+        obj.IMGURL = utils.setStaticUrl(obj.IMGURL);
       }
         if (obj.MODIFYTIME){
-          obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
+          obj.MODIFYTIME = utils.formatTime(new Date(obj.MODIFYTIME));
         }
     });
     return list;
   },
   onLoad:function(e) {
     var that=this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
       that.setData({
         notice: that.toDto(res.data.results)
       });
     })
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize:"5"}, 'POST', false, function (res) {
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize:"5"}, 'POST', false, function (res) {
       that.setData({ 
         news: that.toDto(res.data.results)
       });
     })
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
       that.setData({
         activity: that.toDto(res.data.results)
       });

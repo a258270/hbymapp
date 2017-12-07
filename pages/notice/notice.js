@@ -29,13 +29,11 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "1" }, 'POST', false, function (res) {
-      console.log(res.data)
       that.setData({
         news: that.toDto(res.data.results)
       });
     })
     util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv" }, 'POST', false, function (res) {
-      console.log(res.data)
       that.setData({
         notices: that.toDto(res.data.results)
       });

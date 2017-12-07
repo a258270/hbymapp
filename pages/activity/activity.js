@@ -1,4 +1,4 @@
-// pages/news/news.js
+// pages/activity/activity.js
 var util = require("../../utils/util")
 Page({
 
@@ -6,12 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollTop:0
+  
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   toDto: function (list) {
     if (!list) return list;
     list.forEach(function (obj) {
@@ -24,31 +20,43 @@ Page({
     });
     return list;
   },
-  lower:function(e){
-    var that=this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "7", currentPage: "2" }, 'POST', false, function (res) {
-      that.setData({
-        scrollTop: 0,
-        news2: that.toDto(res.data.results)
-      });
-    })
-  },
-  scroll:function(){
 
-  },
-  news:function(){
-    util.navigateTo("../news/newscontent/newscontent")
-  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
     var that=this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "7" }, 'POST', false, function (res) {
+    util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
+      var images = that.toDto(res.data.results);
+      var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
+      var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
+      for (var i = 0; i < images.length; i++) {
+        var img = images[i].CONTENT;
+        var arr = imgReg.exec(img);
+        var result;
+        if (arr == null) {
+          continue;
+        }
+        if (!arr[0]) {
+          continue;
+        }
+        var image = new Array();
+        while (result = srcReg.exec(arr[0])) {
+          image.push(util.setStaticUrl(result[1]));
+          if (image.length == 3) {
+            break;
+          }
+        }
+        images[i].images = image;
+        that.setData({
+          photo: images
+        })
+      }
       that.setData({
-        news: that.toDto(res.data.results)
+        activity: images
       });
     })
-    
   },
-  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

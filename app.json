@@ -12,7 +12,9 @@
     "pages/contacts/contacts",
     "pages/person/person",
     "pages/notice/notice",
-    "pages/news/news"
+    "pages/news/news",
+    "pages/activity/activity",
+    "pages/news/newscontent/newscontent"
   ],
   "window": {
     "backgroundTextStyle": "light",
