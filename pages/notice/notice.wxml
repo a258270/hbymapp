@@ -19,11 +19,11 @@
     </view>
   </view>
   </block>
-</view>
+  <block wx:for="{{notice}}" wx:key="">
 <view class="content">
-  <block wx:for="{{notices}}">
   <view class='left'>【标题】</view>
   <view class="center"><text>{{item.TITLE}}</text></view>
   <view class="right">{{item.CREATETIME}}</view>
-  </block>
+</view>
+</block>
 </view>
