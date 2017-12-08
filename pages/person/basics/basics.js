@@ -1,48 +1,20 @@
-// pages/news/news.js
-var util = require("../../utils/util")
+// pages/person/basics/basics.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scrollTop:0
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  toDto: function (list) {
-    if (!list) return list;
-    list.forEach(function (obj) {
-      if (obj.IMGURL) {
-        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
-      }
-      if (obj.MODIFYTIME) {
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
-      }
-    });
-    return list;
-  },
-  lower:function(e){
-    
-  },
-  scroll:function(){
-
-  },
-  news:function(){
-    util.navigateTo("../news/newscontent/newscontent")
-  },
   onLoad: function (options) {
-    var that=this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb"}, 'POST', false, function (res) {
-      that.setData({
-        news: that.toDto(res.data.results)
-      });
-    })
-    
-  },
   
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

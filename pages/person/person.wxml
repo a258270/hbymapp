@@ -32,7 +32,7 @@
   <view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
-              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/basics/basics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="../../images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>基础信息</view>
