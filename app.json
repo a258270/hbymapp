@@ -7,7 +7,6 @@
     "pages/teacher/teacher",
     "pages/consult/consultlist/consultlist",
     "pages/login/login",
-    "pages/register/register",
     "pages/teacher/teachers/teachers",
     "pages/contacts/contacts",
     "pages/person/person",
@@ -15,7 +14,11 @@
     "pages/news/news",
     "pages/activity/activity",
     "pages/news/newscontent/newscontent",
-    "pages/person/basics/basics"
+    "pages/person/basics/basics",
+    "pages/person/information/information",
+    "pages/person/goods/goods",
+    "pages/person/security/security",
+    "pages/person/power/power"
   ],
   "window": {
     "backgroundTextStyle": "light",

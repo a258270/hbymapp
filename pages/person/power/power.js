@@ -1,31 +1,21 @@
-// pages/person/basics/basics.js
-var util = require('../../../utils/util')
-var date = util.formatDate(new Date())
+// pages/person/power/power.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array:['男','女'],
-    index:0,
-    date: date
+    grids: [
+      { src: '../../../images/quanxian01.png', title: '模拟填报' },
+      { src: '../../../images/quanxian02.png', title: '模拟填报' },
+      { src: '../../../images/quanxian03.png', title: '模拟填报' },
+      { src: '../../../images/quanxian04.png', title: '模拟填报' },
+      { src: '../../../images/quanxian05.png', title: '模拟填报' },
+      { src: '../../../images/quanxian06.png', title: '模拟填报' }, 
+      { src: '../../../images/quanxian07.png', title: '模拟填报' },
+    ]
   },
-  bindPickerChange: function (e) {
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  bindKeyInput: function (e) {
-    this.setData({
-      inputValue: e.detail.value
-    })
-  },
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

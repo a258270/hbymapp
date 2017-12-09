@@ -1,31 +1,13 @@
-// pages/person/basics/basics.js
-var util = require('../../../utils/util')
-var date = util.formatDate(new Date())
+// pages/person/goods/goods.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array:['男','女'],
-    index:0,
-    date: date
+  
   },
-  bindPickerChange: function (e) {
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  bindKeyInput: function (e) {
-    this.setData({
-      inputValue: e.detail.value
-    })
-  },
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

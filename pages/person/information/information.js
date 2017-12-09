@@ -1,29 +1,22 @@
-// pages/person/basics/basics.js
-var util = require('../../../utils/util')
-var date = util.formatDate(new Date())
+// pages/person/information/information.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array:['男','女'],
-    index:0,
-    date: date
-  },
-  bindPickerChange: function (e) {
-    this.setData({
-      index: e.detail.value
-    })
+    array:['理科','文科'],
+    arrays:['高一','高二','高三'],
+    index:0
   },
   bindKeyInput: function (e) {
     this.setData({
       inputValue: e.detail.value
     })
   },
-  bindDateChange: function (e) {
+  bindPickerChange: function (e) {
     this.setData({
-      date: e.detail.value
+      index: e.detail.value
     })
   },
   /**

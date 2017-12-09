@@ -39,28 +39,28 @@
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </navigator>
-              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/information/information" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="../../images/me02.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>考生信息</view>
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </navigator>
-              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/goods/goods" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="../../images/tb03.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>我的物品</view>
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </navigator>
-              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="../../images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>账户安全</view>
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </navigator>
-              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/power/power" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="../../images/tb05.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>账户权限</view>
