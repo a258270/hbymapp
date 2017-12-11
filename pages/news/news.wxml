@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-<scroll-view scroll-y style="height: 100%;padding:15rpx 0;" bindscrolltolower="lower" bindscroll="scroll">
+<view  style="padding:15rpx 0;">
   <block wx:for="{{news}}" wx:key="">
   <view style='display:flex;flex-direction:row;'bindtap='news'>
     <view class='news'>
@@ -20,4 +20,9 @@
     </view>
   </view>
   </block>
-</scroll-view>
+  <view class="weui-loadmore" hidden='{{!isLoadingMore}}'>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+</view>
+   

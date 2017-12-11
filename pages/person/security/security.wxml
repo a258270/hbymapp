@@ -6,7 +6,7 @@
   </view>
   <view class='content'>
     <view class="image"><image src="../../../images/tb07.png"></image></view>
-    <view class='title'><text>登录密码</text><text style="font-size:25rpx;">已设置</text></view>
+    <view class='title'><text class='title-left'>登录密码</text><text style="font-size:25rpx;">已设置</text></view>
     <view class='texts'><text>建议使用含字母、数字、特殊符号的组合。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini">修改密码</button></view>
   </view>
@@ -15,7 +15,7 @@
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb08.png"></image></view>
-    <view class='title'><text>支付密码</text><text style="font-size:25rpx;">已设置</text></view>
+    <view class='title'><text class='title-left'>支付密码</text><text style="font-size:25rpx;">已设置</text></view>
     <view class='texts'><text>请确保支付密码与登录密码不同。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini">修改密码</button></view>
   </view>
@@ -24,7 +24,7 @@
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb09.png"></image></view>
-    <view class='title'><text>手机绑定</text><text style="font-size:25rpx;">已设置</text></view>
+    <view class='title'><text class='title-left'>手机绑定</text><text style="font-size:25rpx;">已设置</text></view>
     <view class='texts'><text>绑定手机后，您即可享受丰富的手机服务，如手机找回密码等。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini">修改密码</button></view>
   </view>
@@ -33,7 +33,7 @@
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb11.png"></image></view>
-    <view class='title'><text>邮箱绑定</text><text style="font-size:25rpx;">未设置</text></view>
+    <view class='title'><text class='title-left'>邮箱绑定</text><text style="font-size:25rpx;">未设置</text></view>
     <view class='texts'><text>验证邮箱可以用好找回密码，并能享受其他定制服务。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini">修改密码</button></view>
   </view>
@@ -42,7 +42,7 @@
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb10.png"></image></view>
-    <view class='title'><text>实名认证</text><text style="font-size:25rpx;">未设置</text></view>
+    <view class='title'><text class='title-left'>实名认证</text><text style="font-size:25rpx;">未设置</text></view>
     <view class='texts'><text>用于提升账号的安全性和信任级别。认证后的账号不能修改认证信息。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini">修改密码</button></view>
   </view>

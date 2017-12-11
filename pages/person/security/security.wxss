@@ -22,20 +22,31 @@
   justify-content: space-between;
 }
 .image{
-  width:8%;
+  width:10%;
   height:70rpx;
 }
 .title{
-  width:18%;
+  width:17%;
+}
+.title-left{
+  font-weight:bold;
 }
 .texts{
-  width:49%;
+  width:46%;
 }
 .texts text{
-  font-size:25rpx;
+  font-size:20rpx;
 }
 .button{
   width:25%;
+  font-size:18rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+button[size="mini"]{
+  padding:0 0.5em;
+  
 }
 .image image{
   width:100%;

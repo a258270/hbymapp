@@ -6,3 +6,7 @@
 .page{
   margin-top:3%;
 }
+.weui-grid__icon{
+  width:150rpx;
+  height:150rpx;
+}

@@ -1,1 +1,23 @@
 /* pages/contacts/contacts.wxss */
+.head{
+  width:100%;
+  position:fixed;
+  top:0;
+  height:80rpx;
+  background-color: #999999;
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:30rpx;
+}
+.page_bd{
+  margin-top:80rpx;
+}
+.weui-navbar__item{
+  padding:10rpx;
+
+}
+.weui-navbar__slider{
+  width:3em;
+}

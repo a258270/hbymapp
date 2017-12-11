@@ -1,7 +1,7 @@
 <!--pages/person/person.wxml-->
 <view class="head" style="background-image:url('../../images/banner.png'); background-repeat:round">
   <view class="head-left">
-    <view class='image'><image src="../../images/touxiang.png" style="width:130rpx;height:130rpx;"></image></view>
+    <view class='image'><image src="{{logo}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
     <view class='text'>
       <view class='text-top'><text>铭邦高考志愿</text></view>
       <view class='text-bottom'><text>普通会员</text></view>

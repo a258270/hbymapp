@@ -7,12 +7,12 @@ Page({
   data: {
     grids: [
       { src: '../../../images/quanxian01.png', title: '模拟填报' },
-      { src: '../../../images/quanxian02.png', title: '模拟填报' },
-      { src: '../../../images/quanxian03.png', title: '模拟填报' },
-      { src: '../../../images/quanxian04.png', title: '模拟填报' },
-      { src: '../../../images/quanxian05.png', title: '模拟填报' },
-      { src: '../../../images/quanxian06.png', title: '模拟填报' }, 
-      { src: '../../../images/quanxian07.png', title: '模拟填报' },
+      { src: '../../../images/quanxian02.png', title: '智能推荐' },
+      { src: '../../../images/quanxian03.png', title: '院校咨询' },
+      { src: '../../../images/quanxian04.png', title: '专家咨询' },
+      { src: '../../../images/quanxian05.png', title: '百校问答' },
+      { src: '../../../images/quanxian06.png', title: '性格测试' }, 
+      { src: '../../../images/quanxian07.png', title: '无限视频' },
     ]
   },
 

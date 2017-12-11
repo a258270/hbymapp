@@ -52,7 +52,9 @@ input{
   align-items: center;
 }
 .weui-btn{
-   margin:30% 3% 2% 3%;
+   position: fixed;
+   bottom:0;
+   width:100%;
 }
 button[type="primary"]{
   color:white;
