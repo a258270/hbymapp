@@ -21,8 +21,8 @@
   <view class="header-center" bindtap='grade'>分数</view>
   <view class="header-right" bindtap="tap_ch" >筛选</view>
 </view>  
-<view class="page1" hidden="{{myhidden}}" bindtap="close_ch"></view>
-<scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" hidden="{{hidden}}" style="width:{{width}}%" >
+<view class="page1" hidden="{{hidden}}" bindtap="close_ch"></view>
+<scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" style="width:{{width}}%" >
 <view class="page-body">
   <view class="demo-text-1"><text>地区</text><image class="image" src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
@@ -172,4 +172,4 @@
 <view class="weui-loadmore" hidden='{{!isLoadingMore}}'>
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
-</view>                                                                                                                                                                                                    
+</view>

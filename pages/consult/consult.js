@@ -16,7 +16,6 @@ Page({
     showView1: false,
     showView2: false,
     hidden:true,
-    myhidden:true,
     width:0,
     checked:false,
     isLoadingMore: false,//是否加载更多
@@ -129,6 +128,27 @@ Page({
     showView1: (options.showView1 == "true" ? true : false);
     showView2: (options.showView2== "true" ? true : false);
     that.pullSchoolInfos();
+
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
+      that.setData({
+        bath: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      that.setData({
+        property: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      that.setData({
+        style: res.data
+      })
+    });
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+      that.setData({
+        province: res.data
+      })
+    })
     
   },
   onChangeShowState: function () {
@@ -160,34 +180,13 @@ Page({
     } 
     widthTimer = setInterval(this.openTm, 10)
     this.setData({
-      hidden: !this.data.hidden,
-      myhidden: !this.data.hidden,
-    })
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) { 
-      that.setData({
-        bath: res.data
-      })
-    });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
-      that.setData({
-        property: res.data
-      })
-    });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
-      that.setData({
-        style: res.data
-      })
-    });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE'}, 'POST', false, function (res) {
-      that.setData({
-        province: res.data
-      })
+      hidden: !this.data.hidden
     })
   },
   close_ch:function(){
     widthTimer = setInterval(this.closeTm, 10)
     this.setData({
-    myhidden: !this.data.hidden,
+      hidden: !this.data.hidden,
     })
   },
   // add:function(e){
