@@ -1,7 +1,7 @@
 <!--pages/teacher/tacher.wxml-->
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
       <image src="{{item}}" style='width:100%;height:100%;' class="slide-image"/>
     </swiper-item>
@@ -19,7 +19,7 @@
   </view>
   <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
       <view class="weui-media-box__title">
-        <image src="../../images/tb01.png"style="width:80rpx;height:80rpx"></image>
+        <image src="../../images/tb01.png"style="width:60rpx;height:40rpx"></image>
         <text>陈老师</text>
       </view>
       <view class="weui-media-box__desc">被询问次数：　　从业时长：</view>

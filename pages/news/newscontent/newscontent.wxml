@@ -1,13 +1,15 @@
 <!--pages/news/newscontent/newscontent.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
+
 <view class='content'>
   <view class="head">
-    <text>河北高考改革新消息来了！这样才能拿高分</text>
+    <text>{{content.TITLE}}</text>
   </view>
   <view class="heads">
     <text class="text1">编辑：铭邦小哥</text>　|　
-    <text class="text2">时间：2017-12-06</text>
+    <text class="text2">时间：{{content.MODIFYTIME}}</text>
   </view>
   <view class="center">
-    
+   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 </view>

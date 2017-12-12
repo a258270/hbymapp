@@ -21,3 +21,7 @@
 .weui-navbar__slider{
   width:3em;
 }
+.titles{
+  text-align: right;
+  font-size:30rpx;
+}

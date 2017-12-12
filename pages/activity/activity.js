@@ -27,33 +27,28 @@ Page({
   onLoad: function (options) {
     var that=this;
     util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
-      var images = that.toDto(res.data.results);
+      var contents = that.toDto(res.data.results);
       var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
       var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
-      for (var i = 0; i < images.length; i++) {
-        var img = images[i].CONTENT;
-        var arr = imgReg.exec(img);
-        var result;
-        if (arr == null) {
-          continue;
-        }
-        if (!arr[0]) {
-          continue;
-        }
-        var image = new Array();
-        while (result = srcReg.exec(arr[0])) {
-          image.push(util.setStaticUrl(result[1]));
-          if (image.length == 3) {
+      for (var i = 0; i < contents.length; i++) {
+        var content = contents[i].CONTENT;
+        var images = new Array();
+        var arr;
+        while (arr = imgReg.exec(content)) {
+          if (!arr[0]) {
+            continue;
+          }
+          images.push(util.setStaticUrl(srcReg.exec(arr[0])[1]));
+          srcReg.lastIndex = 0;
+          if (images.length == 3) {
             break;
           }
         }
-        images[i].images = image;
-        that.setData({
-          photo: images
-        })
+
+        contents[i].images = images;
       }
       that.setData({
-        activity: images
+        activity: contents
       });
     })
   },

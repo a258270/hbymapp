@@ -39,7 +39,10 @@ Page({
       });
     })
   },
-  
+  notice:function(e){
+    var a = e.currentTarget.dataset.id
+    util.navigateTo('../notice/noticecontent/noticecontent', { a: a })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
