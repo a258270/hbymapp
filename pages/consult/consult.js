@@ -7,20 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src:"../../images/regions.png",
-    src1:"../../images/batchs.png",
-    src2: "../../images/types.png",
-    src3: "../../images/attributes.png",
-    srcs:"../../images/arrow.png",
-    showView: false,
-    showView1: false,
-    showView2: false,
+    
     hidden:true,
     width:0,
     checked:false,
     isLoadingMore: false,//是否加载更多
     searchParam:{currentPage: 1},//搜索参数
-    schools:[]//学校结果
+    schools:[],//学校结果
+    provinces: [],
+    arrangments: [],
+    subjecttypes: [],
+    properties: []
   },
   upper: function (e) {
   },
@@ -51,11 +48,9 @@ Page({
   },
   setSearchStorage:function(){
     var that=this;
-    util.sendRequest('/wechat/applet/school/gethasteachers', { NAME:that.data.inputVal}, 'POST', false, function (res) {
-      that.setData({
-        schools: that.toDto(res.data.results)
-      });
-    })
+    
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   },
   select:function(){
     var that = this;
@@ -111,11 +106,6 @@ Page({
       if (obj.LHEADURL) {
         obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
       }
-      if(obj.properties) {
-        obj.properties.forEach(function(index, element){
-          
-        });
-      }
     });
     return list;
   },
@@ -131,22 +121,22 @@ Page({
 
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
       that.setData({
-        bath: res.data
+        arrangments: res.data
       })
     });
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
       that.setData({
-        property: res.data
+        properties: res.data
       })
     });
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
       that.setData({
-        style: res.data
+        subjecttypes: res.data
       })
     });
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
       that.setData({
-        province: res.data
+        provinces: res.data
       })
     })
     
@@ -195,66 +185,77 @@ Page({
   //     id:id
   //   })  
   // },
-  serviceValChange: function (e) {
-    var bath = this.data.bath;
+  changeArrangment: function (e) {
+    var that = this;
+    var arrangments = this.data.arrangments;
     var checkArr = e.detail.value;
-    for (var i = 0; i < bath.length; i++) {
+    for (var i = 0; i < arrangments.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
-        bath[i].checked = true;
+        arrangments[i].checked = true;
       } else {
-        bath[i].checked = false;
+        arrangments[i].checked = false;
       }
     }
     this.setData({
-      bath: bath
-    })
+      arrangments: arrangments
+    });
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   }, 
-  serviceValChange2: function (e) {
-    var style = this.data.style;
+  changeSubjecttype: function (e) {
+    var that = this;
+    var subjecttypes = this.data.subjecttypes;
     var checkArr = e.detail.value;
-    for (var i = 0; i < style.length; i++) {
+    for (var i = 0; i < subjecttypes.length; i++) {
         if (checkArr.indexOf(i + "") != -1) {
-          style[i].checked = true;
+          subjecttypes[i].checked = true;
         } else {
-          style[i].checked = false;
+          subjecttypes[i].checked = false;
         }
       }
     this.setData({
-      style: style
-    })
-  }, 
-  serviceValChange1: function (e) {
-    var property = this.data.property;
-    var checkArr = e.detail.value;
-    for (var i = 0; i < property.length; i++) {
-      if (checkArr.indexOf(i + "") != -1) {
-        property[i].checked = true;
-      } else {
-        property[i].checked = false;
-      }
-    }
-    this.setData({
-      property: property
-    })
-  },
-  serviceValChange3: function (e) {
-    var province = this.data.province;
-    var checkArr = e.detail.value;
-    for (var i = 0; i < province.length; i++) {
-      if (checkArr.indexOf(i + "") != -1) {
-        province[i].checked = true;
-      } else {
-        province[i].checked = false;
-      }
-    }
-    this.setData({
-      province: province
+      subjecttypes: subjecttypes
     });
-    util.sendRequest('/wechat/applet/dictionary/get', { NAME }, 'POST', false, function (res) {
-      that.setData({
-        province: res.data
-      })
-    })
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
+  }, 
+  changeProperty: function (e) {
+    var that = this;
+    var properties = this.data.properties;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < properties.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        properties[i].checked = true;
+      } else {
+        properties[i].checked = false;
+      }
+    }
+    this.setData({
+      properties: properties
+    });
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
+  },
+  changeProvince: function (e) {
+    var that = this;
+    var provinces = this.data.provinces;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < provinces.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        provinces[i].checked = true;
+      } else {
+        provinces[i].checked = false;
+      }
+    }
+    this.setData({
+      provinces: provinces
+    });
+    
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   },  
   
   /**
@@ -311,15 +312,77 @@ Page({
   onShareAppMessage: function () {
   
   },
+  //将页码置0
+  clearCurPage: function() {
+    var that = this;
+    var param = that.data.searchParam;
+    param.currentPage = 0;
+
+    that.setData({
+      searchParam: param
+    });
+  },
+  //页码翻页
+  addCurPage: function() {
+    var that = this;
+    var param = that.data.searchParam;
+    if (param.currentPage) {
+      param.currentPage = parseInt(param.currentPage) + 1;
+    }
+    else {
+      param.currentPage = 2;
+    }
+
+    that.setData({
+      searchParam: param
+    });
+  },
   /**
    * 设置参数
    */
   setSearchParam: function() {
     var that = this;
     var param = this.data.searchParam;
-    if(param.currentPage) {
-      param.currentPage = parseInt(param.currentPage) + 1;
-    }
+
+    var province_search = "";
+    that.data.provinces.forEach(function(element){
+      if (element.checked) {
+        province_search += element.DIC_ID + ",";
+      }
+    });
+    if (province_search != "") province_search = province_search.substring(0, province_search.length - 1);
+    param.PROVINCE = province_search;
+
+    var subjecttype_search = "";
+    that.data.subjecttypes.forEach(function (element) {
+      if (element.checked) {
+        subjecttype_search += element.DIC_ID + ",";
+      }
+    });
+    if (subjecttype_search != "") subjecttype_search = subjecttype_search.substring(0, subjecttype_search.length - 1);
+    param.SUBJECTTYPE = subjecttype_search;
+
+    var arrangment_search = "";
+    that.data.arrangments.forEach(function (element) {
+      if (element.checked) {
+        arrangment_search += element.DIC_ID + ",";
+      }
+    });
+    if (arrangment_search != "") arrangment_search = arrangment_search.substring(0, arrangment_search.length - 1);
+    param.ARRANGMENT = arrangment_search;
+
+    var property_search = "";
+    that.data.properties.forEach(function (element) {
+      if (element.checked) {
+        property_search += element.DIC_ID + ",";
+      }
+    });
+    if (property_search != "") property_search = property_search.substring(0, property_search.length - 1);
+    param.PROPERTY = property_search;
+
+    if (that.data.inputVal)
+      param.NAME = that.data.inputVal;
+
     that.setData({
       searchParam: param
     });
@@ -329,10 +392,11 @@ Page({
    */
   reloadSearchParam: function(param) {
       var that = this;
-      var paramObj = {};
+      var paramObj = that.data.searchParam;
+      if (!paramObj.currentPage) paramObj.currentPage = 1;
 
-      if (that.data.searchParam.currentPage <= param.totalPage){
-        paramObj.currentPage = param.pageNumber + 1;
+      if (paramObj.currentPage <= param.totalPage){
+        that.addCurPage();//后台页码从0开始，前台页码从1开始
 
         that.setData({
           searchParam: paramObj
@@ -340,9 +404,9 @@ Page({
       }
         
   },
-  setResults(list){
+  setResults(list, isClear){
     var that = this;
-    var oldList = that.data.schools;
+    var oldList = isClear? [] : that.data.schools;
     var newList = that.toDto(list);
     newList.forEach(function(index, element){
       oldList.push(index);
@@ -353,14 +417,14 @@ Page({
   /**
    * 拉取新数据
    */
-  pullSchoolInfos: function() {
+  pullSchoolInfos: function(isClear) {
     var that = this;
 
     that.setSearchParam();
     
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
-        schools: that.setResults(res.data.results)
+        schools: that.setResults(res.data.results, isClear)
       });
 
       that.reloadSearchParam(res.data);
@@ -369,5 +433,38 @@ Page({
         isLoadingMore: false
       });
     });
+  },
+  //重置搜索参数
+  reset_search: function() {
+    var that = this;
+    var provinces = that.data.provinces
+    provinces.forEach(function(element){
+      element.checked = false;
+    });
+
+    var subjecttypes = that.data.subjecttypes;
+    subjecttypes.forEach(function(element){
+      element.checked = false;
+    });
+
+    var arrangments = that.data.arrangments;
+    arrangments.forEach(function(element){
+      element.checked = false;
+    });
+
+    var properties = that.data.properties;
+    properties.forEach(function(element){
+      element.checked = false;
+    });
+
+    that.setData({
+      provinces: provinces,
+      subjecttypes: subjecttypes,
+      arrangments: arrangments,
+      properties: properties
+    });
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   }
 })

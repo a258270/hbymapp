@@ -26,11 +26,11 @@
 <view class="page-body">
   <view class="demo-text-1"><text>地区</text><image class="image" src='{{srcs}}' bindtap="onChangeShowState"></image></view>
   <view class="demo-text-2">
-    <checkbox-group bindchange="serviceValChange3">  
+    <checkbox-group bindchange="changeProvince">  
         <view class="service_selection2">  
-          <block wx:for="{{province}}" wx:key="NAME">   
+          <block wx:for="{{provinces}}" wx:key="NAME">   
               <label class="checkbox {{item.checked?'is_checked':''}}" >  
-                <checkbox value="{{index}}" checked="{{checked}}" hidden="false"/>{{item.NAME}}
+                <checkbox value="{{index}}" hidden="true"/>{{item.NAME}}
               </label>    
           </block>  
         </view>  
@@ -40,9 +40,9 @@
 <view class="page-body">
   <view class="demo-text-1">批次</view>
   <view class="demo-text-2">
-    <checkbox-group bindchange="serviceValChange">  
+    <checkbox-group bindchange="changeArrangment">  
         <view class="service_selection flex">  
-          <block wx:for="{{bath}}" wx:key="NAME">  
+          <block wx:for="{{arrangments}}" wx:key="NAME">  
             <view class="item">  
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
@@ -56,9 +56,9 @@
 <view class="page-body">
   <view class="demo-text-1"><text>类型</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStates"></image></view>
   <view class="demo-text-2">
-    <checkbox-group bindchange="serviceValChange2">  
+    <checkbox-group bindchange="changeSubjecttype">  
         <view class="service_selection1">  
-          <block wx:for="{{style}}" wx:key="NAME">   
+          <block wx:for="{{subjecttypes}}" wx:key="NAME">
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
               </label>    
@@ -70,9 +70,9 @@
 <view class="page-body">
   <view class="demo-text-1"><text>属性</text><image class='image' src='{{srcs}}' bindtap="onChangeShowStatess"></image></view>
   <view class="demo-text-2">
-    <checkbox-group bindchange="serviceValChange1">  
+    <checkbox-group bindchange="changeProperty">  
         <view class="service_selection1">  
-          <block wx:for="{{property}}" wx:key="NAME">   
+          <block wx:for="{{properties}}" wx:key="NAME">   
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
               </label>    
@@ -84,7 +84,7 @@
  <view class="page-body1" style="width:100%;height:100rpx;">
  </view>
 <view class="flex-warp">
-  <view class="flex-item"><button class="weui-btn" type="primary" bindtap=''>重置</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap='reset_search'>重置</button></view>
   <view class="flex-item"><button class="weui-btn" type="primary" bindtap='close_ch'>完成</button></view>
 </view> 
 </scroll-view>
