@@ -1,36 +1,74 @@
 // pages/person/basics/basics.js
 var util = require('../../../utils/util')
-var date = util.formatDate(new Date())
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array:['男','女'],
-    index:0,
-    date: date
+    sexObjs: [],
+    sexIndex:0,
+    birthday: "",
+    user: {NICKNAME: "", SEX: "", BIRTHDAY: ""}
   },
   bindPickerChange: function (e) {
     this.setData({
-      index: e.detail.value
-    })
-  },
-  bindKeyInput: function (e) {
-    this.setData({
-      inputValue: e.detail.value
+      sexIndex: e.detail.value
     })
   },
   bindDateChange: function (e) {
     this.setData({
-      date: e.detail.value
+      birthday: e.detail.value
     })
+  },
+  formSubmit: function (e) {
+    e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
+    util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function(res){
+      wx.navigateBack({
+        delta: 1
+      })
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/dictionary/get", { code: "SEX" }, "POST", true, function (res) {
+      var sexs = res.data;
+      that.setData({
+        sexObjs: sexs
+      });
+
+      util.sendRequest("/wechat/applet/user/getstudentcomplete", {}, "POST", true, function (res) {
+        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12" };
+        if (res.NICKNAME) {
+          userTmp.NICKNAME = res.NICKNAME;
+        }
+
+        if (res.SEX) {
+          userTmp.SEX = res.SEX;
+          that.data.sexObjs.forEach(function(element, index) {
+            if(element.DIC_ID == userTmp.SEX) {
+              that.setData({
+                sexIndex: index
+              });
+            }
+          });
+        }
+
+        if (res.BIRTHDAY) {
+          userTmp.BIRTHDAY = res.BIRTHDAY;
+          that.setData({
+            birthday: userTmp.BIRTHDAY
+          });
+        }
+
+        that.setData({
+          user: userTmp
+        });
+      });
+    });
   },
 
   /**
@@ -44,7 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

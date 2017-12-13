@@ -197,7 +197,6 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
  * msg: 提示内容
  */
 var showError = function (msg) {
-  console.log("showError");
   wx.showModal({
     title: '提示',
     content: msg,
@@ -233,7 +232,7 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
         successFn();
     },
     fail: function () {
-      showError("网络请求超时，请稍后再试");
+      showError("页面跳转失败");
       if (failFn)
         failFn();
     },
@@ -256,7 +255,7 @@ var redirectTo = function (url, param, successFn, failFn, completeFn) {
         successFn();
     },
     fail: function () {
-      showError("网络请求超时，请稍后再试");
+      showError("页面跳转失败");
       if (failFn)
         failFn();
     },

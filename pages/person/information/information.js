@@ -1,29 +1,69 @@
 // pages/person/information/information.js
+var util = require('../../../utils/util')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array:['理科','文科'],
-    arrays:['高一','高二','高三'],
-    index:0
+    majortypeObjs: [],
+    provinceObjs: [],
+    gradeObjs: [],
+    majortypeIndex:0,
+    provinceIndex: 0,
+    gradeIndex: 0,
+    user: {}
   },
-  bindKeyInput: function (e) {
-    this.setData({
-      inputValue: e.detail.value
-    })
+  formSubmit: function(e) {
+    e.detail.value.MAJORTYPE = this.data.majortypeObjs[e.detail.value.MAJORTYPE].DIC_ID;
+    e.detail.value.EXAMAREA = this.data.provinceObjs[e.detail.value.EXAMAREA].DIC_ID;
+    e.detail.value.GRADE = this.data.gradeObjs[e.detail.value.GRADE].DIC_ID;
+    util.sendRequest("/wechat/applet/user/examinee", e.detail.value, "POST", true, function (res) {
+      wx.navigateBack({
+        delta: 1
+      })
+    });
   },
   bindPickerChange: function (e) {
-    this.setData({
-      index: e.detail.value
-    })
+    var that = this;
+    if(e.currentTarget.id == "MAJORTYPE") {
+      that.setData({
+        majortypeIndex: e.detail.value
+      });
+    }
+    else if(e.currentTarget.id == "EXAMAREA") {
+      that.setData({
+        provinceIndex: e.detail.value
+      });
+    } 
+    else if (e.currentTarget.id == "GRADE") {
+      that.setData({
+        gradeIndex: e.detail.value
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/dictionary/get", {code: "MAJORTYPE"}, "POST", true, function(res) {
+      that.setData({
+        majortypeObjs: res.data
+      });
+    });
+
+    util.sendRequest("/wechat/applet/dictionary/get", { code: "PROVINCE" }, "POST", true, function (res) {
+      that.setData({
+        provinceObjs: res.data
+      });
+    });
+
+    util.sendRequest("/wechat/applet/dictionary/get", { code: "GRADE" }, "POST", true, function (res) {
+      that.setData({
+        gradeObjs: res.data
+      });
+    });
   },
 
   /**
@@ -37,7 +77,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
+      that.data.majortypeObjs.forEach(function(element, index) {
+        if(element.DIC_ID == res.MAJORTYPE) {
+          that.setData({
+            majortypeIndex: index
+          });
+        }
+      });
+
+      that.data.provinceObjs.forEach(function (element, index) {
+        if (element.DIC_ID == res.EXAMAREA) {
+          that.setData({
+            provinceIndex: index
+          });
+        }
+      });
+
+      that.data.gradeObjs.forEach(function (element, index) {
+        if (element.DIC_ID == res.GRADE) {
+          that.setData({
+            gradeIndex: index
+          });
+        }
+      });
+
+      that.setData({
+        user: res
+      });
+    });
   },
 
   /**

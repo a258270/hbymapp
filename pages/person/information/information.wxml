@@ -1,18 +1,21 @@
 <!--pages/person/information/information.wxml-->
 <view class="page">
+<form bindsubmit="formSubmit">
   <view class="page-left">
     <view class="text"><text>考试类型</text></view>
     <view class='picker'>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view>{{array[index]}}</view>
+      <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE">
+        <view>{{majortypeObjs[majortypeIndex].NAME}}</view>
       </picker>
     </view>
   </view>
   <view class='line'></view>
   <view class="page-left">
     <view class="text"><text>考试所在地</text></view>
-    <view class='input'>
-      河北省
+    <view class='picker'>
+      <picker bindchange="bindPickerChange" value="{{provinceIndex}}" range="{{provinceObjs}}" range-key='NAME' id="EXAMAREA" name="EXAMAREA">
+        <view>{{provinceObjs[provinceIndex].NAME}}</view>
+      </picker>
     </view>
   </view>
   <view class='line'></view>
@@ -22,15 +25,15 @@
       <text style='color:red;font-size:25rpx;'>*该成绩用于模拟填报、智能推荐等相关功能</text>
     </view>
     <view class="input">
-      <input bindinput="bindKeyInput" placeholder="高考成绩" type='text'/>
+      <input placeholder="高考成绩" type='number' value='{{user.EXAMSCORE}}' name='EXAMSCORE'/>
     </view>
   </view>
   <view class='line'></view>
   <view class='page-left'>
     <view class='text'>年级</view>
     <view class='picker'>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{arrays}}">
-        <view>{{arrays[index]}}</view>
+      <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
+        <view>{{gradeObjs[gradeIndex].NAME}}</view>
       </picker>
     </view>
   </view>
@@ -41,7 +44,7 @@
       <text style='color:red;font-size:25rpx;'>*该成绩用于高校检索查询</text>
     </view>
     <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="一模成绩" type='idcard'/>
+      <input placeholder="一模成绩" type='number' value='{{user.FIRSTMOCK}}' name='FIRSTMOCK'/>
     </view>
   </view>
   <view class='line'></view>
@@ -51,7 +54,7 @@
       <text style='color:red;font-size:25rpx;'>*该成绩用于高校检索查询</text>
     </view>
     <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="二模成绩" type='idcard'/>
+      <input placeholder="二模成绩" type='number' value='{{user.SECONDMOCK}}' name='SECONDMOCK'/>
     </view>
   </view>
   <view class='line'></view>
@@ -61,9 +64,10 @@
       <text style='color:red;font-size:25rpx;'>*该成绩用于高校检索查询</text>
     </view>
     <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="三模成绩" type='idcard'/>
+      <input placeholder="三模成绩" type='number' value='{{user.THIRDMOCK}}' name='THIRDMOCK'/>
     </view>
   </view>
   <view class='line'></view>
+  <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+  </form>
 </view>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>

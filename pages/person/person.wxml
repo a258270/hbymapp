@@ -3,25 +3,25 @@
   <view class="head-left">
     <view class='image'><image src="{{logo}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
     <view class='text'>
-      <view class='text-top'><text>铭邦高考志愿</text></view>
+      <view class='text-top'><text>{{nickname}}</text></view>
       <view class='text-bottom'><text>普通会员</text></view>
     </view>
   </view>
   <view class="head-right">
-    <view class='number'>75%</view>
+    <view class='number'>{{completeCount}}%</view>
     <view class='texts'>信息完整度</view>
   </view>
 </view>
 <view class="center">
   <view class="center-left">
-    <view class='numbers'>534分</view>
+    <view class='numbers'>{{examScore}}分</view>
     <view class="img">
       <image src="../../images/pen.png" style="width:30rpx;height:30rpx"></image> 
       <text>预估分</text>
     </view>
   </view>
   <view class='center-right'>
-    <view class='numbers'>500个</view>
+    <view class='numbers'>{{valiablePocket}}个</view>
     <view class="img">
       <image src="../../images/money.png" style="width:30rpx;height:30rpx"></image> 
       <text>金币/积分</text>
