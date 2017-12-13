@@ -1,18 +1,30 @@
 // pages/person/person.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    logo:"../../images/touxiang.png"
+    //用户头像
+    logo:"../../images/touxiang.png",
+    //信息完整度
+    completeCount: 0,
+    //高考分数
+    examScore: 0,
+    //账户余额
+    valiablePocket: 0,
+    //昵称
+    nickname: "",
+    //是否为vip
+    isVip: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
   chooseImageTap: function () {
     let _this = this;
@@ -55,7 +67,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
+      //console.log(res);
+      that.setData({
+        logo: util.setStaticUrl(res.complete.HEADURL),
+        completeCount: res.completeCount,
+        nickname: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
+        examScore: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
+        valiablePocket: res.pocket.BALANCE ? res.pocket.BALANCE : 0
+      });
+    });
   },
 
   /**

@@ -1,23 +1,20 @@
 <view class="page">
+<form bindsubmit="formSubmit">
 <view class="realname">
     <view class="text"><text>昵称</text></view>
     <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="昵称" type='text'/>
+      <input placeholder="昵称" type='text' name='NICKNAME' value='{{user.NICKNAME}}'/>
     </view>
   </view>
   <view class='line'></view>
-  <view class="realname">
-    <view class="text"><text>真实姓名</text></view>
-    <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="真实姓名" type='text'/>
-    </view>
-  </view>
   <view class='line'></view>
   <view class='sex'>
     <view class='text'>性别</view>
     <view class='picker'>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view>{{array[index]}}</view>
+      <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{sexObjs}}" name='SEX' range-key='NAME'>
+        <view class="picker">
+          {{sexObjs[sexIndex].NAME}}
+        </view>
       </picker>
     </view>
   </view>
@@ -25,32 +22,32 @@
   <view class='date'>
     <view class='text'>出生日期</view>
     <view class='picker'>
-      <picker mode="date" value="{{date}}" start="1900-09-01" end="2017-09-01" bindchange="bindDateChange">
-      <view>{{date}}</view>
+      <picker mode="date" value="{{birthday}}" start="1900-09-01" bindchange="bindDateChange" name="BIRTHDAY">
+      <view class="picker">{{birthday}}</view>
       </picker>
     </view>
   </view>
-  <view class='line'></view>
-  <view class='email'>
-    <view class='text'>邮箱</view>
-    <view class="mail">
-      <input bindinput="bindKeyInput" placeholder="邮箱号码" type='text'/>
-    </view>
-  </view>
-  <view class='line'></view>
-  <view class='phone'>
-    <view class='text'>手机号</view>
-    <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="手机号码" type='number'/>
-    </view>
-  </view>
-  <view class='line'></view>
-  <view class='card'>
-    <view class='text'>身份证号</view>
-    <view class='input'>
-      <input bindinput="bindKeyInput" placeholder="身份证号" type='idcard'/>
-    </view>
-  </view>
-  <view class='line'></view>
+  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <view>实名认证</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <view>邮箱设置</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <view>手机号设置</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+</form>
 </view>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
