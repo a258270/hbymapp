@@ -19,7 +19,19 @@
     "pages/person/goods/goods",
     "pages/person/security/security",
     "pages/person/power/power",
-    "pages/notice/noticecontent/noticecontent"
+    "pages/notice/noticecontent/noticecontent",
+    "pages/school/school",
+    "pages/intelligence/intelligence",
+    "pages/person/security/loginpw/loginpw",
+    "pages/person/security/paymentpw/paymentpw",
+    "pages/person/security/phone/phone",
+    "pages/person/security/email/email",
+    "pages/person/security/authentication/authentication",
+    "pages/intelligence/region/region",
+    "pages/intelligence/mold/mold",
+    "pages/intelligence/attribute/attribute",
+    "pages/intelligence/content/content"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

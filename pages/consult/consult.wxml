@@ -35,44 +35,6 @@
           </block>  
         </view>  
   </checkbox-group> 
-    <!-- <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>山西</a></li>
-      <li class="textss" bindtap="add"><a>辽宁</a></li>
-      <li class="textss" bindtap="add"><a>吉林</a></li>
-      <li class="textss" bindtap="add"><a>江苏</a></li>
-      <li class="textss" bindtap="add"><a>浙江</a></li>
-    </ul>
-    <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>安徽</a></li>
-      <li class="textss" bindtap="add"><a>福建</a></li>
-      <li class="textss" bindtap="add"><a>江西</a></li>
-      <li class="textss" bindtap="add"><a>山东</a></li>
-      <li class="textss" bindtap="add"><a>河南</a></li>
-      <li class="textss" bindtap="add"><a>湖北</a></li>
-    </ul>
-    <ul class="textss_hide{{showView?'textss_show':''}}"> 
-      <li class="textss" bindtap="add"><a>湖南</a></li>
-      <li class="textss" bindtap="add"><a>广东</a></li>
-      <li class="textss" bindtap="add"><a>海南</a></li>
-      <li class="textss" bindtap="add"><a>四川</a></li>
-      <li class="textss" bindtap="add"><a>贵州</a></li>
-      <li class="textss" bindtap="add"><a>云南</a></li>
-    </ul>
-    <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>陕西</a></li>
-      <li class="textss" bindtap="add"><a>甘肃</a></li>
-      <li class="textss" bindtap="add"><a>青海</a></li>
-      <li class="textss" bindtap="add"><a>广西</a></li>
-      <li class="textss" bindtap="add"><a>香港</a></li>
-      <li class="textss" bindtap="add"><a>宁夏</a></li>
-      <li class="textss" bindtap="add"><a>澳门</a></li>
-    </ul>
-    <ul class="textss_hide{{showView?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>新疆</a></li>
-      <li class="textss" bindtap="add"><a>西藏</a></li>
-      <li class="textss" bindtap="add"><a>内蒙古</a></li>
-      <li class="textss" bindtap="add"><a>黑龙江</a></li>
-    </ul>  -->
   </view>
 </view>
 <view class="page-body">
@@ -89,13 +51,6 @@
           </block>  
         </view>  
     </checkbox-group> 
-    <!-- <ul>
-       <block wx:for="{{bath}}" wx:key="NAME"  >  
-       <checkbox value='{{item.NAME}}' checked="{{item.checked}}" >
-         <a>{{item.NAME}}</a>
-       </li>
-       </block> 
-    </ul> -->
   </view>
 </view>
 <view class="page-body">
@@ -110,20 +65,6 @@
           </block>  
         </view>  
   </checkbox-group>  
-     <!-- <ul class="textss_hide{{showView1?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>财经类</a></li>
-      <li class="textss" bindtap="add"><a>语言类</a></li>
-      <li class="textss" bindtap="add"><a>艺术类</a></li>
-      <li class="textss" bindtap="add"><a>医药类</a></li>
-      <li class="textss" bindtap="add"><a>农林类</a></li>      
-    </ul>
-    <ul class="textss_hide{{showView1?'textss_show':''}}">
-      <li class="textss" bindtap="add"><a>政法类</a></li>
-      <li class="textss" bindtap="add"><a>体育类</a></li>
-      <li class="textss" bindtap="add"><a>民族类</a></li>
-      <li class="textss" bindtap="add"><a>军事类</a></li>
-      <li class="textss" bindtap="add"><a>其他类</a></li>    
-    </ul>  -->
   </view>
 </view>
 <view class="page-body">

@@ -45,6 +45,12 @@ Page({
   analog:function(){
     utils.navigateTo("../analog/analog")
   },
+  intelligence:function(){
+    utils.navigateTo("../intelligence/intelligence")
+  },
+  school:function(){
+    utils.navigateTo("../school/school")
+  },
   noticemore:function(){
     utils.navigateTo("../notice/notice")
   },

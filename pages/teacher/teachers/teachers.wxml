@@ -1,5 +1,5 @@
 <!--pages/teacher/teachers/teachers.wxml-->
-<view class="head"></view>
+<view class="head" style="background-image:url('../../../images/banner.png'); background-repeat:round"></view>
 <view class="image">
   <image src="../../../images/01.png"></image>
 </view>
@@ -13,9 +13,14 @@
 </view>
 <view class='text3'>
   <text>好评度：</text>
-  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
-  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
-  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
-  <image src="../../../images/xin.png" style="width:35rpx;height:35rpx;"></image>
+  <image src="../../../images/xin.png" style="width:25rpx;height:25rpx;"></image>
+  <image src="../../../images/xin.png" style="width:25rpx;height:25rpx;"></image>
+  <image src="../../../images/xin.png" style="width:25rpx;height:25rpx;"></image>
+  <image src="../../../images/xin.png" style="width:25rpx;height:25rpx;"></image>
   <text>价格：　元/次</text>
 </view>
+<view class="text4">
+  <view class='text4-1'></view>
+  <text>简介：</text>
+</view>
+<button class="weui-btn" type="primary" form-type='submit'>咨询</button>

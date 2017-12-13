@@ -1,5 +1,5 @@
-// pages/person/security/security.js
-var util = require('../../../utils/util.js')
+// pages/intelligence/mold/mold.js
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -8,26 +8,30 @@ Page({
   data: {
   
   },
-  loginpw:function(){
-    util.navigateTo("../../person/security/loginpw/loginpw")
-  },
-  paymentpw:function(){
-    util.navigateTo("../../person/security/paymentpw/paymentpw")
-  },
-  phone:function(){
-    util.navigateTo("../../person/security/phone/phone")
-  },
-  email:function(){
-    util.navigateTo("../../person/security/email/email")
-  },
-  authentication:function(){
-    util.navigateTo("../../person/security/authentication/authentication")
-  },
+  serviceValChange: function (e) {
+    var mold = this.data.mold;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < mold.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        mold[i].checked = true;
+      } else {
+        mold[i].checked = false;
+      }
+    }
+    this.setData({
+      mold: mold
+    })
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      that.setData({
+        mold: res.data
+      })
+    })
   },
 
   /**

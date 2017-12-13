@@ -1,6 +1,7 @@
-/* pages/analog/analogs/analogs.wxss */
+/* pages/intelligence/intelligence.wxss */
 page{
   background-color:#EEEEEE;
+  font-size:30rpx;
 }
 .head{
   width:100%;
@@ -33,55 +34,18 @@ page{
   align-items:center;
   margin:30rpx 30rpx;
 }
-.content2{
-  width:94%;
-  margin:0 3%;
-  font-size:30rpx;
-  display: flex;
-  flex-direction: row;
+.weui-cells_after-title{
+  margin-top:2%;
 }
-.content2 text{
-  display: flex;
-  align-items:center;
-  justify-content: center;
+.weui-cells{
+  font-size:28rpx;
 }
-.page__bd{
-    height: 100%;
+.weui-cell__ft{
+  color:#333333;
 }
-.page__bd{
-    padding-bottom: 0;
-}
-.weui-tab__content{
-   
-    text-align: center;
-}
-.weui-navbar__item{
-  padding:10rpx;
-}
-.volunteer{
-  width:94%;
-  margin:0 3% 0 3%;
-}
-.volunteers{
-   width:50%;
-   margin:3% 3% 0 3%;
-   font-size:28rpx;
-}
-.volunteerss{
-   width:94%;
-   margin:1% 3% 0 3%;
-   font-size:28rpx;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-}
-.volunteerss picker{
-   width:28%;
-   margin:1% 1% 0 1%; 
-}
-.content4{
-  width:94%;
-  margin:8% 3%;
+button[type="primary"] {
+  background-color:rgb(251,134,8);
+
 }
 .footer{
   width:94%;

@@ -1,0 +1,11 @@
+<!--pages/intelligence/mold/mold.wxml-->
+<checkbox-group bindchange="serviceValChange">  
+  <view class="service_selection1">  
+    <block wx:for="{{mold}}" wx:key="NAME">   
+        <label class="checkbox {{item.checked?'is_checked':''}}">  
+          <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+        </label>    
+    </block>  
+  </view>  
+</checkbox-group>
+<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>

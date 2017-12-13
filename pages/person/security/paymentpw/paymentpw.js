@@ -1,5 +1,4 @@
-// pages/person/security/security.js
-var util = require('../../../utils/util.js')
+// pages/person/security/paymentpw/paymentpw.js
 Page({
 
   /**
@@ -8,21 +7,7 @@ Page({
   data: {
   
   },
-  loginpw:function(){
-    util.navigateTo("../../person/security/loginpw/loginpw")
-  },
-  paymentpw:function(){
-    util.navigateTo("../../person/security/paymentpw/paymentpw")
-  },
-  phone:function(){
-    util.navigateTo("../../person/security/phone/phone")
-  },
-  email:function(){
-    util.navigateTo("../../person/security/email/email")
-  },
-  authentication:function(){
-    util.navigateTo("../../person/security/authentication/authentication")
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

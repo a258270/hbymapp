@@ -1,10 +1,11 @@
 /* pages/ analog/ analog.wxss */
 page{
-  background-color:#f2eada;
+  background-color:#EEEEEE;
+  font-size:30rpx;
 }
 .head{
   width:100%;
-  height:300rpx;
+  height:240rpx;
 }
 .head image{
   width:100%;
@@ -12,9 +13,9 @@ page{
 }
 .content1{
   width:94%;
-  height:200rpx;
+  height:160rpx;
   background-color:white;
-  margin:3% 3%;
+  margin:1% 3%;
   border-radius: 10rpx;
   font-size:28rpx;
   display: flex;
@@ -33,10 +34,14 @@ page{
   align-items:center;
   margin:30rpx 30rpx;
 }
+radio .wx-radio-input{
+  width:30rpx;
+  height:30rpx;
+}
 .content2{
   width:94%;
   margin:0 3%;
-  font-size:30rpx;
+  font-size:28rpx;
   display: flex;
   flex-direction: row;
 }
@@ -47,7 +52,7 @@ page{
 }
 .content3{
   width:94%;
-  margin:3% 3%;
+  margin:1% 3%;
   display: flex;
   flex-direction: row;
   justify-content:space-between;
@@ -62,30 +67,30 @@ button[type="primary"] {
   font-size:30rpx;
 }
 .button1{
-  font-size:30rpx;
+  font-size:28rpx;
   background-color:#DFDFB8;
 }
 .content3 picker{
   width:45%;
+  height:80rpx;
 }
 .content4{
   width:94%;
-  margin:3% 3%;
+  margin:5% 3%;
 }
 .footer{
   width:94%;
-  height:700rpx;
-  margin:260rpx 3%;
+  margin:100rpx 3% 0 3%;
   border-radius: 10rpx;
   border:1rpx solid #999999;  
-  font-size:28rpx;
+  font-size:20rpx;
 }
 .footer1{
   padding:0 20rpx;
 }
 .footer1 text{
   padding:0 10rpx;
-  font-size:30rpx;
+  font-size:28rpx;
 }
 .footer2{
   padding:20rpx 20rpx 0 20rpx;

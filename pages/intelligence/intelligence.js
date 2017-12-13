@@ -1,33 +1,42 @@
-// pages/person/security/security.js
-var util = require('../../../utils/util.js')
+// pages/intelligence/intelligence.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    batch:['本一','本二'],
+    index:0
   },
-  loginpw:function(){
-    util.navigateTo("../../person/security/loginpw/loginpw")
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
   },
-  paymentpw:function(){
-    util.navigateTo("../../person/security/paymentpw/paymentpw")
-  },
-  phone:function(){
-    util.navigateTo("../../person/security/phone/phone")
-  },
-  email:function(){
-    util.navigateTo("../../person/security/email/email")
-  },
-  authentication:function(){
-    util.navigateTo("../../person/security/authentication/authentication")
+  content:function(){
+    util.navigateTo("../../../../intelligence/content/content")
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+      that.setData({
+        region: res.data
+      })
+    })
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      that.setData({
+        style: res.data
+      })
+    })
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      that.setData({
+        types: res.data
+      })
+    })
   },
 
   /**

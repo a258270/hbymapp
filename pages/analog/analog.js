@@ -6,6 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    items: [
+      { name: '本科一批', value: '美国' },
+      { name: '本科二批', value: '中国', checked: 'true' },
+    ],
     array: ['美国', '中国', '巴西', '日本'],
     index: 0
   },

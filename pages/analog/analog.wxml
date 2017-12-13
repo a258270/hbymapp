@@ -2,30 +2,25 @@
 <view class='head'><image src="../../images/banner02.png"></image></view>
 <view class="content1">
   <view class="content1-left">
-    <text style="color:rgb(125,216,202);font-size:35rpx;">我的分数：</text>
-    <text>河北省　理科</text>
+    <text style="color:rgb(125,216,202);font-size:30rpx;">我的分数：</text>
+    <text style="color:#333333;font-size:28rpx;">河北省　理科</text>
   </view>
   <view class="content1-right">
-    <image src="../../images/icon01.png" style="width:80rpx;height:80rpx;"></image>
+    <image src="../../images/icon01.png" style="width:60rpx;height:60rpx;"></image>
     <text>设置</text>
   </view>
 </view>
 <view class="content2">
-  <image src="../../images/icon02.png" style="width:100rpx;height:100rpx;"></image>
+  <image src="../../images/icon02.png" style="width:80rpx;height:80rpx;"></image>
   <text>批次选择</text>
 </view>
 <view class='content3'>
-  <button class='button' type="primary">本科第一批</button>
-  <button class='button' type="primary">本科第二批</button>
-</view>
-<view class="content2">
-  <image src="../../images/icon02.png" style="width:100rpx;height:100rpx;"></image>
-  <text>地区选择</text>
-</view>
-<view class="content3">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <button class='button1' type="primary" style="background-color:#DFDFB8">湖北省</button>
-    </picker>
+  <radio-group>
+    <label>
+      <radio value="1" checked="checked" class="radio" value='本科一批'/>本科一批
+      <radio style="margin-left: 40rpx;" value="2" value='本科二批'/>本科二批
+    </label>
+</radio-group>
 </view>
 <view class='content4'> 
   <button class="button2" type="primary" style="background-color:rgb(251,134,8);color:white" bindtap='start'>开始模拟</button>

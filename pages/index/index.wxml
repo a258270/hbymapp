@@ -18,7 +18,7 @@
     <image class="tpia" src='../../images/guidance.png'></image> 
     <view class='navigation-text'>名师指导</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap="school">
     <image class="tpia" src='../../images/colleges.png'></image> 
     <view class='navigation-text'>院校库</view>
   </view>
@@ -30,7 +30,7 @@
     <image class="tpia" src='../../images/Fill.png'></image> 
     <view class='navigation-text'>模拟填报</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap="intelligence">
     <image class="tpia" src='../../images/Intelligence.png'></image> 
     <view class='navigation-text'>智能推荐</view>
   </view>

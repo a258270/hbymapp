@@ -42,7 +42,7 @@ Page({
             srcs.add(srcReg.exec(arr[0])[1]);
             srcReg.lastIndex = 0;
           }
-          srcs.forEach(function(index, element){
+          srcs.forEach(function(element){
             article = article.replace(element, util.setStaticUrl(element));
           });
            WxParse.wxParse('article', 'html', article, that, 5);

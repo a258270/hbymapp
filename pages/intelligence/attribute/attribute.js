@@ -1,33 +1,37 @@
-// pages/person/security/security.js
-var util = require('../../../utils/util.js')
+// pages/intelligence/attribute/attribute.js
+var util = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+
   },
-  loginpw:function(){
-    util.navigateTo("../../person/security/loginpw/loginpw")
-  },
-  paymentpw:function(){
-    util.navigateTo("../../person/security/paymentpw/paymentpw")
-  },
-  phone:function(){
-    util.navigateTo("../../person/security/phone/phone")
-  },
-  email:function(){
-    util.navigateTo("../../person/security/email/email")
-  },
-  authentication:function(){
-    util.navigateTo("../../person/security/authentication/authentication")
-  },
+  serviceValChange: function (e) {
+    var attribute = this.data.attribute;
+    var checkArr = e.detail.value;
+    for (var i = 0; i < attribute.length; i++) {
+      if (checkArr.indexOf(i + "") != -1) {
+        attribute[i].checked = true;
+      } else {
+        attribute[i].checked = false;
+      }
+    }
+    this.setData({
+      attribute: attribute
+    })
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      that.setData({
+        attribute: res.data
+      })
+    })
   },
 
   /**
