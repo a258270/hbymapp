@@ -1,13 +1,15 @@
 <!--pages/person/security/authentication/authentication.wxml-->
+<view class='page'>
 <form bindsubmit="formSubmit">
-<view class='head'>
-  <view class='icons'><image src="../../../../images/tb06.png"></image></view>
-  <view class='text'>
-    <text>1.我们对您的信息绝对保密</text>
-    <text>2.认证可以提高信誉</text>
-    <text>3.认证完全免费，认证成功后不可修改</text>
-  </view>
-</view>
+<!-- <view class="page__hd">
+  <view class="page__desc">1.我们对您的信息绝对保密</view>
+  <view class="page__desc">2.认证可以提高信誉</view>
+  <view class="page__desc">3.认证完全免费，认证成功后不可修改</view>
+</view> -->
+<view class="page__bd">
+<view class="weui-cells__title">1.我们对您的信息绝对保密</view>
+<view class="weui-cells__title">2.认证可以提高信誉</view>
+<view class="weui-cells__title">3.认证完全免费，认证成功后不可修改</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
@@ -26,5 +28,7 @@
     </view>
 </view>
 </view>
+</view>
 <button class="weui-btn" type="primary" form-type='submit'>提交认证</button>
 </form>
+</view>

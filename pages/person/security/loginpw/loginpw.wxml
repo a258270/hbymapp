@@ -1,12 +1,14 @@
 <!--pages/person/security/loginpw/loginpw.wxml-->
+<view class='page'>
 <form bindsubmit="formSubmit">
-<view class='head'>
-    <view class='icons'><image src="../../../../images/tb06.png"></image></view>
-    <view class='text'>
-      <text>1.请牢记登录密码</text>
-      <text>2.如果丢失密码，可以通过绑定的手机或邮箱找到</text>
-    </view>
-  </view>
+<!-- <view class="page__hd">
+  <view class="page__desc">1.我们对您的信息绝对保密</view>
+  <view class="page__desc">2.认证可以提高信誉</view>
+  <view class="page__desc">3.认证完全免费，认证成功后不可修改</view>
+</view> -->
+<view class="page__bd">
+<view class="weui-cells__title">1.请牢记登录密码</view>
+<view class="weui-cells__title">2.如果丢失密码，可以通过绑定的手机或邮箱找到</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
@@ -45,5 +47,7 @@
     </view>
 </view>
 </view>
+</view>
 <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
+</view>

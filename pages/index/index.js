@@ -63,6 +63,14 @@ Page({
   activitymore:function(){
     utils.navigateTo("../activity/activity")
   },
+  news:function(e){
+    var a = e.currentTarget.dataset.id;
+    utils.navigateTo('../news/newscontent/newscontent', { a: a })
+  },
+  activity:function(e){
+    var a = e.currentTarget.dataset.id;
+    utils.navigateTo('../activity/content/content', { a: a })
+  },
   toDto: function (list) {
     if (!list) return list;
     list.forEach(function (obj) {

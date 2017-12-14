@@ -1,62 +1,22 @@
 /* pages/person/basics/basics.wxss */
 page{
   font-size:30rpx;
+  background-color:#EEEEEE;
 }
-.line{
-  width:100%;
-  border-bottom:1rpx solid #CCCCCC;
+.page{
+  background-color:white;
 }
-input{
+.weui-cell_primary{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-between;
+}
+.picker{
+  width:200rpx;
+  height:48rpx;
   text-align: right;
 }
-.realname{
-  margin:3% 3% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.sex{
-  margin:3% 10% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.date{
-  margin:3% 3% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.email{
-  margin:3% 3% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.phone{
-  margin:3% 3% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.card{
-  margin:3% 3% 2% 3%;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.weui-btn{
-   position: fixed;
-   bottom:0;
-   width:100%;
-}
-button[type="primary"]{
-  color:white;
-  background-color: rgb(91,192,222);
+button{
+  font-size:28rpx;
 }

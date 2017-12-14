@@ -29,7 +29,8 @@ Page({
     var id = options.a;
     util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
       var article=res.CONTENT
-      WxParse.wxParse('article', 'html', article, that, 5);
+      res.MODIFYTIME = util.formatTime(new Date(res.MODIFYTIME))
+      WxParse.wxParse('article', 'html', article, that, 10);
       that.setData({
         content:res
       })

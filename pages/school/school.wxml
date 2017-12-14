@@ -43,12 +43,10 @@
   <view class="demo-text-2">
     <checkbox-group bindchange="changeArrangment">  
         <view class="service_selection flex">  
-          <block wx:for="{{arrangments}}" wx:key="NAME">  
-            <view class="item">  
+          <block wx:for="{{arrangments}}" wx:key="NAME">   
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
               </label>  
-            </view>  
           </block>  
         </view>  
     </checkbox-group> 

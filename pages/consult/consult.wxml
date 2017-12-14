@@ -42,12 +42,10 @@
   <view class="demo-text-2">
     <checkbox-group bindchange="changeArrangment">  
         <view class="service_selection flex">  
-          <block wx:for="{{arrangments}}" wx:key="NAME">  
-            <view class="item">  
+          <block wx:for="{{arrangments}}" wx:key="NAME">   
               <label class="checkbox {{item.checked?'is_checked':''}}">  
                 <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
               </label>  
-            </view>  
           </block>  
         </view>  
     </checkbox-group> 
@@ -104,7 +102,7 @@
           <text>入驻人数：{{school.TEACOUNT}}人</text><text>地区：{{school.PROVINCE_VALUE}}</text>
         </view>
         <view class="weui-media-box__desc">
-          <image wx:for="{{school.subjecttypes}}" class='icon-subjecttype' src="../../images/icon/{{item.DIC_ID}}.png"></image>
+          <image wx:for="{{school.subjecttypes}}"  class='icon-subjecttype' src="../../images/icon/{{item.DIC_ID}}.png"></image>
         </view>  
       </view>
     </navigator>
