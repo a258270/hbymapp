@@ -1,0 +1,108 @@
+<!--pages/school/schoolcontent/schoolcontent.wxml-->
+<view class="banner">
+  <image src='../../../images/school-banner.png'></image>
+</view>
+<view class='logo'>
+  <view class='logo-left'>
+     <image src="../../../images/10.png"></image>  
+  </view>
+  <view class='logo-right'>
+    <view class='logo-text'>
+      <text>武汉大学</text> 
+    </view>
+    <view class='logo-image'>
+      <image src='../../../images/zonghe.png'></image>
+      <text>官方网站</text>
+    </view> 
+  </view>
+</view>
+<view class='line'></view>
+<view class='content'>
+  <view class='content-top'>
+    <image src="../../../images/jianjie.png"></image>
+    <text>院校介绍</text>
+  </view>
+  <view class="content-center">
+    <text>北京大学创办于1898年，初名京师大学堂，是中国第一所国立综合性大学，也是当时中国最高教育行政机关。辛亥革命后，于1912年改为现名。</text>
+  </view>
+</view>
+<view class='message'>
+  <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+              <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class='top'>
+        <image src="../../../images/地址.png"></image>
+        <text>河北省  理科</text>
+      </view>
+      <view class='center'>
+        <view class='center-item'>年份</view>
+        <view class='center-item'>批次</view>
+        <view class='center-item'>最高分</view>
+        <view class='center-item'>最低分</view>
+        <view class='center-item'>招生人数</view>
+      </view>
+      <view class='bottom'>
+        <view class='bottom-item'>
+          <text>2016</text>
+          <text>2015</text>
+        </view>
+        <view class='bottom-item'>
+          <text>本一</text>
+          <text>本二</text>
+        </view>
+        <view class='bottom-item'>
+          <text>635</text>
+          <text>654</text>
+        </view>
+        <view class='bottom-item'>
+          <text>635</text>
+          <text>654</text>
+        </view>
+        <view class='bottom-item'>
+          <text>56</text>
+          <text>58</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">学校类别</view>
+        <view class="weui-cell__ft">公立</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">所在地</view>
+          <view class="weui-cell__ft ">湖北省</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">学校类型</view>
+        <view class="weui-cell__ft"><image src="../../../images/zonghe.png"></image></view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">创建时间</view>
+          <view class="weui-cell__ft ">1985年</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">隶属于</view>
+          <view class="weui-cell__ft ">教育部</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">学校属性</view>
+          <view class="weui-cell__ft "></view>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">  
+      <view class='top'>
+        <image src="../../../images/tb20.png"></image>
+        <text>院系与专业</text>
+      </view>
+    </view>
+  </view>
+</view>

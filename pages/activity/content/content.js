@@ -1,12 +1,13 @@
-// pages/activity/activity.js
-var util = require("../../utils/util")
+// pages/activity/content/content.js
+var util = require("../../../utils/util");
+var WxParse = require('../../../wxParse/wxParse.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+
   },
   toDto: function (list) {
     if (!list) return list;
@@ -20,41 +21,32 @@ Page({
     });
     return list;
   },
-  activity:function(e){
-    var a = e.currentTarget.dataset.id
-    util.navigateTo('../activity/content/content', { a: a })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-    util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
-      var contents = that.toDto(res.data.results);
+    var id=options.a;
+    util.sendRequest("/wechat/applet/news/getnewsbyid",{ NEWS_ID:id },"POST",function(res){
       var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
       var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
-      for (var i = 0; i < contents.length; i++) {
-        var content = contents[i].CONTENT;
-        var images = new Array();
-        var arr;
-        while (arr = imgReg.exec(content)) {
-          if (!arr[0]) {
-            continue;
-          }
-          images.push(util.setStaticUrl(srcReg.exec(arr[0])[1]));
-          srcReg.lastIndex = 0;
-          if (images.length == 3) {
-            break;
-          }
-        }
-
-        contents[i].images = images;
+      var article=res.CONTENT;
+      var arr;
+      var results;
+      var srcs = new Set();
+      while (arr = imgReg.exec(article)) {
+        srcs.add(srcReg.exec(arr[0])[1]);
+        srcReg.lastIndex = 0;
       }
-      that.setData({
-        activity: contents
+      srcs.forEach(function (element) {
+        article = article.replace(element, util.setStaticUrl(element));
       });
+      WxParse.wxParse('article', 'html', article, that, 5);
+      that.setData({
+        content: res
+      })
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

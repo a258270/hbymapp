@@ -51,6 +51,9 @@ Page({
   school:function(){
     utils.navigateTo("../school/school")
   },
+  major:function(){
+    utils.navigateTo("../major/major")
+  },
   noticemore:function(){
     utils.navigateTo("../notice/notice")
   },

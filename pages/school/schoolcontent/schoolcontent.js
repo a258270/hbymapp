@@ -1,40 +1,23 @@
-// pages/notice/noticecontent/noticecontent.js
-var util = require("../../../utils/util");
-var WxParse = require('../../../wxParse/wxParse.js');
+// pages/school/schoolcontent/schoolcontent.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tabs: ["往年分数线", "基本信息","院系与专业"],
+    activeIndex: 0
   },
-  toDto: function (list) {
-    if (!list) return list;
-    list.forEach(function (obj) {
-      if (obj.IMGURL) {
-        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
-      }
-      if (obj.MODIFYTIME) {
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
-      }
+  tabClick: function (e) {
+    this.setData({
+      activeIndex: e.currentTarget.id
     });
-    return list;
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var id = options.a;
-    util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
-      var article=res.CONTENT
-      WxParse.wxParse('article', 'html', article, that, 5);
-      that.setData({
-        content:res
-      })
-    })
-    
+  
   },
 
   /**

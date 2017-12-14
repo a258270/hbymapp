@@ -22,7 +22,7 @@
     <image class="tpia" src='../../images/colleges.png'></image> 
     <view class='navigation-text'>院校库</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap="major">
     <image class="tpia" src='../../images/major.png'></image> 
     <view class='navigation-text'>专业库</view>
   </view>

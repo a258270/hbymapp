@@ -1,4 +1,4 @@
-/* pages/notice/noticecontent/noticecontent.wxss */
+/* pages/activity/content/content.wxss */
 @import "../../../wxParse/wxParse.wxss";
 .content{
   width:94%;

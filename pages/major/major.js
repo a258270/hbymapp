@@ -1,42 +1,34 @@
-// pages/notice/noticecontent/noticecontent.js
-var util = require("../../../utils/util");
-var WxParse = require('../../../wxParse/wxParse.js');
+// pages/major/major.js
+var sliderWidth = 96;
 Page({
 
   /**
    * 页面的初始数据
    */
+ 
   data: {
+    tabs: ["本科", "专科"],
+    activeIndex: 0,
+    show:true,
+  },
 
-  },
-  toDto: function (list) {
-    if (!list) return list;
-    list.forEach(function (obj) {
-      if (obj.IMGURL) {
-        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
-      }
-      if (obj.MODIFYTIME) {
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
-      }
-    });
-    return list;
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var id = options.a;
-    util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
-      var article=res.CONTENT
-      WxParse.wxParse('article', 'html', article, that, 5);
-      that.setData({
-        content:res
-      })
-    })
-    
+    show: (options.show== "true" ? true : false)
   },
-
+  tabClick: function (e) {
+    this.setData({
+      activeIndex: e.currentTarget.id
+    });
+  },
+  show: function () {
+    var that = this;
+    that.setData({
+      show: (!that.data.show)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

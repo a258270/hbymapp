@@ -1,4 +1,4 @@
-<!--pages/notice/noticecontent/noticecontent.wxml-->
+<!--pages/activity/content/content.wxml-->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class='content'>
   <view class="head">

@@ -30,8 +30,12 @@
     "pages/intelligence/region/region",
     "pages/intelligence/mold/mold",
     "pages/intelligence/attribute/attribute",
-    "pages/intelligence/content/content"
-    
+    "pages/intelligence/content/content",
+    "pages/major/major",
+    "pages/major/majorcontent/majorcontent",
+    "pages/major/majorcontent/content/content",
+    "pages/school/schoolcontent/schoolcontent",
+    "pages/activity/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",
