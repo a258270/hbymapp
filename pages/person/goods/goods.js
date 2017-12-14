@@ -15,7 +15,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      console.log (res);
       that.setData({
         pocket: res
       });

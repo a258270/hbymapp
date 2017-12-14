@@ -114,6 +114,85 @@ var getBaseUrl = function () {
 }
 
 /**
+ * 上传文件
+ */
+var uploadFile = function (url, file, name, formData, loadingType, successFn, errorFn, completeFn) {
+  wx.checkSession({
+    success: function() {
+      var session_id = getSessionId();//本地取存储的sessionID
+      if (session_id) {
+        var header = { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': 'new.cookie.id=' + session_id };
+      }
+      else {
+        var header = { 'content-type': 'application/x-www-form-urlencoded' };
+      }
+      if (url.indexOf(getBaseUrl()) < 0) {
+        if (url.indexOf("/") == 0) {
+          url = getBaseUrl() + url;
+        }
+        else {
+          url = getBaseUrl() + "/" + url;
+        }
+      }
+      if (url.indexOf("?") > 0) {
+        url += "&ajax=true";
+      }
+      else {
+        url += "?ajax=true";
+      }
+      if (loadingType) {
+        wx.showLoading({
+          title: "请稍后",
+          mask: true
+        });
+      }
+      wx.uploadFile({
+        url: url, //仅为示例，非真实的接口地址
+        filePath: file,
+        name: name,
+        formData: formData,
+        header: header,
+        success: function (res) {
+          if (loadingType) {
+            wx.hideLoading();
+          }
+          if (res.data.hasErrors) {
+            //需要登录，详情查看后台LoginIntercetor
+            if (res.data.errorCode == noLoginCode)
+              login();
+            else if (res.data.errorCode == noCompleteCode)
+              toComplete();
+            else if (res.data.errorCode == notAcceptCode)
+              console.error("接口：" + url + "缺少参数");
+            else
+              showError(res.data.errorMessage);
+
+            return false;
+          }
+          if (successFn)
+            successFn(res.data);
+        },
+        fail: function (res) {
+          if (loadingType) {
+            wx.hideLoading();
+          }
+          showError("网络连接错误，请稍后重试");
+          if (errorFn)
+            errorFn(res.data);
+        },
+        complete: function () {
+
+        }
+      })
+    },
+    fail: function () {
+      login();
+    }
+  });
+  
+}
+
+/**
  * url: 填写子url即可，例如：完整url为：http://xx.com/api/demo，则url填写为/api/demo即可，baseUrl参见util.js -> baseUrl
  * param: 请求参数
  * sendType: （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -183,6 +262,9 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           showError("网络连接错误，请稍后重试");
           if (errorFn)
             errorFn(res.data);
+        },
+        complete: function () {
+
         }
       })
     },
@@ -225,6 +307,10 @@ var showSuccess = function () {
  */
 var navigateTo = function (url, param, successFn, failFn, completeFn) {
   url = setParamToUrl(url, param);
+  wx.showLoading({
+    title: "请稍后",
+    mask: true
+  });
   wx.navigateTo({
     url: url,
     success: function () {
@@ -232,11 +318,12 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
         successFn();
     },
     fail: function () {
-      showError("页面跳转失败");
+      console.error("页面跳转失败");
       if (failFn)
         failFn();
     },
     complete: function () {
+      wx.hideLoading();
       if (completeFn)
         completeFn();
     }
@@ -248,6 +335,10 @@ var navigateTo = function (url, param, successFn, failFn, completeFn) {
  */
 var redirectTo = function (url, param, successFn, failFn, completeFn) {
   url = setParamToUrl(url, param);
+  wx.showLoading({
+    title: "请稍后",
+    mask: true
+  });
   wx.redirectTo({
     url: url,
     success: function () {
@@ -255,11 +346,12 @@ var redirectTo = function (url, param, successFn, failFn, completeFn) {
         successFn();
     },
     fail: function () {
-      showError("页面跳转失败");
+      console.error("页面跳转失败");
       if (failFn)
         failFn();
     },
     complete: function () {
+      wx.hideLoading();
       if (completeFn)
         completeFn();
     }
@@ -271,6 +363,10 @@ var redirectTo = function (url, param, successFn, failFn, completeFn) {
  */
 var reLaunch = function (url, param, successFn, failFn, completeFn) {
   url = setParamToUrl(url, param);
+  wx.showLoading({
+    title: "请稍后",
+    mask: true
+  });
   wx.reLaunch({
     url: url,
     success: function () {
@@ -283,6 +379,7 @@ var reLaunch = function (url, param, successFn, failFn, completeFn) {
         failFn();
     },
     complete: function () {
+      wx.hideLoading();
       if (completeFn)
         completeFn();
     }
@@ -326,5 +423,6 @@ module.exports = {
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,
   redirectTo: redirectTo,
-  reLaunch: reLaunch
+  reLaunch: reLaunch,
+  uploadFile: uploadFile
 }

@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    isRealName: true,
+    isPhone: true,
+    isEmail: true,
+    isTrade: true
   },
   loginpw:function(){
     util.navigateTo("../../person/security/loginpw/loginpw")
@@ -41,7 +44,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getsecurityinfo", {}, "POST", true, function(res){
+      that.setData({
+        isRealName: res.isRealName,
+        isPhone: res.isPhone,
+        isEmail: res.isEmail,
+        isTrade: res.isTrade
+      });
+    });
   },
 
   /**

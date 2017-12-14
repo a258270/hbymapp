@@ -13,14 +13,14 @@
   </view>
 </view>
 <view class="center">
-  <view class="center-left">
+  <view class="center-left" bindtap='toExaminee'>
     <view class='numbers'>{{examScore}}分</view>
     <view class="img">
       <image src="../../images/pen.png" style="width:30rpx;height:30rpx"></image> 
       <text>预估分</text>
     </view>
   </view>
-  <view class='center-right'>
+  <view class='center-right' bindtap='toPocket'>
     <view class='numbers'>{{valiablePocket}}个</view>
     <view class="img">
       <image src="../../images/money.png" style="width:30rpx;height:30rpx"></image> 

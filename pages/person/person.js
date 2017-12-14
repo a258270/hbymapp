@@ -44,15 +44,16 @@ Page({
 
   },
   chooseWxImage:function (type) {
-    let _this = this;
+    var that = this;
     wx.chooseImage({
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: [type],
       success: function (res) {
         console.log(res);
-        _this.setData({
-          logo: res.tempFilePaths[0],
-        })
+
+        util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(result){
+          that.getUserInfo();
+        });
       }
     })
   },
@@ -66,7 +67,13 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
+    this.getUserInfo();
+  },
+  /**
+   * 获取用户基本信息
+   */
+  getUserInfo: function() {
     var that = this;
     util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
       //console.log(res);
@@ -113,5 +120,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  toExaminee: function() {
+    util.navigateTo("/pages/person/information/information");
+  },
+  toPocket: function() {
+    util.navigateTo("/pages/person/goods/goods");
   }
 })

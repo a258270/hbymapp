@@ -9,7 +9,7 @@ Page({
     sexObjs: [],
     sexIndex:0,
     birthday: "",
-    user: {NICKNAME: "", SEX: "", BIRTHDAY: ""}
+    user: {NICKNAME: "", SEX: "", BIRTHDAY: "", IDCARD: "", EMAIL: "", PHONE: ""}
   },
   bindPickerChange: function (e) {
     this.setData({
@@ -26,7 +26,7 @@ Page({
     util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function(res){
       wx.navigateBack({
         delta: 1
-      })
+      });
     });
   },
   /**
@@ -41,7 +41,7 @@ Page({
       });
 
       util.sendRequest("/wechat/applet/user/getstudentcomplete", {}, "POST", true, function (res) {
-        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12" };
+        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12", IDCARD: "未设置", EMAIL: "未设置", PHONE: "未设置" };
         if (res.NICKNAME) {
           userTmp.NICKNAME = res.NICKNAME;
         }
@@ -62,6 +62,18 @@ Page({
           that.setData({
             birthday: userTmp.BIRTHDAY
           });
+        }
+
+        if(res.IDCARD) {
+          userTmp.IDCARD = res.IDCARD.substring(0, 3) + "*****" + res.IDCARD.substring(15, 18);
+        }
+
+        if (res.EMAIL) {
+          userTmp.EMAIL = res.EMAIL.substring(0, 2) + "*********";
+        }
+
+        if (res.PHONE) {
+          userTmp.PHONE = res.PHONE.substring(0, 3) + "****" + res.PHONE.substring(7, 11);
         }
 
         that.setData({

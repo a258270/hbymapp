@@ -1,11 +1,14 @@
 // pages/person/security/loginpw/loginpw.js
+var util = require('../../../../utils/util.js')
+var codeTimer = null;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    codeHidden: true,
+    timerNumber: 60
   },
 
   /**
@@ -62,5 +65,40 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //获取短信验证码
+  getSMSCode: function() {
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getsmscode", {}, "POST", true, function (res){
+      that.setData({
+        codeHidden: !that.data.codeHidden,
+        timerNumber: 60
+      });
+
+      codeTimer = setInterval(that.codeTimerFn, 1000);
+    });
+    
+  },
+  codeTimerFn: function() {
+    var that = this;
+    that.setData({
+      timerNumber: that.data.timerNumber - 1
+    });
+
+    if (that.data.timerNumber == 0) {
+      clearInterval(codeTimer);
+      codeTimer = null;
+
+      that.setData({
+        codeHidden: !that.data.codeHidden
+      });
+    }
+  },
+  formSubmit: function(e) {
+    util.sendRequest("/wechat/applet/user/updatepass", e.detail.value, "POST", true, function (res) {
+      wx.navigateBack({
+        delta: 1
+      });
+    });
   }
 })
