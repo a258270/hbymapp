@@ -1,69 +1,26 @@
 /* pages/intelligence/region/region.wxss */
-.service_selection {  
-  padding: 15px 10px;  
+checkbox-group{
+  margin-top:20rpx;
+}
+.service_selection {    
   background: #fff;  
+  width:100%;
   display:flex;
-  flex-wrap: warp; 
-  justify-content:space-between;
+  flex-wrap: wrap;
 } 
 .service_selection label {  
-  background: #f0f1ec;  
-  padding: 10px 16px;  
-  font-size: 12px;  
+  border: 1px solid rgb(90,180,170);
+  color:rgb(90,180,170);
+  width:22%;
+  height:80rpx;
+  font-size: 28rpx;  
   border-radius: 4px; 
+  margin:0 4% 4% 4%;
   display:flex;
-  flex-wrap: warp; 
-  height:40rpx;
+  justify-content: center;
+  align-items: center;
 }  
 .service_selection .is_checked {  
-  border: 1px solid rgb(90,180,170);  
-  color: rgb(90,180,170);  
-  background: #fff;  
+  background-color:rgb(90,180,170);
+  color:white; 
 }  
-.service_selection1 {  
-  padding: 15px 10px;  
-  background: #fff;  
-  width:100%;
-  display:flex;
-  flex-wrap: wrap;
-} 
-.service_selection1 label {  
-  background: #f0f1ec;  
-  padding: 10px 16px;  
-  font-size: 12px;  
-  border-radius: 4px; 
-  margin:0 20rpx 20rpx 20rpx;
-}  
-.service_selection1 .is_checked {  
-  border: 1px solid rgb(90,180,170);  
-  color: rgb(90,180,170);  
-  background: #fff;  
-}
-.service_selection2 {  
-  padding: 15px 10px;  
-  background: #fff;  
-  width:100%;
-  display:flex;
-  flex-wrap: wrap;
-} 
-.service_selection2 label {  
-  background: #f0f1ec;  
-  padding: 10px 16px;  
-  font-size: 12px;  
-  border-radius: 4px; 
-  margin:0 20rpx 20rpx 20rpx;
-}  
-.service_selection2 .is_checked {  
-  border: 1px solid rgb(90,180,170);  
-  color: rgb(90,180,170);  
-  background: #fff;  
-}  
-.weui-btn{
-   position: fixed;
-   bottom:0;
-   width:100%;
-}
-button[type="primary"]{
-  color:white;
-  background-color: rgb(91,192,222);
-}

@@ -71,7 +71,6 @@ Page({
     var that=this;
     util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST', false, function (res) {
       that.setData({
-        // schools: that.toDto(sort(compare('')))
       });
     })
   },
@@ -109,14 +108,15 @@ Page({
     });
     return list;
   },
+  teacher:function(e){
+    var a = e.currentTarget.dataset.id;
+    util.navigateTo('../consult/consultlist/consultlist', { a: a })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
-    showView: (options.showView == "true" ? true : false);
-    showView1: (options.showView1 == "true" ? true : false);
-    showView2: (options.showView2== "true" ? true : false);
     that.pullSchoolInfos();
 
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
@@ -141,25 +141,6 @@ Page({
     })
     
   },
-  onChangeShowState: function () {
-    var that = this;
-    that.setData({
-      showView: (!that.data.showView),
-      selectArea: true
-    })
-  },
-  onChangeShowStates: function () {
-    var that = this;
-    that.setData({
-      showView1: (!that.data.showView1)
-    })
-  },
-  onChangeShowStatess: function () {
-    var that = this;
-    that.setData({
-      showView2: (!that.data.showView2)
-    })
-  },
   tap_ch:function(e){
     var that = this;
     if(widthTimer != null) {
@@ -179,12 +160,6 @@ Page({
       hidden: !this.data.hidden,
     })
   },
-  // add:function(e){
-  //   var id = e.currentTarget.dataset.id;  //获取自定义的ID值  
-  //   this.setData({
-  //     id:id
-  //   })  
-  // },
   changeArrangment: function (e) {
     var that = this;
     var arrangments = this.data.arrangments;

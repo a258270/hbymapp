@@ -2,9 +2,6 @@
 page{
   background-color:rgb(252,252,252);
 }
-.page__bd{
-  background-color:red;
-}
 .header{
   margin-top: 20rpx;
   padding:0 50rpx;
@@ -39,10 +36,6 @@ page{
   margin-left: 20rpx;
   width:100%;
 }
-.ul{
-  width:100%;
-
-}
 .textss{
   margin-left:20rpx;
   margin-top:10rpx;
@@ -52,13 +45,6 @@ page{
   background-color:rgb(235,235,235); 
   color:#666666;
   border-radius:2px;
-}
-
-a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  
 }
 .flex-warp{
   display: flex;
@@ -91,9 +77,6 @@ button[type="primary"] {
   height: 100%;
   background-color:#F9F9FB;
 }
-ul{
-  width:100%;
-}
 .page1{
   position: fixed;
   top:0;
@@ -107,8 +90,6 @@ ul{
 .flex-wrps{
   display: flex;
   flex-direction: column;
-  /* width:85%;
-  padding:0 50rpx; */
   margin-top:30rpx;
 }
 .weui-media-box__desc{
@@ -216,3 +197,11 @@ ul{
   background-color:rgb(90,180,170);
   color:white;
 }   
+.icon-property{
+  width:40rpx;
+  height:40rpx;
+}
+.icon-subjecttype{
+  width:80rpx;
+  height:40rpx;
+}

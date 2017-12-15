@@ -76,7 +76,6 @@ Page({
   getUserInfo: function() {
     var that = this;
     util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
-      //console.log(res);
       that.setData({
         logo: util.setStaticUrl(res.complete.HEADURL),
         completeCount: res.completeCount,
@@ -86,7 +85,6 @@ Page({
       });
     });
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -1,11 +1,11 @@
-<!--pages/intelligence/region/region.wxml-->
+<!--pages/analog/analogs/content/content.wxml-->
 <checkbox-group bindchange="serviceValChange">  
   <view class="service_selection">  
-    <block wx:for="{{style}}" wx:key="NAME">   
+    <block wx:for="{{attribute}}" wx:key="NAME">   
         <label class="checkbox {{item.checked?'is_checked':''}}">  
           <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
         </label>    
     </block>  
   </view>  
 </checkbox-group>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+<button class="weui-btn" type="primary" form-type='submit'>确认</button>

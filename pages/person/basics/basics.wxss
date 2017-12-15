@@ -1,11 +1,4 @@
 /* pages/person/basics/basics.wxss */
-page{
-  font-size:30rpx;
-  background-color:#EEEEEE;
-}
-.page{
-  background-color:white;
-}
 .weui-cell_primary{
   display: flex;
   flex-direction: row;
@@ -18,5 +11,8 @@ page{
   text-align: right;
 }
 button{
+  font-size:28rpx;
+}
+.weui-cells{
   font-size:28rpx;
 }

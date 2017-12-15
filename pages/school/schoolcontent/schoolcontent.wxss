@@ -24,7 +24,6 @@ page{
 .logo-left{
   width:22%;
   height:150rpx;
-  background-color: green;
   border-radius:75rpx;
   overflow: hidden;
 }

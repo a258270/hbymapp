@@ -1,19 +1,44 @@
 // pages/consult/consultlist/consultlist.js
+var util=require("../../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    src1:"../../../images/banner_02.jpg",
-    icon60:"../../../images/teacher.png"
+    src1:"/images/school-banner.png",
+    icon60:"/images/01.png"
   },
-
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.HEADURL) {
+        obj.HEADURL = util.setStaticUrl(obj.HEADURL);
+      }
+      if (obj.LHEADURL) {
+        obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
+      }
+    });
+    return list;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    var id = options.a
+    util.sendRequest("/wechat/applet/complete_tea/get",{SCHOOL_ID:id},"POST",true,function(res){
+      console.log(res.data)
+      that.setData({
+        teacher:that.toDto(res.data)
+      })
+    })
+    util.sendRequest("/wechat/applet/school/get", { SCHOOL_ID: id }, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        teacher: that.toDto(res.data)
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

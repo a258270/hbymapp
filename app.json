@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/analog/analogs/analogs",
     "pages/consult/consult",
+    "pages/consult/consultlist/consultlist",
+    "pages/analog/analogs/analogs",
     "pages/analog/analog",
     "pages/teacher/teacher",
-    "pages/consult/consultlist/consultlist",
     "pages/login/login",
     "pages/teacher/teachers/teachers",
     "pages/contacts/contacts",
@@ -35,7 +35,8 @@
     "pages/major/majorcontent/majorcontent",
     "pages/major/majorcontent/content/content",
     "pages/school/schoolcontent/schoolcontent",
-    "pages/activity/content/content"
+    "pages/activity/content/content",
+    "pages/analog/analogs/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",

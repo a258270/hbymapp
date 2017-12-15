@@ -21,6 +21,9 @@ Page({
   start:function(){
     util.navigateTo("analogs/analogs")
   },
+  setup:function(){
+    util.navigateTo("/pages/person/information/information")
+  },
   /**
    * 生命周期函数--监听页面加载
    */

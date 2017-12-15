@@ -51,6 +51,6 @@
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator> 
+  <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
 </view>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>

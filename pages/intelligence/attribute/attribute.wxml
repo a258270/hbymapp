@@ -1,6 +1,6 @@
 <!--pages/intelligence/attribute/attribute.wxml-->
 <checkbox-group bindchange="serviceValChange">  
-  <view class="service_selection1">  
+  <view class="service_selection">  
     <block wx:for="{{attribute}}" wx:key="NAME">   
         <label class="checkbox {{item.checked?'is_checked':''}}">  
           <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  

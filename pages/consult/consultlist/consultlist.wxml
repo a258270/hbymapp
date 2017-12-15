@@ -2,83 +2,26 @@
    <image src="{{src1}}"></image>
 </view>
 <view class='header-bottom'>
-   <view class="header-bottom-left"><image src="../../../images/logoun.png"></image></view>
+<block wx:for="{{school}}" wx:key="">
+   <view class="header-bottom-left"><image src="/images/10.png"></image></view>
    <view class="header-bottom-right">
     <text>河北师范大学</text>
     <view class='map'>河北省　 | 　本科 　| 　公立　</view>
   </view>
+</block>
 </view>
+<block wx:for="{{teacher}}" wx:key="">
 <view class="weui-panel__bd">
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
-    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{icon60}}" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">李老师</view>
-            <view class="weui-media-box__desc">资历　两年　|　招办　主任</view>
-        </view>
-    </navigator>
+  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.NICKNAME}}</view>
+          <view class="weui-media-box__desc">
+          {{item.JOBTYPE}}
+          </view>
+      </view>
+  </view>
 </view>
+</block>

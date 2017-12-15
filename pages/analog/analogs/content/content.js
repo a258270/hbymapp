@@ -1,19 +1,11 @@
-// pages/person/power/power.js
+// pages/analog/analogs/content/content.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    grids: [
-      { src: '/images/quanxian01.png', title: '模拟填报',url:"/pages/analog/analog" },
-      { src: '/images/quanxian02.png', title: '智能推荐',url:"/pages/intelligence/intelligence" },
-      { src: '/images/quanxian03.png', title: '院校咨询',url:"/pages/consult/consult" },
-      { src: '/images/quanxian04.png', title: '专家咨询',url:"/pages/teacher/teacher"},
-      { src: '/images/quanxian05.png', title: '百校问答' },
-      { src: '/images/quanxian06.png', title: '性格测试' }, 
-      { src: '/images/quanxian07.png', title: '无限视频' },
-    ]
+  
   },
 
   /**

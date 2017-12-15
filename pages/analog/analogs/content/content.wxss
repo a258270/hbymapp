@@ -1,5 +1,5 @@
-/* pages/intelligence/region/region.wxss */
-checkbox-group{
+/* pages/analog/analogs/content/content.wxss */
+heckbox-group{
   margin-top:20rpx;
 }
 .service_selection {    
