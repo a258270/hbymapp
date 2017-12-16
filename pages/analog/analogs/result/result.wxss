@@ -1,1 +1,9 @@
 /* pages/analog/analogs/result/result.wxss */
+.show{
+  display: none;
+}
+.hide{
+  display:block;
+  background-color: #EEEEEE;
+  color:#999999;
+}

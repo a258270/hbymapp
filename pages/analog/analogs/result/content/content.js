@@ -1,18 +1,13 @@
-// pages/analog/analogs/result/result.js
+// pages/analog/analogs/result/content/content.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show:true
+  
   },
-  show: function () {
-    var that = this;
-    that.setData({
-      show: (!that.data.show)
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

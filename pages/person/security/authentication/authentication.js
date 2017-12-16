@@ -1,4 +1,5 @@
 // pages/person/security/authentication/authentication.js
+var util=require("../../../../utils/util")
 Page({
 
   /**
@@ -72,7 +73,6 @@ Page({
         codeHidden: !that.data.codeHidden,
         timerNumber: 60
       });
-
       codeTimer = setInterval(that.codeTimerFn, 1000);
     });
 

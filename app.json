@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/analog/analogs/result/result",
     "pages/index/index",
     "pages/tperson/basics/basics",
     "pages/consult/consult",
@@ -43,7 +42,9 @@
     "pages/talk/talk",
     "pages/tperson/goods/goods",
     "pages/tperson/power/power",
-    "pages/tperson/contact/contact"
+    "pages/tperson/contact/contact",
+    "pages/analog/analogs/result/result",
+    "pages/analog/analogs/result/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",

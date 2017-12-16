@@ -246,7 +246,7 @@
             </view>
         </view>
         <view class='content4'> 
-          <button class="button2" type="primary" form-type='submit' style="background-color:rgb(90,180,170);color:white" bindtap='start'>确认</button>
+          <button class="button2" type="primary" form-type='submit' style="background-color:rgb(90,180,170);color:white">确认</button>
         </view>
         </form>
       </view>
