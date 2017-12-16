@@ -409,6 +409,31 @@ var setStaticUrl = function(url) {
   return baseurl.content + url;
 }
 
+/**
+ * 确认框
+ * option为配置对象
+ */
+var confirm = function(option) {
+  var title = option.title ? option.title : "提示";
+  var content = option.content ? option.content: "";
+  var confirmText = option.confirmText ? option.confirmText: "确认";
+  var cancleText = option.cancleText ? option.cancleText: "取消";
+  var confirmFn = option.confirmFn ? option.confirmFn : function(){};
+  var cancleFn = option.cancleFn ? option.cancleFn : function(){};
+  wx.showModal({
+    title: title,
+    content: content,
+    confirmText: confirmText,
+    cancelText: cancleText,
+    success: function (res) {
+      if (res.confirm) {
+        confirmFn(res);
+      } else {
+        cancleFn(res);
+      }
+    }
+  });
+}
 module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
@@ -424,5 +449,6 @@ module.exports = {
   navigateTo: navigateTo,
   redirectTo: redirectTo,
   reLaunch: reLaunch,
-  uploadFile: uploadFile
+  uploadFile: uploadFile,
+  confirm: confirm
 }

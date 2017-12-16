@@ -43,10 +43,41 @@ Page({
     utils.navigateTo("../teacher/teacher")
   },
   analog:function(){
-    utils.navigateTo("../analog/analog")
+    utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
+      if(res.data) {//是vip
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function(result) {
+          if (result.data) {
+            //完成考生信息的完善
+            utils.navigateTo("/pages/analog/analogs/analogs");
+          }
+          else{
+            utils.showError("请完善考生信息");
+          }
+        });
+      }
+      else{
+        utils.showError("请先激活黄金会员权限");
+      }
+    });
   },
   intelligence:function(){
-    utils.navigateTo("../intelligence/intelligence")
+    utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
+      if (res.data) {//是vip
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
+          if (result.data) {
+            //完成考生信息的完善
+            utils.navigateTo("/pages/intelligence/intelligence");
+          }
+          else {
+            utils.showError("请完善考生信息");
+          }
+        });
+      }
+      else {
+        utils.showError("请先激活黄金会员权限");
+      }
+    });
+    
   },
   school:function(){
     utils.navigateTo("../school/school")
