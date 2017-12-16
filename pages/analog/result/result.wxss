@@ -1,9 +1,4 @@
 /* pages/analog/analogs/result/result.wxss */
-.show{
-  display: none;
-}
-.hide{
-  display:block;
-  background-color: #EEEEEE;
+.child{
   color:#999999;
 }

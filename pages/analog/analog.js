@@ -52,7 +52,8 @@ Page({
     b2Schools_7_major_id: "",
     b2Schools_8_major_id: "",
     b2Schools_9_major_id: "",
-    b2Schools_10_major_id: ""
+    b2Schools_10_major_id: "",
+    examinee: {}
   },
   onLoad: function () {
     var that = this;
@@ -92,7 +93,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    util.sendRequest();
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function(res) {
+      console.log(res);
+      that.setData({
+        examinee: res
+      });
+    });
   },
 
   /**
@@ -151,7 +158,7 @@ Page({
       var school_id = this.data.b2Schools[curIndex].SCHOOL_ID;
     }
 
-    util.navigateTo("/pages/analog/analogs/content/content", { school_id: school_id, key: curId, selected: this.data[curId.replace("_major", "_major_id")]});
+    util.navigateTo("/pages/analog/content/content", { school_id: school_id, key: curId, selected: this.data[curId.replace("_major", "_major_id")]});
   },
   b1Submit: function() {
     var that = this;
@@ -205,9 +212,8 @@ Page({
         param.zye5 = b1Schools_5_major_id;
 
         param.flag = 1;
-        util.sendRequest("/wechat/applet/report/zy", param, "POST", true, function (res) {
-          console.log(res);
-        });
+        param.handleFlag = 1;//1为模拟填报,2为智能推荐
+        util.navigateTo("/pages/analog/result/result", param);
       }
     });
   },
@@ -298,10 +304,12 @@ Page({
         param.zye10 = b2Schools_10_major_id;
 
         param.flag = 2;
-        util.sendRequest("/wechat/applet/report/zy", param, "POST", true, function (res) {
-          console.log(res);
-        });
+        param.handleFlag = 1;//1为模拟填报,2为智能推荐
+        util.navigateTo("/pages/analog/result/result", param);
       }
     });
+  },
+  toExaminee: function() {
+    util.navigateTo("/pages/person/information/information");
   }
 })
