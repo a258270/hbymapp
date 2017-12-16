@@ -1,4 +1,5 @@
 // pages/analog/analogs/result/content/content.js
+var util = require('../../../../utils/util.js')
 Page({
 
   /**
@@ -12,7 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    util.sendRequest("/wechat/applet/major/getmajorbyschool", options, "POST", true, function(res){
+      console.log(res);
+    });
   },
 
   /**
