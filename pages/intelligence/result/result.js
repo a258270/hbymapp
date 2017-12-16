@@ -1,35 +1,37 @@
-// pages/tperson/power/power.js
-var util = require('../../../utils/util.js')
+// pages/intelligence/content/content.js
+var sliderWidth = 96;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    tabs: ["冲", "稳", "保","垫"],
+    activeIndex: 1,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
-  loginpw: function () {
-    util.navigateTo("../../person/security/loginpw/loginpw")
-  },
-  paymentpw: function () {
-    util.navigateTo("../../person/security/paymentpw/paymentpw")
-  },
-  phone: function () {
-    util.navigateTo("../../person/security/phone/phone")
-  },
-  email: function () {
-    util.navigateTo("../../person/security/email/email")
-  },
-  authentication: function () {
-    util.navigateTo("../../person/security/authentication/authentication")
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
   },
-
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

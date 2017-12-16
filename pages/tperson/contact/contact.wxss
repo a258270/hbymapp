@@ -1,5 +1,0 @@
-/* pages/tperson/contact/contact.wxss */
-.titles{
-  text-align: right;
-  font-size:30rpx;
-}

@@ -17,7 +17,9 @@ Page({
     //昵称
     nickname: "",
     //是否为vip
-    isVip: false
+    isVip: false,
+    //用户身份
+    role: 0
   },
 
   /**
@@ -75,15 +77,40 @@ Page({
    */
   getUserInfo: function() {
     var that = this;
-    util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
-      that.setData({
-        logo: util.setStaticUrl(res.complete.HEADURL),
-        completeCount: res.completeCount,
-        nickname: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
-        examScore: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
-        valiablePocket: res.pocket.BALANCE ? res.pocket.BALANCE : 0
-      });
-    });
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
+      var role=res.data
+      if(role==1){
+        util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
+          that.setData({
+            logo: util.setStaticUrl(res.complete.HEADURL),
+            completeCount: res.completeCount,
+            nickname: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
+            examScore: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
+            valiablePocket: res.pocket.BALANCE ? res.pocket.BALANCE : 0
+          });
+        });
+      }
+      if(role==2){
+        util.sendRequest("/wechat/applet/user/getteachercomplete", {}, "POST", false, function (res) {
+          console.log(res.data)
+          that.setData({
+            logo2: util.setStaticUrl(res.complete.HEADURL),
+            completeCount2: res.completeCount,
+            nickname2: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
+            examScore2: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
+            valiablePocket2: res.pocket.BALANCE ? res.pocket.BALANCE : 0
+          })
+        })
+      }
+    util.sendRequest("/wechat/applet/user/getrole",{},"POST",false,function(res){
+        that.setData({
+          role:res.data
+        })
+      })
+    that.setData({
+      role: res.data
+    })
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

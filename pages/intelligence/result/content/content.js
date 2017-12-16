@@ -1,5 +1,4 @@
-// pages/tperson/tperson.js
-var util = require('../../utils/util.js');
+// pages/intelligence/result/content/content.js
 Page({
 
   /**
@@ -8,23 +7,7 @@ Page({
   data: {
   
   },
-  chooseImageTap: function () {
-    let _this = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      itemColor: "#f7982a",
-      success: function (res) {
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {
-            _this.chooseWxImage('album')
-          } else if (res.tapIndex == 1) {
-            _this.chooseWxImage('camera')
-          }
-        }
-      }
-    })
 
-  },
   /**
    * 生命周期函数--监听页面加载
    */

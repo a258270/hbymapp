@@ -14,8 +14,8 @@ Page({
       index: e.detail.value
     })
   },
-  content:function(){
-    util.navigateTo("../../../../intelligence/content/content")
+  result:function(){
+    util.navigateTo("/pages/intelligence/result/result")
   },
   /**
    * 生命周期函数--监听页面加载
