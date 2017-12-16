@@ -48,7 +48,7 @@ Page({
         utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function(result) {
           if (result.data) {
             //完成考生信息的完善
-            utils.navigateTo("/pages/analog/analogs/analogs");
+            utils.navigateTo("/pages/analog/analog");
           }
           else{
             utils.showError("请完善考生信息");

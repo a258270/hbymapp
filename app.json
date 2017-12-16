@@ -4,7 +4,6 @@
     "pages/tperson/basics/basics",
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",
-    "pages/analog/analogs/analogs",
     "pages/analog/analog",
     "pages/teacher/teacher",
     "pages/login/login",
@@ -38,13 +37,12 @@
     "pages/major/majorcontent/content/content",
     "pages/school/schoolcontent/schoolcontent",
     "pages/activity/content/content",
-    "pages/analog/analogs/content/content",
-    "pages/talk/talk",
+    "pages/analog/content/content",
     "pages/tperson/goods/goods",
     "pages/tperson/power/power",
     "pages/tperson/contact/contact",
-    "pages/analog/analogs/result/result",
-    "pages/analog/analogs/result/content/content"
+    "pages/analog/result/result",
+    "pages/analog/result/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",

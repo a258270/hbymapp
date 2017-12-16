@@ -1,5 +1,5 @@
 // pages/analog/analogs/content/content.js
-var util = require('../../../../utils/util.js')
+var util = require('../../../utils/util.js')
 Page({
 
   /**

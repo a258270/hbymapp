@@ -1,7 +1,6 @@
-/* pages/ analog/ analog.wxss */
+/* pages/analog/analogs/analogs.wxss */
 page{
   background-color:#EEEEEE;
-  font-size:30rpx;
 }
 .head{
   width:100%;
@@ -34,14 +33,10 @@ page{
   align-items:center;
   margin:30rpx 30rpx;
 }
-radio .wx-radio-input{
-  width:30rpx;
-  height:30rpx;
-}
 .content2{
   width:94%;
   margin:0 3%;
-  font-size:28rpx;
+  font-size:30rpx;
   display: flex;
   flex-direction: row;
 }
@@ -50,33 +45,12 @@ radio .wx-radio-input{
   align-items:center;
   justify-content: center;
 }
-.content3{
-  width:94%;
-  margin:1% 3%;
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  
-}
-button[type="primary"] {
-  background-color: rgb(170,233,251);
-  color:#333333;
-}
-.button{
-  width:45%;
-  font-size:30rpx;
-}
-.button1{
+.weui-cells{
   font-size:28rpx;
-  background-color:#DFDFB8;
-}
-.content3 picker{
-  width:45%;
-  height:80rpx;
 }
 .content4{
   width:94%;
-  margin:5% 3%;
+  margin:8% 3%;
 }
 .footer{
   width:94%;
