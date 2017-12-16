@@ -2,13 +2,11 @@
    <image src="{{src1}}"></image>
 </view>
 <view class='header-bottom'>
-<block wx:for="{{school}}" wx:key="">
-   <view class="header-bottom-left"><image src="/images/10.png"></image></view>
+   <view class="header-bottom-left"><image src="{{logo}}"></image></view>
    <view class="header-bottom-right">
-    <text>河北师范大学</text>
-    <view class='map'>河北省　 | 　本科 　| 　公立　</view>
+    <text>{{name}}</text>
+    <view class='map'>{{region}}　|　{{types}}　</view>
   </view>
-</block>
 </view>
 <block wx:for="{{teacher}}" wx:key="">
 <view class="weui-panel__bd">

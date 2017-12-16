@@ -7,7 +7,10 @@ Page({
    */
   data: {
     src1:"/images/school-banner.png",
-    icon60:"/images/01.png"
+    logo: "/images/10.png",
+    name: "",
+    region: "",
+    types: ""
   },
   toDto: function (list) {
     if (!list) return list;
@@ -28,15 +31,17 @@ Page({
     var that=this;
     var id = options.a
     util.sendRequest("/wechat/applet/complete_tea/get",{SCHOOL_ID:id},"POST",true,function(res){
-      console.log(res.data)
       that.setData({
         teacher:that.toDto(res.data)
       })
     })
-    util.sendRequest("/wechat/applet/school/get", { SCHOOL_ID: id }, "POST", true, function (res) {
-      console.log(res.data)
+    util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id},"POST",true,function(res){
       that.setData({
-        teacher: that.toDto(res.data)
+        logo: util.setStaticUrl(res.HEADURL),
+        name:res.NAME,
+        region: res.PROVINCE_VALUE,
+        types: res.SCTYPE_VALUE
+
       })
     })
   },
