@@ -1,2 +1,33 @@
 <!--pages/analog/analogs/result/content/content.wxml-->
-<text>pages/analog/analogs/result/content/content.wxml</text>
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">河北师范大学</view>
+    <view class="page__desc">概率 10%</view>
+  </view>
+  <view class="page_bd">
+    <view class='center'>
+      <view class='center-item'>年份</view>
+      <view class='center-item'>最高分</view>
+      <view class='center-item'>最低分</view>
+      <view class='center-item'>录取人数</view>
+    </view>
+    <view class='bottom'>
+      <view class='bottom-item'>
+        <text>2016</text>
+        <text>2015</text>
+      </view>
+      <view class='bottom-item'>
+        <text>635</text>
+        <text>654</text>
+      </view>
+      <view class='bottom-item'>
+        <text>635</text>
+        <text>654</text>
+      </view>
+      <view class='bottom-item'>
+        <text>56</text>
+        <text>58</text>
+      </view>
+    </view>
+  </view>
+</view>
