@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/intelligence/result/content/content",
     "pages/intelligence/result/result",
-    "pages/index/index",
+    
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",
     "pages/analog/analog",

@@ -6,15 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    school: {}
+    results: [],
+    chance: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     util.sendRequest("/wechat/applet/major/getmajorbyschool", options, "POST", true, function(res){
       console.log(res);
+      that.setData({
+        results: res.data,
+        chance: options.chance
+      });
     });
   },
 

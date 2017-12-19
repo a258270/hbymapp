@@ -90,8 +90,8 @@ Page({
   },
   toDetails: function(e) {
     var curId = e.currentTarget.id;
-    curId = curId.split("_");//id的格式为：院校id_专业id
-    var param = {SCHOOL_ID: curId[0], MAJOR_ID: curId[1]};
+    curId = curId.split("_");//id的格式为：院校id_专业id_chance
+    var param = {SCHOOL_ID: curId[0], MAJOR_ID: curId[1], chance: curId[2]};
 
     util.navigateTo("/pages/analog/result/content/content", param);
   }

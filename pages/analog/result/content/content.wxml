@@ -1,8 +1,8 @@
 <!--pages/analog/analogs/result/content/content.wxml-->
 <view class="page">
   <view class="page__hd">
-    <view class="page__title">河北师范大学</view>
-    <view class="page__desc">概率 10%</view>
+    <view class="page__title">{{results[0].NAME}}</view>
+    <view class="page__desc">概率 {{chance}}</view>
   </view>
   <view class="page_bd">
     <view class='center'>
@@ -13,20 +13,16 @@
     </view>
     <view class='bottom'>
       <view class='bottom-item'>
-        <text>2016</text>
-        <text>2015</text>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.YEAR_VALUE}}</text>
       </view>
       <view class='bottom-item'>
-        <text>635</text>
-        <text>654</text>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.MAXSCORE}}</text>
       </view>
       <view class='bottom-item'>
-        <text>635</text>
-        <text>654</text>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.MINSCORE}}</text>
       </view>
       <view class='bottom-item'>
-        <text>56</text>
-        <text>58</text>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.ENTERCOUNT}}</text>
       </view>
     </view>
   </view>
