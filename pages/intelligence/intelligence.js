@@ -6,13 +6,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    batch:['本一','本二'],
-    index:0
+    batch: [{ DIC_ID: 'hjj4e5vr0c', NAME: '本一' }, { DIC_ID: 'bdhsl11qtb', NAME: '本二' }],
+    index:0,
+    provinces: "",
+    subjecttypes: "",
+    properties: "",
+    majors: "",
+    provinces_id: "",
+    subjecttypes_id: "",
+    properties_id: "",
+    majors_id: "",
+    examinee: {},
+    arrangment_id: "hjj4e5vr0c"
   },
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
-    })
+    });
+    this.setData({
+      arrangment_id: batch[e.detail.value].DIC_ID
+    });
   },
   result:function(){
     util.navigateTo("/pages/intelligence/result/result")
@@ -50,7 +63,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
+      that.setData({
+        examinee: res
+      });
+    });
   },
 
   /**
@@ -86,5 +104,24 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  toProvince: function() {
+    var that = this;
+    util.navigateTo("../../../../intelligence/region/region", { provinces: that.data.provinces_id});
+  },
+  toSubjecttype: function() {
+    var that = this;
+    util.navigateTo("../../../../intelligence/mold/mold", {subjecttypes: that.data.subjecttypes_id});
+  },
+  toProperties: function() {
+    var that = this;
+    util.navigateTo("../../../../intelligence/attribute/attribute", { properties: that.data.properties_id });
+  },
+  toMajors: function() {
+    var that = this;
+    util.navigateTo("../../../../intelligence/major/major", { majors: that.data.majors_id, arrangment: that.data.arrangment_id });
+  },
+  toExaminee: function () {
+    util.navigateTo("/pages/person/information/information");
   }
 })

@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/intelligence/result/content/content",
     "pages/intelligence/result/result",
-    
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",
     "pages/analog/analog",
@@ -39,7 +38,8 @@
     "pages/activity/content/content",
     "pages/analog/content/content",
     "pages/analog/result/result",
-    "pages/analog/result/content/content"
+    "pages/analog/result/content/content",
+    "pages/intelligence/major/major"
   ],
   "window": {
     "backgroundTextStyle": "light",
