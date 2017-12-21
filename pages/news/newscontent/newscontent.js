@@ -49,6 +49,7 @@ Page({
            that.setData({
              content: news[i]
            })
+           
         } 
       }
   })

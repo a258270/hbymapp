@@ -1,29 +1,28 @@
 <!--pages/school/schoolcontent/schoolcontent.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
 <view class="banner">
-  <image src='../../../images/school-banner.png'></image>
+  <image src='/images/school-banner.png'></image>
 </view>
 <view class='logo'>
   <view class='logo-left'>
-     <image src="../../../images/10.png"></image>  
+     <image src="{{logo}}"></image>  
   </view>
   <view class='logo-right'>
     <view class='logo-text'>
-      <text>武汉大学</text> 
+      <text>{{name}}</text> 
     </view>
     <view class='logo-image'>
-      <image src='../../../images/zonghe.png'></image>
-      <text>官方网站</text>
-    </view> 
+      <image src="/images/zonghe.png"></image>
+    </view>
   </view>
 </view>
-<view class='line'></view>
-<view class='content'>
-  <view class='content-top'>
-    <image src="../../../images/jianjie.png"></image>
-    <text>院校介绍</text>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='contentshow'>
+    <view class="weui-cell__bd">学校简介</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </view>
-  <view class="content-center">
-    <text>北京大学创办于1898年，初名京师大学堂，是中国第一所国立综合性大学，也是当时中国最高教育行政机关。辛亥革命后，于1912年改为现名。</text>
+  <view class="{{showView?'show':'hide'}}">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}" />
   </view>
 </view>
 <view class='message'>
@@ -38,9 +37,18 @@
   </view>
   <view class="weui-tab__panel">
     <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-      <view class='top'>
-        <image src="../../../images/地址.png"></image>
-        <text>河北省  理科</text>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__hd">
+                <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd">河北省</view>
+            <view class="weui-cell__ft">
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='NAME'>
+                <view>{{array[index].NAME}}</view>
+            </picker>
+            </view>
+        </view>
       </view>
       <view class='center'>
         <view class='center-item'>年份</view>
@@ -75,34 +83,30 @@
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
       <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">学校类别</view>
-        <view class="weui-cell__ft">公立</view>
+        <view class="weui-cell__ft">{{types}}</view>
       </view>
       <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd">所在地</view>
-          <view class="weui-cell__ft ">湖北省</view>
-      </view>
-      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">学校类型</view>
-        <view class="weui-cell__ft"><image src="../../../images/zonghe.png"></image></view>
+          <view class="weui-cell__ft ">{{region}}</view>
       </view>
       <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd">创建时间</view>
-          <view class="weui-cell__ft ">1985年</view>
+          <view class="weui-cell__ft ">{{date}}</view>
       </view>
       <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd">隶属于</view>
-          <view class="weui-cell__ft ">教育部</view>
-      </view>
-      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">学校属性</view>
-          <view class="weui-cell__ft "></view>
+          <view class="weui-cell__ft ">{{subject}}</view>
       </view>
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 2}}">  
       <view class='top'>
-        <image src="../../../images/tb20.png"></image>
+        <image src="/images/tb20.png"></image>
         <text>院系与专业</text>
+      </view>
+      <view>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
     </view>
   </view>
 </view>
+<view class="blank"></view>

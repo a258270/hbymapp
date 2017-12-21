@@ -1,4 +1,5 @@
 /* pages/school/schoolcontent/schoolcontent.wxss */
+@import '/wxParse/wxParse.wxss';
 page{
   background-color:#EEEEEE;
 }
@@ -40,6 +41,7 @@ page{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 .logo-image{
   
@@ -91,6 +93,9 @@ page{
 }
 .content-center{
   font-size:28rpx;
+  width:100%;
+  height:200rpx;
+  overflow: hidden;
 }
 .message{
   width:92%;
@@ -169,4 +174,20 @@ page{
 .weui-cell__ft image{
   width:80rpx;
   height:40rpx;
+}
+.types{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.blank{
+  width:100%;
+  height:200rpx;
+}
+.show{
+  display: block
+}
+.hide{
+  display: none
 }

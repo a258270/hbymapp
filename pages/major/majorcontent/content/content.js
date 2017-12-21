@@ -1,4 +1,6 @@
 // pages/major/majorcontent/content/content.js
+var util=require("../../../../utils/util")
+var WxParse = require('../../../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -12,7 +14,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    var id=options.a;
+    console.log(id)
+    util.sendRequest("/wechat/applet/major/getmajordetails", { MAJOR_ID:id},"POST",true,function(res){
+      that.setData({
+        name: res.NAME,
+        code: res.CODE,
+        subject: res.hasClasses 
+      })
+      var article = res.SUMMARY
+       WxParse.wxParse('article', 'html', article, that, 5);
+      
+    })
   },
 
   /**

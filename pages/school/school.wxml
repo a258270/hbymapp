@@ -90,7 +90,7 @@
 <!-- 院校列表 -->
 <block wx:for="{{schools}}" wx:key="SCHOOL_ID" wx:for-item="school"> 
   <view class="flex-wrps">
-    <navigator url="schoolcontent/schoolcontent" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap='school' data-id="{{school.SCHOOL_ID}}">
       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
         <image class="weui-media-box__thumb" src="{{school.HEADURL}}" />
       </view>
@@ -106,7 +106,7 @@
           <image wx:for="{{school.subjecttypes}}" wx:key="" class='icon-subjecttype' src="../../images/icon/{{item.DIC_ID}}.png"></image>
         </view>  
       </view>
-    </navigator>
+    </view>
   </view> 
 </block>
 <view class="weui-loadmore" hidden='{{!isLoadingMore}}'>

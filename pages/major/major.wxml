@@ -11,30 +11,34 @@
     </view>
     <view class="weui-tab__panel">
       <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-        <view class="content1">
-          <view class='item'>
-            <view class="item-1" bindtap='show'>
-              <text>哲学</text>
-              <view class='arrow'></view>
+        <block wx:for="{{major}}" wx:key="" wx:for-item="major" >
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='show' data-id="{{major.DIC_ID}}">
+                <view class="weui-cell__bd">{{major.NAME}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access {{!major.checked ? '': 'rotate_90'}}"></view>
             </view>
-            <navigator url='../../../majorcontent/majorcontent' class="item-2 {{show?'show':'hide'}}">
-              <text>哲学</text>
-            </navigator> 
-          </view>
+            <view class="weui-cell weui-cell_access childs" hover-class="weui-cell_active" hidden="{{!major.checked}}" wx:for="{{major.childs}}" wx:key="" wx:for-item="majors" bindtap="toDetails" data-id="{{majors.DIC_ID}}">
+              <view class="weui-cell__bd">{{majors.NAME}}</view>
+              <view class="weui-cell__ft"></view>
+            </view>
         </view>
+        </block>
       </view>
       <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-        <view class="content1">
-          <view class='item'>
-            <view class="item-1" bindtap='show'>
-              <text>农林畜牧业</text>
-              <view class='arrow'></view>
+        <block wx:for="{{zmajor}}" wx:key="" wx:for-item="zmajor" >
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='zshow' data-id="{{zmajor.DIC_ID}}">
+                <view class="weui-cell__bd">{{zmajor.NAME}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access {{!zmajor.checked ? '': 'rotate_90'}}"></view>
             </view>
-            <navigator url='../../../majorcontent/majorcontent' class="item-2 {{show?'show':'hide'}}">
-              <text>哲学</text>
-            </navigator> 
-          </view>
+            <view class="weui-cell weui-cell_access childs" hover-class="weui-cell_active" hidden="{{!zmajor.checked}}" wx:for="{{zmajor.childs}}" wx:key="" wx:for-item="zmajors" bindtap="toDetail" data-id="{{zmajors.DIC_ID}}">
+              <view class="weui-cell__bd">{{zmajors.NAME}}</view>
+              <view class="weui-cell__ft"></view>
+            </view>
         </view>
+        </block>  
       </view>
       </view>
     </view>

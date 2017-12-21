@@ -1,4 +1,6 @@
 // pages/school/schoolcontent/schoolcontent.js
+var util=require("../../../utils/util")
+var WxParse = require('../../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -6,7 +8,18 @@ Page({
    */
   data: {
     tabs: ["往年分数线", "基本信息","院系与专业"],
-    activeIndex: 0
+    activeIndex: 0,
+    index: 0,
+    ckecked:true,
+    icon:"/images/地址.png"
+
+  },
+  bindPickerChange: function (e) {
+    var that=this
+    that.setData({
+      index: e.detail.value
+    })
+    
   },
   tabClick: function (e) {
     this.setData({
@@ -17,9 +30,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this
+    var id=options.a
+    util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
+      that.setData({
+        logo: util.setStaticUrl(res.HEADURL),
+        name: res.NAME,
+        region: res.PROVINCE_VALUE,
+        types: res.SCTYPE_VALUE,
+        date:res.CREATEDATE,
+        subject:res.SUBJECTION
+      })
+    })
+    util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){
+      var article=res.CONTENT;
+      WxParse.wxParse('article', 'html', article, that, 5);
+    })
+    util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
+      var content = res.CONTENT;
+      WxParse.wxParse('content', 'html', content, that, 5);
+    })
+    util.sendRequest("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
+      console.log(res.data)
+      that.setData({
+        array:res.data
+      })
+    })
   },
-
+  contentshow:function(){
+    var that=this
+    that.setData({
+      showView: (!that.data.showView)
+    })
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

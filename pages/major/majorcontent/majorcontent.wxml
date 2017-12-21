@@ -1,7 +1,9 @@
 <!--pages/major/majorcontent/majorcontent.wxml-->
 <view class="weui-cells weui-cells_after-title">
-  <navigator url="../../major/majorcontent/content/content" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">机械工程</view>
+  <block wx:for="{{major}}" wx:key="">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{item.DIC_ID}}" bindtap="content">
+      <view class="weui-cell__bd">{{item.NAME}}</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
+  </view>
+  </block>
 </view>

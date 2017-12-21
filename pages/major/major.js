@@ -1,4 +1,5 @@
 // pages/major/major.js
+var util=require("../../utils/util")
 var sliderWidth = 96;
 Page({
 
@@ -9,25 +10,29 @@ Page({
   data: {
     tabs: ["本科", "专科"],
     activeIndex: 0,
-    show:true,
+    checked:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    show: (options.show== "true" ? true : false)
+    var that=this;
+    util.sendRequest("/wechat/applet/major/getmajorlibrary", { CODE:"BMAJOR"},"POST",true,function(res){
+      that.setData({
+        major:res.data
+      })
+    })
+    util.sendRequest("/wechat/applet/major/getmajorlibrary", { CODE: "ZMAJOR" }, "POST", true, function (res) {
+      that.setData({
+        zmajor: res.data
+      })
+    })
   },
   tabClick: function (e) {
     this.setData({
       activeIndex: e.currentTarget.id
     });
-  },
-  show: function () {
-    var that = this;
-    that.setData({
-      show: (!that.data.show)
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,5 +81,45 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  show: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.major;
+    results.forEach(function (element) {
+      if (element.DIC_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      major: results
+    })
+  },
+  zshow: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.zmajor;
+    results.forEach(function (element) {
+      if (element.DIC_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      zmajor: results
+    })
+  },
+  toDetails: function (e) {
+    var curId = e.currentTarget.dataset.id;
+    util.navigateTo("/pages/major/majorcontent/majorcontent", {a:curId});
+  },
+  toDetail: function (e) {
+    var curId = e.currentTarget.dataset.id;
+    util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId });
   }
 })

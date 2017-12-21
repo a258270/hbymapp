@@ -16,8 +16,7 @@ Page({
     var that=this
     var id=options.a;
     util.sendRequest("/wechat/applet/news/getnewsbyid",{ NEWS_ID:id },"POST",false,function(res){
-      console.log(res)
-      var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
+      var imgReg = new RegExp("<img.*?src\\s*=\\s*(.*?)[^>]*?>", "ig");
       var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
       var article=res.CONTENT;
       res.MODIFYTIME = util.formatTime(new Date(res.MODIFYTIME))
@@ -31,7 +30,7 @@ Page({
       srcs.forEach(function (element) {
         article = article.replace(element, util.setStaticUrl(element));
       });
-      WxParse.wxParse('article', 'html', article, that, 10);
+      WxParse.wxParse('article', 'html', article, that, 20);
       that.setData({
         content: res
       })

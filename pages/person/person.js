@@ -96,9 +96,7 @@ Page({
           that.setData({
             logo2: util.setStaticUrl(res.complete.HEADURL),
             completeCount2: res.completeCount,
-            nickname2: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
-            examScore2: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
-            valiablePocket2: res.pocket.BALANCE ? res.pocket.BALANCE : 0
+            nickname2: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无"
           })
         })
       }
@@ -107,9 +105,6 @@ Page({
           role:res.data
         })
       })
-    that.setData({
-      role: res.data
-    })
     })
   },
   /**

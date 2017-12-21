@@ -1,5 +1,5 @@
 /* pages/analog/analogs/content/content.wxss */
-heckbox-group{
+checkbox-group{
   margin-top:20rpx;
 }
 .service_selection {    

@@ -1,5 +1,5 @@
 <!--pages/analog/analogs/content/content.wxml-->
-<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+<view class="page">
     <view class="page__bd">
       <view class="weui-cells weui-cells_after-title">
           <checkbox-group bindchange="checkboxChange">

@@ -1,35 +1,32 @@
 <!--pages/major/majorcontent/content/content.wxml-->
+<import src="/wxParse/wxParse.wxml" />
 <view class='page'>
   <view class='content'>
     <view class='top'>
-      <image src="../../../../../images/基本信息.png"></image>
+      <image src="/images/基本信息.png"></image>
       <text>基本信息</text>
     </view>
     <view class='center'>
-      <text>专业名称：　工业设计</text>
-      <text>专业代码：　08025f</text>
-      <text>专业热度：　</text>
+      <text>专业名称：　{{name}}</text>
+      <text>专业代码：　{{code}}</text>
     </view>
   </view>
   <view class='content'>
     <view class='top'>
-      <image src="../../../../../images/专业.png"></image>
+      <image src="/images/专业.png"></image>
       <text>专业介绍</text>
     </view>
     <view class='center'>
-      <text class="text">目标：本专业培养具有一定马克思主义哲学理论素养和系统的专业基础知识，有进一步培养潜质的哲学专门人才，以及能在国家机关、文教事业、新闻出版、企业等部门从事实际工作的应用型、复合型高级专门人才。
-      </text>
-      <text class='texts'>[更多]</text>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
   </view>
   <view class='content'>
     <view class='top'>
-      <image src="../../../../../images/课程.png"></image>
+      <image src="/images/课程.png"></image>
       <text>主要课程</text>
     </view>
     <view class='center'>
-      <text>哲学概论、马克思主义哲学原理、中国哲学史、西方哲学史、科学技术哲学、伦理学、宗教学、美学、逻辑学、心理学、中外哲学原著导读
-      </text>
+      {{subject}}
     </view>
   </view>
 </view>

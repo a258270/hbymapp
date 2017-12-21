@@ -1,11 +1,6 @@
 <!--pages/person/security/phone/phone.wxml-->
 <view class='page'>
 <form bindsubmit="formSubmit">
-<!-- <view class="page__hd">
-  <view class="page__desc">1.我们对您的信息绝对保密</view>
-  <view class="page__desc">2.认证可以提高信誉</view>
-  <view class="page__desc">3.认证完全免费，认证成功后不可修改</view>
-</view> -->
 <view class="page__bd">
 <view class="weui-cells__title">1.绑定手机即可直接通过短信安全验证进行操作</view>
 <view class="weui-cells__title">2.更改手机是，请通过安全验证的重新输入新手机号码</view>

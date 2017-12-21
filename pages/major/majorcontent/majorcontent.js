@@ -1,4 +1,5 @@
 // pages/major/majorcontent/majorcontent.js
+var util=require("../../../utils/util.js")
 Page({
 
   /**
@@ -12,9 +13,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this
+    var id = options.a
+    util.sendRequest("/wechat/applet/major/getmajorbyfatherid", {MAJOR_ID:id},"POST",true,function(res){
+      that.setData({
+        major:res.data
+      })
+    })
   },
-
+  content:function(e){
+    var curId = e.currentTarget.dataset.id;
+    util.navigateTo("/pages/major/majorcontent/content/content", { a: curId });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

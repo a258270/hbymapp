@@ -8,18 +8,6 @@ Page({
   data: {
   
   },
-  toDto: function (list) {
-    if (!list) return list;
-    list.forEach(function (obj) {
-      if (obj.IMGURL) {
-        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
-      }
-      if (obj.MODIFYTIME) {
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
-      }
-    });
-    return list;
-  },
   activity:function(e){
     var a = e.currentTarget.dataset.id
     util.navigateTo('../activity/content/content', { a: a })
