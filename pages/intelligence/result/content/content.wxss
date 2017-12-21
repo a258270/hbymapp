@@ -1,4 +1,4 @@
-/* pages/intelligence/result/content/content.wxss */
+/* pages/analog/analogs/result/content/content.wxss */
 .top{
   width:96%;
   margin-left:4%;

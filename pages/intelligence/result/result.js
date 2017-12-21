@@ -8,7 +8,7 @@ Page({
    */
   data: {
     tabs: ["冲", "稳", "保","垫"],
-    activeIndex: 1,
+    activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
     listChong: [],
@@ -21,7 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -135,5 +134,76 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showChong: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.listChong;
+    results.forEach(function (element) {
+      if (element.SCHOOL_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      listChong: results
+    })
+  },
+  showWen: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.listWen;
+    results.forEach(function (element) {
+      if (element.SCHOOL_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      listWen: results
+    })
+  },
+  showBao: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.listBao;
+    results.forEach(function (element) {
+      if (element.SCHOOL_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      listBao: results
+    })
+    
+  },
+  showDian: function (e) {
+    var that = this;
+    var curId = e.currentTarget.dataset.id;
+    var results = that.data.listDian;
+    results.forEach(function (element) {
+      if (element.SCHOOL_ID == curId) {
+        if (element.checked)
+          element.checked = false;
+        else
+          element.checked = true;
+      }
+    });
+    that.setData({
+      listDian: results
+    })
+  },
+  toDail:function(e){
+    var curId = e.currentTarget.id;
+    curId = curId.split("_");
+    var param = { SCHOOL_ID: curId[0], MAJOR_ID: curId[1]};
+    util.navigateTo("/pages/intelligence/result/content/content", param);
   }
 })

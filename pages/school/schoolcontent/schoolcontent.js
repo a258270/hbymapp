@@ -9,18 +9,13 @@ Page({
   data: {
     tabs: ["往年分数线", "基本信息","院系与专业"],
     activeIndex: 0,
-    index: 0,
+    num:1,
+    index:0,
     ckecked:true,
-    icon:"/images/地址.png"
-
+    icon:"/images/地址.png",
+    array:[]
   },
-  bindPickerChange: function (e) {
-    var that=this
-    that.setData({
-      index: e.detail.value
-    })
-    
-  },
+ 
   tabClick: function (e) {
     this.setData({
       activeIndex: e.currentTarget.id
@@ -39,7 +34,8 @@ Page({
         region: res.PROVINCE_VALUE,
         types: res.SCTYPE_VALUE,
         date:res.CREATEDATE,
-        subject:res.SUBJECTION
+        subject:res.SUBJECTION,
+        school_id:res.SCHOOL_ID
       })
     })
     util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){
@@ -56,6 +52,11 @@ Page({
         array:res.data
       })
     })
+    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc'}, "POST", true, function (res) {
+      that.setData({
+        grade: res.data
+      })
+    })
   },
   contentshow:function(){
     var that=this
@@ -63,6 +64,19 @@ Page({
       showView: (!that.data.showView)
     })
     
+  },
+  bindPickerChange: function (e) {
+    var that = this
+    var a = e.currentTarget.dataset.id
+    var id = that.data.array[e.detail.value].DIC_ID
+    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID : a, MAJORTYPE_ID : id },"POST",true,function(res){
+      that.setData({
+        grade:res.data
+      })
+    })
+    that.setData({
+      num: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

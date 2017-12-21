@@ -44,8 +44,8 @@
             </view>
             <view class="weui-cell__bd">河北省</view>
             <view class="weui-cell__ft">
-              <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='NAME'>
-                <view>{{array[index].NAME}}</view>
+              <picker bindchange="bindPickerChange" value="{{num}}" range="{{array}}" range-key='NAME' data-id="{{school_id}}" id="{{array[num].DIC_ID}}">
+                <view>{{array[num].NAME}}</view>
             </picker>
             </view>
         </view>
@@ -57,28 +57,25 @@
         <view class='center-item'>最低分</view>
         <view class='center-item'>招生人数</view>
       </view>
+      <block wx:for="{{grade}}" wx:key="">
       <view class='bottom'>
         <view class='bottom-item'>
-          <text>2016</text>
-          <text>2015</text>
+          <text>{{item.YEAR_VALUE}}</text>
         </view>
         <view class='bottom-item'>
-          <text>本一</text>
-          <text>本二</text>
+          <text>{{item.ARRANGMENT_VALUE}}</text>
         </view>
         <view class='bottom-item'>
-          <text>635</text>
-          <text>654</text>
+          <text>{{item.MAXSCORE}}</text>
         </view>
         <view class='bottom-item'>
-          <text>635</text>
-          <text>654</text>
+          <text>{{item.MINSCORE}}</text>
         </view>
         <view class='bottom-item'>
-          <text>56</text>
-          <text>58</text>
+          <text>{{item.ENTERCOUNT}}</text>
         </view>
       </view>
+      </block>
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
       <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
