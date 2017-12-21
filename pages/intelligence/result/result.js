@@ -49,6 +49,8 @@ Page({
         listBao: listBaoOut,
         listDian: listDianOut
       });
+
+      console.log(that.data.listChong);
     });
   },
   groupBySchool: function(list) {
@@ -61,10 +63,13 @@ Page({
     setObj.forEach(function (element) {
       var school = {};
       school.NAME = element.NAME;
-      school.SCHOOL_ID = element.SCHOOL_ID;
+      school.SCHOOL_ID = element;
       school.majors = [];
       list.forEach(function (arrObj) {
-        if (element.SCHOOL_ID == arrObj.SCHOOL_ID) {
+        if (element == arrObj.SCHOOL_ID) {
+          if(!school.NAME) {
+            school.NAME = arrObj.NAME;
+          }
           var major = {};
           major.MJNAME = arrObj.MJNAME;
           major.MAJOR_ID = arrObj.MAJOR_ID;
