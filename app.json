@@ -39,12 +39,8 @@
     "pages/analog/content/content",
     "pages/analog/result/result",
     "pages/analog/result/content/content",
-<<<<<<< HEAD
-    "pages/chatroom/chatroom"
-    
-=======
+    "pages/chatroom/chatroom",
     "pages/intelligence/major/major"
->>>>>>> 817c2df229b3955f7ed1cd8789eb7abce2d295ca
   ],
   "window": {
     "backgroundTextStyle": "light",
