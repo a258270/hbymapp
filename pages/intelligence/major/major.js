@@ -1,4 +1,4 @@
-// pages/intelligence/region/region.js
+// pages/intelligence/major/major.js
 var util = require('../../../utils/util.js');
 Page({
 
@@ -6,68 +6,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-    anyChecked: false
+    anyChecked: false,
+    majors: []
   },
   serviceValChange: function (e) {
     var strRes = "";
     var strResId = "";
-    var style = this.data.style;
+    var majors = this.data.majors;
     var checkArr = e.detail.value;
     if (checkArr.length > 0 && checkArr[checkArr.length - 1] == "-1") {
       this.noneSelected();
       return false;
     }
-    for (var i = 0; i < style.length; i++) {
+    for (var i = 0; i < majors.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
-        style[i].checked = true;
-        strRes += style[i].NAME + ",";
-        strResId += style[i].DIC_ID + ",";
+        majors[i].checked = true;
+        strRes += majors[i].NAME + ",";
+        strResId += majors[i].DIC_ID + ",";
       } else {
-        style[i].checked = false;
+        majors[i].checked = false;
       }
     }
-
-    if(strRes != "") strRes = strRes.substring(0, strRes.length - 1);
+    if (strRes != "") strRes = strRes.substring(0, strRes.length - 1);
     if (strResId != "") strResId = strResId.substring(0, strResId.length - 1);
 
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
 
-    prevPage.data["provinces"] = strRes;
-    prevPage.data["provinces_id"] = strResId;
+    prevPage.data["majors"] = strRes;
+    prevPage.data["majors_id"] = strResId;
     prevPage.setData(prevPage.data);
     this.setData({
-      style: style,
+      majors: majors,
       anyChecked: false
     });
   }, 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options);
-    var that=this;
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
-      
-      if (options.provinces && options.provinces != "") {
-        var arr = options.provinces.split(",");
-        res.data.forEach(function(element){
-          for(var i = 0; i < arr.length; i++) {
-            if(element.DIC_ID == arr[i]) {
+  onLoad: function (options) {//当前智能推荐只有本一和本二，所以不做专科校验
+    var that = this;
+    //CODE直接写本科专业
+    util.sendRequest('/wechat/applet/major/getmajorsbyarrangment', {CODE: 'BMAJOR'}, 'POST', false, function(res){
+      if (options.majors && options.majors != "") {
+        var arr = options.majors.split(",");
+        res.data.forEach(function (element) {
+          for (var i = 0; i < arr.length; i++) {
+            if (element.DIC_ID == arr[i]) {
               element.checked = true;
               break;
             }
           }
         });
       }
-      else{
+      else {
         that.setData({
           anyChecked: true
         });
       }
-
       that.setData({
-        style: res.data
+        majors: res.data
       });
     });
   },
@@ -120,22 +118,22 @@ Page({
   onShareAppMessage: function () {
   
   },
-  noneSelected: function() {
+  noneSelected: function () {
     var that = this;
-    var style = that.data.style;
-    
-    for (var i = 0; i < style.length; i++) {
-      style[i].checked = false;
+    var majors = that.data.majors;
+
+    for (var i = 0; i < majors.length; i++) {
+      majors[i].checked = false;
     }
     that.setData({
       anyChecked: true,
-      style: style
+      majors: majors
     });
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
 
-    prevPage.data["provinces"] = "";
-    prevPage.data["provinces_id"] = "";
+    prevPage.data["majors"] = "";
+    prevPage.data["majors_id"] = "";
     prevPage.setData(prevPage.data);
   }
 })

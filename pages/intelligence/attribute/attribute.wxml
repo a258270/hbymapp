@@ -1,11 +1,13 @@
 <!--pages/intelligence/attribute/attribute.wxml-->
 <checkbox-group bindchange="serviceValChange">  
-  <view class="service_selection">  
+  <view class="service_selection">
+    <label class="checkbox {{anyChecked?'is_checked':''}}" >  
+      <checkbox value="-1" checked="{{anyChecked}}" hidden="false" />不限  
+    </label>
     <block wx:for="{{attribute}}" wx:key="NAME">   
         <label class="checkbox {{item.checked?'is_checked':''}}">  
-          <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+          <checkbox value="{{index}}" checked="{{item.checked}}" hidden="false" />{{item.NAME}}  
         </label>    
     </block>  
   </view>  
 </checkbox-group>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>

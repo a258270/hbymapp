@@ -6,21 +6,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    anyChecked: false
   },
   serviceValChange: function (e) {
+    var strRes = "";
+    var strResId = "";
     var mold = this.data.mold;
     var checkArr = e.detail.value;
+    if (checkArr.length > 0 && checkArr[checkArr.length - 1] == "-1") {
+      this.noneSelected();
+      return false;
+    }
     for (var i = 0; i < mold.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
         mold[i].checked = true;
+        strRes += mold[i].NAME + ",";
+        strResId += mold[i].DIC_ID + ",";
       } else {
         mold[i].checked = false;
       }
     }
+    if (strRes != "") strRes = strRes.substring(0, strRes.length - 1);
+    if (strResId != "") strResId = strResId.substring(0, strResId.length - 1);
+
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];  //上一个页面
+
+    prevPage.data["subjecttypes"] = strRes;
+    prevPage.data["subjecttypes_id"] = strResId;
+    prevPage.setData(prevPage.data);
     this.setData({
-      mold: mold
-    })
+      mold: mold,
+      anyChecked: false
+    });
   }, 
   /**
    * 生命周期函数--监听页面加载
@@ -28,6 +46,23 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      if (options.subjecttypes && options.subjecttypes != "") {
+        var arr = options.subjecttypes.split(",");
+        res.data.forEach(function (element) {
+          for (var i = 0; i < arr.length; i++) {
+            if (element.DIC_ID == arr[i]) {
+              element.checked = true;
+              break;
+            }
+          }
+        });
+      }
+      else {
+        that.setData({
+          anyChecked: true
+        });
+      }
+
       that.setData({
         mold: res.data
       })
@@ -81,5 +116,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  noneSelected: function () {
+    var that = this;
+    var mold = that.data.mold;
+
+    for (var i = 0; i < mold.length; i++) {
+      mold[i].checked = false;
+    }
+    that.setData({
+      anyChecked: true,
+      mold: mold
+    });
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];  //上一个页面
+
+    prevPage.data["subjecttypes"] = "";
+    prevPage.data["subjecttypes_id"] = "";
+    prevPage.setData(prevPage.data);
   }
 })
