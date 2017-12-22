@@ -18,7 +18,7 @@ Page({
   data: {
     ruser_id: "",
     chatRecords: [],
-
+    suser_id: "",
 
     chatMsg: [],
     emojiStr: '',
