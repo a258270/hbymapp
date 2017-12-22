@@ -27,6 +27,18 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+var getCurrentTime = function () {
+  return formatTime(Date.parse(new Date()));
+}
+
+var getCurrentDate = function () {
+  return formatDate(Date.parse(new Date()));
+}
+
+var getCurrentTimestamp = function () {
+  return Date.parse(new Date());
+}
+
 /**
  * 格式化数字，单数字格式为：0X
  */
@@ -63,9 +75,9 @@ var login = function () {
           if (!obj.isCompleted) {
             toComplete();
           }
-          else{
+          else {
             //完成关联信息
-            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function(res){
+            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (res) {
               setInfoToStorage("user_id", res.user_id);
               getApp().startSocket();
             });
@@ -125,7 +137,7 @@ var getBaseUrl = function () {
  */
 var uploadFile = function (url, file, name, formData, loadingType, successFn, errorFn, completeFn) {
   wx.checkSession({
-    success: function() {
+    success: function () {
       var session_id = getSessionId();//本地取存储的sessionID
       if (session_id) {
         var header = { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': 'new.cookie.id=' + session_id };
@@ -196,7 +208,7 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
       login();
     }
   });
-  
+
 }
 
 /**
@@ -396,7 +408,7 @@ var reLaunch = function (url, param, successFn, failFn, completeFn) {
 /**
  * 将param以get形式添加到url中
  */
-var setParamToUrl = function(url, param){
+var setParamToUrl = function (url, param) {
   if (param) {
     var attrArr = Object.keys(param);
     if (attrArr) {
@@ -412,7 +424,7 @@ var setParamToUrl = function(url, param){
   return url;
 }
 
-var setStaticUrl = function(url) {
+var setStaticUrl = function (url) {
   return baseurl.content + url;
 }
 
@@ -420,13 +432,13 @@ var setStaticUrl = function(url) {
  * 确认框
  * option为配置对象
  */
-var confirm = function(option) {
+var confirm = function (option) {
   var title = option.title ? option.title : "提示";
-  var content = option.content ? option.content: "";
-  var confirmText = option.confirmText ? option.confirmText: "确认";
-  var cancleText = option.cancleText ? option.cancleText: "取消";
-  var confirmFn = option.confirmFn ? option.confirmFn : function(){};
-  var cancleFn = option.cancleFn ? option.cancleFn : function(){};
+  var content = option.content ? option.content : "";
+  var confirmText = option.confirmText ? option.confirmText : "确认";
+  var cancleText = option.cancleText ? option.cancleText : "取消";
+  var confirmFn = option.confirmFn ? option.confirmFn : function () { };
+  var cancleFn = option.cancleFn ? option.cancleFn : function () { };
   wx.showModal({
     title: title,
     content: content,
@@ -443,11 +455,25 @@ var confirm = function(option) {
 }
 
 var switchTab = function (options) {
-  options.url = options.url? options.url : "";
-  options.successFn = options.successFn? options.successFn : function(){};
+  options.url = options.url ? options.url : "";
+  options.successFn = options.successFn ? options.successFn : function () { };
   options.failFn = options.failFn ? options.failFn : function () { };
   options.completeFn = options.completeFn ? options.completeFn : function () { };
   wx.switchTab(options);
+}
+
+var getUUID = function () {
+  var s = [];
+  var hexDigits = "0123456789abcdef";
+  for (var i = 0; i < 36; i++) {
+    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+  }
+  s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+  s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+  s[8] = s[13] = s[18] = s[23] = "-";
+
+  var uuid = s.join("");
+  return uuid;
 }
 var parseEmoji = function (msg) {
   if (typeof Emoji === 'undefined' || typeof Emoji.map === 'undefined') {
@@ -606,5 +632,11 @@ module.exports = {
   confirm: confirm,
   switchTab: switchTab,
   getSessionId: getSessionId,
+  getUUID: getUUID,
+  getCurrentTimestamp: getCurrentTimestamp,
+  getCurrentTime: getCurrentTime,
+  getCurrentDate: getCurrentDate,
+  EmojiObj: EmojiObj,
+  Emoji: Emoji,
   parseEmoji: parseEmoji
 }
