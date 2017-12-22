@@ -40,7 +40,8 @@
     "pages/analog/result/result",
     "pages/analog/result/content/content",
     "pages/chatroom/chatroom",
-    "pages/intelligence/major/major"
+    "pages/intelligence/major/major",
+    "pages/person/tbasics/basics"
   ],
   "window": {
     "backgroundTextStyle": "light",

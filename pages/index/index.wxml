@@ -14,7 +14,7 @@
     <image class="tpia" src='../../images/consultation.png'></image> 
     <view class='navigation-text'>院校咨询</view>
   </view>
-  <view class='navigation' bindtap="teacher">
+  <view class='navigation'>
     <image class="tpia" src='../../images/guidance.png'></image> 
     <view class='navigation-text'>名师指导</view>
   </view>

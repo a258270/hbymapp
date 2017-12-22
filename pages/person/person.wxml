@@ -73,7 +73,7 @@
   </view>
 </view>
 </view>
-<view wx:if="{{role==2}}">
+<view wx:elif="{{role==2}}">
   <view class="head" style="background-image:url('/images/banner.png'); background-repeat:round">
   <view class="head-left">
     <view class='image'><image src="{{logo2}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
@@ -90,7 +90,7 @@
   <view class="weui-panel__bd">
       <view class="weui-media-box weui-media-box_small-appmsg">
           <view class="weui-cells weui-cells_in-small-appmsg">
-              <navigator url="../person/tbasics/tbasics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="/pages/person/tbasics/tbasics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="/images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>基础信息</view>
