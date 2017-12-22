@@ -39,9 +39,6 @@ Page({
   consultation:function(){
     utils.navigateTo("../consult/consult")
   },
-  teacher:function(){
-    utils.navigateTo("../teacher/teacher")
-  },
   analog:function(){
     utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
       if(res.data) {//是vip
