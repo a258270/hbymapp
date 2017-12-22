@@ -53,6 +53,12 @@ Page({
     util.sendRequest("/wechat/applet/chat/getchatrecs", {USER_ID: options.user_id}, "POST", true, function(res){
       if(res.chatRecords) {
         res.chatRecords.forEach(function(element){
+          if(element.SUSER_ID == that.data.suser_id) {
+            element.style = 'self';
+          }
+          else{
+            element.style = 'msg';
+          }
           if(element.CONTENT) {
             element.CONTENT = util.parseEmoji(element.CONTENT);
           }
@@ -74,7 +80,8 @@ Page({
               SUSER_ID: that.data.suser_id,
               RUSER_ID: that.data.ruser_id,
               ISREAD: true,
-              CREATETIME: util.getCurrentTimestamp()
+              CREATETIME: util.getCurrentTimestamp(),
+              style: "msg"
             }
 
             record.CONTENT = util.parseEmoji(recArr[1]);
@@ -128,7 +135,8 @@ Page({
         SUSER_ID: that.data.suser_id,
         RUSER_ID: that.data.ruser_id,
         ISREAD: true,
-        CREATETIME: util.getCurrentTimestamp()
+        CREATETIME: util.getCurrentTimestamp(),
+        style: "self"
       }
 
       record.CONTENT = util.parseEmoji(that.data.userMessage);
