@@ -21,7 +21,7 @@
         <view class="msg">
            <view wx:if="{{ item.type == 'txt' || item.type == 'emoji' }}"> 
             <view class="template" wx:for="{{ item.CONTENT }}" wx:key="">
-              <template is="{{ item.type }}" data="{{ item }}"/>
+              <template is="{{ item.CONTENT.type }}" data="{{ item }}"/>
             </view>
            </view> 
         </view>

@@ -51,15 +51,14 @@ Page({
     });
     
     util.sendRequest("/wechat/applet/chat/getchatrecs", {USER_ID: options.user_id}, "POST", true, function(res){
-      console.log(res);
       if(res.chatRecords) {
         res.chatRecords.forEach(function(element){
-          if (element.SUSER_ID == that.data.suser_id) element.style = "self";
-          else element.style = "msg";
-
-          element.type = "txt";
+          if(element.CONTENT) {
+            element.CONTENT = util.parseEmoji(element.CONTENT);
+          }
         });
       }
+      console.log(res.chatRecords);
       that.setData({
         complete_tea: res.complete_tea,
         chatRecords: res.chatRecords
@@ -75,11 +74,10 @@ Page({
               SUSER_ID: that.data.suser_id,
               RUSER_ID: that.data.ruser_id,
               ISREAD: true,
-              CONTENT: recArr[1],
-              CREATETIME: util.getCurrentTimestamp(),
-              style: "msg",
-              type: "txt"
+              CREATETIME: util.getCurrentTimestamp()
             }
+
+            record.CONTENT = util.parseEmoji(recArr[1]);
 
             var chatRecords = that.data.chatRecords;
             chatRecords.push(record);
@@ -130,12 +128,10 @@ Page({
         SUSER_ID: that.data.suser_id,
         RUSER_ID: that.data.ruser_id,
         ISREAD: true,
-        CONTENT: that.data.userMessage,
-        CREATETIME: util.getCurrentTimestamp(),
-        style: "self",
-        type: "txt"
+        CREATETIME: util.getCurrentTimestamp()
       }
 
+      record.CONTENT = util.parseEmoji(that.data.userMessage);
       var chatRecords = that.data.chatRecords;
       chatRecords.push(record);
 

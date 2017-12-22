@@ -510,7 +510,6 @@ var parseEmoji = function (msg) {
         objList.push(obj)
       }
     }
-    console.log(objList)
     return objList;
   }
 }
