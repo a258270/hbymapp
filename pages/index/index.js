@@ -34,9 +34,7 @@ Page({
   },
   onReady: function () {
     //utils.showSuccess();
-    wx.setNavigationBarTitle({
-      title: '当前页面'
-    })
+    
   },
   consultation:function(){
     utils.navigateTo("../consult/consult")

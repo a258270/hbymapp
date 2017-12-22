@@ -19,7 +19,8 @@ Page({
     ruser_id: "",
     chatRecords: [],
     suser_id: "",
-    complete_tea: {},
+    complete_info: {},
+    role: 0,
 
     emoji: util.Emoji,
     emojiObj: util.EmojiObj,
@@ -59,53 +60,77 @@ Page({
       suser_id: util.getInfoFromStorage("user_id")
     });
     
-    util.sendRequest("/wechat/applet/chat/getchatrecs", {USER_ID: options.user_id}, "POST", true, function(res){
-      if(res.chatRecords) {
-        res.chatRecords.forEach(function(element){
-          if(element.SUSER_ID == that.data.suser_id) {
-            element.style = 'self';
-          }
-          else{
-            element.style = 'msg';
-          }
-          if(element.CONTENT) {
-            element.CONTENT = util.parseEmoji(element.CONTENT);
-          }
-        });
-      }
-      console.log(res.chatRecords);
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(role){
       that.setData({
-        complete_tea: res.complete_tea,
-        chatRecords: that.toDto(res.chatRecords)
+        role: role.data
       });
-      var socket = getApp().globalData.globalSocket;
-      socket.onMessage(function(e){
-        console.log("chat:" + e.data);
-        var recArr = e.data.split("----");
-        if(recArr.length == 2) {
-          if(that.data.ruser_id == recArr[0]) {
-            var record = {
-              REC_ID: util.getUUID(),
-              SUSER_ID: that.data.suser_id,
-              RUSER_ID: that.data.ruser_id,
-              ISREAD: true,
-              CREATETIME: util.getCurrentTime(),
-              style: "msg"
+      util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
+        if (res.chatRecords) {
+          res.chatRecords.forEach(function (element) {
+            if (element.SUSER_ID == that.data.suser_id) {
+              element.style = 'self';
             }
-
-            record.CONTENT = util.parseEmoji(recArr[1]);
-
-            var chatRecords = that.data.chatRecords;
-            chatRecords.push(record);
-
-            that.setData({
-              chatRecords: chatRecords
-            });
-
-            util.sendRequest("/wechat/applet/chat/setread", {SUSER_ID: that.data.ruser_id}, "POST", false);
-          }
+            else {
+              element.style = 'recmsg';
+            }
+            if (element.CONTENT) {
+              //解析聊天内容
+              element.CONTENT = util.parseEmoji(element.CONTENT);
+            }
+          });
         }
-      })
+        
+        console.log(res);
+        if(that.data.role == 1) {
+          //为学生
+          that.setData({
+            complete_info: res.complete_tea
+          })
+        }
+        else if(that.data.role == 2) {
+          //为老师
+          that.setData({
+            complete_info: res.complete_stu
+          })
+        }
+        else if(that.data.role == 3) {
+          //为专家
+          that.setData({
+            complete_info: res.complete_stu
+          })
+        }
+        that.setData({
+          chatRecords: that.toDto(res.chatRecords)
+        });
+        var socket = getApp().globalData.globalSocket;
+        socket.onMessage(function (e) {
+          console.log("chat:" + e.data);
+          var recArr = e.data.split("----");
+          if (recArr.length == 2) {
+            if (that.data.ruser_id == recArr[0]) {
+              var record = {
+                REC_ID: util.getUUID(),
+                SUSER_ID: that.data.suser_id,
+                RUSER_ID: that.data.ruser_id,
+                ISREAD: true,
+                CREATETIME: util.getCurrentTime(),
+                style: "recmsg"
+              }
+
+              record.CONTENT = util.parseEmoji(recArr[1]);
+
+              var chatRecords = that.data.chatRecords;
+              chatRecords.push(record);
+
+              that.setData({
+                chatRecords: chatRecords
+              });
+
+              util.sendRequest("/wechat/applet/chat/setread", { SUSER_ID: that.data.ruser_id }, "POST", false);
+            }
+          }
+        })
+      });
     });
   },
   onUnload: function() {
@@ -137,7 +162,6 @@ Page({
     }
 
     var that = this;
-    console.log(that.data.userMessage);
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
       var record = {
         REC_ID: util.getUUID(),
