@@ -102,6 +102,11 @@ Page({
         that.setData({
           chatRecords: that.toDto(res.chatRecords)
         });
+
+        wx.setNavigationBarTitle({
+          title: that.data.complete_info.NICKNAME ? "与 " + that.data.complete_info.NICKNAME + " 聊天" : ""
+        });
+
         var socket = getApp().globalData.globalSocket;
         socket.onMessage(function (e) {
           console.log("chat:" + e.data);
@@ -181,6 +186,7 @@ Page({
         inputMessage: '',
         userMessage: ''
       });
+      console.log(that.data.chatRecords);
     });
   },
   openEmoji: function () {

@@ -45,8 +45,8 @@
                         catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
                 </button>
                 <view class="open_emoji" bindtap="openEmoji">
-                <image src="../../images/Emoji.png"/>
-            </view>
+                  <image src="../../images/Emoji.png"/>
+                </view>
                 <button class="send_btn" bindtap="sendMessage" formType="reset">发送</button>
             </view>
         </form>

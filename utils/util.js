@@ -28,11 +28,11 @@ const formatTime = date => {
 }
 
 var getCurrentTime = function () {
-  return formatTime(Date.parse(new Date()));
+  return formatTime(new Date());
 }
 
 var getCurrentDate = function () {
-  return formatDate(Date.parse(new Date()));
+  return formatDate(new Date());
 }
 
 var getCurrentTimestamp = function () {
