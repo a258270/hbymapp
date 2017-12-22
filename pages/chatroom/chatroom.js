@@ -43,6 +43,15 @@ Page({
     RecordDesc: RecordDesc,
     recordStatus: RecordStatus.HIDE,
   },
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.CREATETIME) {
+        obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME));
+      }
+    });
+    return list;
+  },
   onLoad: function (options) {
     var that = this;
     that.setData({
@@ -67,7 +76,7 @@ Page({
       console.log(res.chatRecords);
       that.setData({
         complete_tea: res.complete_tea,
-        chatRecords: res.chatRecords
+        chatRecords: that.toDto(res.chatRecords)
       });
       var socket = getApp().globalData.globalSocket;
       socket.onMessage(function(e){
@@ -80,7 +89,7 @@ Page({
               SUSER_ID: that.data.suser_id,
               RUSER_ID: that.data.ruser_id,
               ISREAD: true,
-              CREATETIME: util.getCurrentTimestamp(),
+              CREATETIME: util.getCurrentTime(),
               style: "msg"
             }
 
@@ -135,7 +144,7 @@ Page({
         SUSER_ID: that.data.suser_id,
         RUSER_ID: that.data.ruser_id,
         ISREAD: true,
-        CREATETIME: util.getCurrentTimestamp(),
+        CREATETIME: util.getCurrentTime(),
         style: "self"
       }
 
