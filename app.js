@@ -5,13 +5,14 @@ App({
     utils.login();
   },
   globalData: {
-    socketFlag: false
+    socketFlag: false,
+    globalSocket: null
   },
   startSocket: function() {
     var that = this;
     if(!that.globalData.socketFlag){
       that.globalData.socketFlag = true;
-      wx.connectSocket({
+      that.globalData.globalSocket = wx.connectSocket({
         url: 'wss://192.168.1.111/plant/chat/' + utils.getInfoFromStorage("user_id"),
         header: {
           'content-type': 'application/json',

@@ -7,10 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["老师", "专家","学生"],
+    tabs: ["老师", "专家"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    role: 0
   },
 
   /**
@@ -48,6 +49,9 @@ Page({
       if (obj.LHEADURL) {
         obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
       }
+      if (obj.TEAHEADURL) {
+        obj.TEAHEADURL = util.setStaticUrl(obj.TEAHEADURL);
+      }
     });
     return list;
   },
@@ -56,7 +60,8 @@ Page({
    */
   onShow: function () {
     var that=this
-    util.sendRequest("/wechat/applet/user/getrole",{},"POST",true,function(res){
+    util.sendRequest("/wechat/applet/user/getrole",{},"POST",true,function(role){
+      console.log(role);
       util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
         console.log(res)
         that.setData({
@@ -66,8 +71,8 @@ Page({
         })
       })
       that.setData({
-        role:res.data
-      })
+        role: role.data
+      });
     })
     
   },
@@ -105,5 +110,9 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  toChat: function(e) {
+    var id = e.currentTarget.id;
+    util.navigateTo("/pages/chatroom/chatroom", {user_id: id});
   }
 })

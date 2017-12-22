@@ -16,6 +16,10 @@ var RecordDesc = {
 
 Page({
   data: {
+    ruser_id: "",
+    chatRecords: [],
+
+
     chatMsg: [],
     emojiStr: '',
     yourname: '',
@@ -36,35 +40,28 @@ Page({
     recordStatus: RecordStatus.HIDE,
   },
   onLoad: function (options) {
-    var that = this
-    console.log(options)
-    var myName = wx.getStorageSync('myUsername')
-    console.log(myName)
-    var options = JSON.parse(options.username)
-    var num = wx.getStorageSync(options.your + myName).length - 1
-    if (num > 0) {
-      setTimeout(function () {
-        that.setData({
-          toView: wx.getStorageSync(options.your + myName)[num].mid
-        })
-      }, 10)
-    }
-    this.setData({
-      yourname: options.your,
-      myName: myName,
-      inputMessage: '',
-      chatMsg: wx.getStorageSync(options.your + myName) || []
-    })
-    console.log(that.data.chatMsg)
-    wx.setNavigationBarTitle({
-      title: that.data.yourname
-    })
+    var that = this;
+    
+    util.sendRequest("/wechat/applet/chat/getchatrecs", {USER_ID: options.user_id}, "POST", true, function(res){
+      console.log(res);
+      that.setData({
+        ruser_id: options.user_id,
+        chatRecords: res.chatRecords,
+        suser_id: util.getInfoFromStorage("user_id")
+      });
+      var socket = getApp().globalData.globalSocket;
+      socket.onMessage(function(e){
+        console.log("chat:" + e.data);
+      })
+    });
+  },
+  onUnload: function() {
   },
   onShow: function () {
-    var that = this
+    /*var that = this
     this.setData({
       inputMessage: ''
-    })
+    })*/
   },
   bindMessage: function (e) {
     this.setData({
