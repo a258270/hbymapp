@@ -1,6 +1,4 @@
-var strophe = require('../../utils/strophe.js')
-var WebIM = require('../../utils/WebIM.js')
-var WebIM = WebIM.default
+var util = require('../../utils/util.js');
 
 var RecordStatus = {
   SHOW: 0,
@@ -32,8 +30,6 @@ Page({
     show: 'emoji_list',
     view: 'scroll_view',
     toView: '',
-    emoji: WebIM.Emoji,
-    emojiObj: WebIM.EmojiObj,
     msgView: {},
     RecordStatus: RecordStatus,
     RecordDesc: RecordDesc,

@@ -63,6 +63,13 @@ var login = function () {
           if (!obj.isCompleted) {
             toComplete();
           }
+          else{
+            //完成关联信息
+            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function(res){
+              setInfoToStorage("user_id", res.user_id);
+              getApp().startSocket();
+            });
+          }
         });
       } else {
         showError("获取用户信息失败，请重试！");
@@ -434,6 +441,14 @@ var confirm = function(option) {
     }
   });
 }
+
+var switchTab = function (options) {
+  options.url = options.url? options.url : "";
+  options.successFn = options.successFn? options.successFn : function(){};
+  options.failFn = options.failFn ? options.failFn : function () { };
+  options.completeFn = options.completeFn ? options.completeFn : function () { };
+  wx.switchTab(options);
+}
 module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
@@ -450,5 +465,7 @@ module.exports = {
   redirectTo: redirectTo,
   reLaunch: reLaunch,
   uploadFile: uploadFile,
-  confirm: confirm
+  confirm: confirm,
+  switchTab: switchTab,
+  getSessionId: getSessionId
 }
