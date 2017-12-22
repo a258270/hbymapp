@@ -15,31 +15,25 @@
           <text>{{item.CREATETIME}}</text>
         </view>
         <view class="user">
-          <text>{{ item.NICKNAME }}</text>
+          <text>{{ name }}</text>
         </view> 
         <image class="avatar" src="../../images/number.png"/>
         <view class="msg">
-           <view wx:if="{{ item.type == 'txt' || item.type == 'emoji' }}"> 
             <view class="template" wx:for="{{ item.CONTENT }}" wx:key="">
-              <template is="{{ item.CONTENT.type }}" data="{{ item }}"/>
+              <template is="{{ item.type }}" data="{{ item }}"/>
             </view>
-           </view> 
         </view>
       </view>
     </view>
 </scroll-view>
 
     <template name="txt">
-        <text style="float: left;margin-top: 2px;">{{ item }}</text>
+        <text style="float: left;margin-top: 2px;">{{ item.data }}</text>
     </template>
     
     <template name="emoji">
-        <image class="avatar" src="{{'../../images/faces/' + item }}"
+        <image class="avatar" src="{{'../../images/faces/' + item.data }}"
                style="width: 25px;height: 25px;margin: 0 0 2px 0;float: left;"/>
-    </template>
-    <template name="img">
-        <image class="avatar" src="{{ item.CONTENT }}" style="width:90px;height: 120px;margin: 2px auto;"
-               mode="aspectFit" bindtap="previewImage" data-url="{{ item.CONTENT }}"/>
     </template>
     <view class="room_bar">
         <form bindreset="cleanInput">
@@ -50,28 +44,12 @@
                 <button wx:else class="f btn-recording" catchtouchstart="handleRecording"
                         catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
                 </button>
+                <view class="open_emoji" bindtap="openEmoji">
+                <image src="../../images/Emoji.png"/>
+            </view>
                 <button class="send_btn" bindtap="sendMessage" formType="reset">发送</button>
             </view>
         </form>
-
-         <view class="other_func">
-            <view class="open_emoji" bindtap="openEmoji">
-                <image src="../../images/Emoji.png"/>
-            </view>
-            <view class="send_image" bindtap="sendImage">
-                <image src="../../images/iconImage@2x.png" style="height: 18px;"/>
-            </view>
-            <view class="open_camera" bindtap="openCamera">
-                <image src="../../images/iconCamera@2x.png" style="width: 26px;"/>
-            </view>
-            <view class="v-record" bindtap="toggleRecordModal">
-                <image class="icon-record"
-                       src="{{recordStatus != RecordStatus.HIDE ? '../../images/iconAudioActive@2x.png' : '../../images/iconAudio@2x.png'}}"/>
-            </view>
-             <view class="send_image" bindtap="sendLocation">
-                <image src="../../images/iconLocation@2x.png" style="height: 18px;"/>
-            </view> 
-        </view>
         
         <swiper class="emoji_list" class="{{ show }}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"
                 interval="{{interval}}" duration="{{duration}}">
