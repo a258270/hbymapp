@@ -1,12 +1,13 @@
 // pages/contacts/contacts.js
 var sliderWidth = 96; 
+var util=require("../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabs: ["老师", "专家"],
+    tabs: ["老师", "专家","学生"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0
@@ -38,12 +39,37 @@ Page({
   onReady: function () {
   
   },
-
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.HEADURL) {
+        obj.HEADURL = util.setStaticUrl(obj.HEADURL);
+      }
+      if (obj.LHEADURL) {
+        obj.LHEADURL = util.setStaticUrl(obj.LHEADURL);
+      }
+    });
+    return list;
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that=this
+    util.sendRequest("/wechat/applet/user/getrole",{},"POST",true,function(res){
+      util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
+        console.log(res)
+        that.setData({
+          teacher:that.toDto(res.teachers),
+          student: that.toDto(res.students),
+          expecter: that.toDto(res.expecters)
+        })
+      })
+      that.setData({
+        role:res.data
+      })
+    })
+    
   },
 
   /**

@@ -1,4 +1,4 @@
-/* pages/tperson/basics/basics.wxss */
+/* pages/person/tbasics/tbasics.wxss */
 .weui-cell_primary{
   display: flex;
   flex-direction: row;

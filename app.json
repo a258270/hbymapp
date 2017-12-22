@@ -41,7 +41,7 @@
     "pages/analog/result/content/content",
     "pages/chatroom/chatroom",
     "pages/intelligence/major/major",
-    "pages/person/tbasics/basics"
+    "pages/person/tbasics/tbasics"
   ],
   "window": {
     "backgroundTextStyle": "light",

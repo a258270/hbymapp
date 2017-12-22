@@ -1,4 +1,4 @@
-<!--pages/tperson/basics/basics.wxml-->
+<!--pages/person/tbasics/tbasics.wxml-->
 <view class="page">
 <form bindsubmit="formSubmit">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -17,16 +17,6 @@
         <view class="picker">
           {{sexObjs[sexIndex].NAME}}
         </view>
-      </picker>
-      </view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </view>
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
-      <view class="weui-cell__hd"></view>
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>出生日期</text>
-          <picker mode="date" value="{{birthday}}" start="1900-09-01" bindchange="bindDateChange" name="BIRTHDAY">
-      <view class="picker">{{birthday}}</view>
       </picker>
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -52,24 +42,6 @@
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator> 
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd"></view>
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>院校名称</text><text></text>
-      </view>
-      <view class="weui-cell__ft">
-        <input type='text' name='NICKNAME' value='{{user.NICKNAME}}'style="text-align:right" />
-      </view>
-  </view>
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd"></view>
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>工作年限</text><text></text>
-      </view>
-      <view class="weui-cell__ft">
-        <input type='text' name='NICKNAME' value='{{user.NICKNAME}}'style="text-align:right" />
-      </view>
-  </view>
   <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
 </view>

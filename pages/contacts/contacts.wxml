@@ -1,6 +1,6 @@
 <!--pages/contacts/contacts.wxml-->
-<view class="head"><text>联系人列表</text></view>
 <view class='page_bd'>
+<view wx:if="{{role==1}}">
 <view class="weui-tab">
   <view class="weui-navbar">
       <block wx:for="{{tabs}}" wx:key="*this">
@@ -8,61 +8,59 @@
               <view class="weui-navbar__title">{{item}}</view>
           </view>
       </block>
-      <view class="weui-navbar__slider" style="left: 65px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px;transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
   </view>
   <view class="weui-tab__panel">
       <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <block wx:for="{{teacher}}" wx:key="">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb" src="../../images/01.png" />
+              <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title">陈老师</view>
-              <view class="weui-media-box__desc">中国科技大学</view>
+              <view class="weui-media-box__title">{{item.NICKNAME}}</view>
+              <view class="weui-media-box__desc">{{item.PROVINCE_VALUE}}</view>
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title titles">在线</view>
+              <view class="weui-media-box__title titles">{{item.isOnline?'在线':'离线'}}</view>
           </view>
-      </navigator>
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="../../images/01.png" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">陈老师</view>
-            <view class="weui-media-box__desc">中国科技大学</view>
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title titles">在线</view>
-        </view>
-      </navigator>
+      </view>
+      </block>
       </view>
       <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <block wx:for="{{expecter}}" wx:key="">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb" src="../../images/01.png" />
+              <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title">陈老师</view>
-              <view class="weui-media-box__desc">中国科技大学</view>
+              <view class="weui-media-box__title">{{item.NICKNAME}}</view>
+              <view class="weui-media-box__desc">{{item.PROVINCE_VALUE}}</view>
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title titles">离线</view>
+              <view class="weui-media-box__title titles">{{item.isOnline?'在线':'离线'}}</view>
           </view>
-      </navigator>
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="../../images/01.png" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">陈老师</view>
-            <view class="weui-media-box__desc">中国科技大学</view>
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title titles">离线</view>
-        </view>
-      </navigator>
+      </view>
+      </block>
       </view>
   </view>
+  
+  </view>
+</view>
+<view wx:if="{{role==2 || role==3}}">
+  <block wx:for="{{student}}" wx:key="">
+    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.NICKNAME}}</view>
+          <view class="weui-media-box__desc">{{item.PROVINCE_VALUE}}</view>
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title titles">{{item.isOnline?'在线':'离线'}}</view>
+      </view>
+  </view>
+  </block>
 </view>
 </view>

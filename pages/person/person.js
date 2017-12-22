@@ -79,7 +79,6 @@ Page({
     var that = this;
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
       var role=res.data
-      console.log(role)
       if(role==1){
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
           that.setData({
@@ -92,12 +91,11 @@ Page({
         });
       }
       if(role==2){
-        util.sendRequest("/wechat/applet/user/getteachercomplete", {}, "POST", false, function (res) {
-          console.log(res)
+        util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (res) {
           that.setData({
-            logo2: util.setStaticUrl(res.HEADURL),
+            logo2: util.setStaticUrl(res.complete.HEADURL),
             completeCount2: res.completeCount,
-            nickname2: res.NICKNAME ? res.NICKNAME : "暂无"
+            nickname2: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无"
           })
         })
       }
