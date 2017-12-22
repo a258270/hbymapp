@@ -14,7 +14,7 @@ App({
   },
   onLaunch: function () {
     utils.login();
-    var that = this
+    var that = this;
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
