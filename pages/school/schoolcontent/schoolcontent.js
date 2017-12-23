@@ -9,7 +9,6 @@ Page({
   data: {
     tabs: ["往年分数线", "基本信息","院系与专业"],
     activeIndex: 0,
-    num:1,
     index:0,
     ckecked:true,
     icon:"/images/地址.png",
@@ -75,7 +74,7 @@ Page({
       })
     })
     that.setData({
-      num: e.detail.value
+      index: e.detail.value
     })
   },
   /**

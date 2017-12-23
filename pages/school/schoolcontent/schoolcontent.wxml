@@ -44,8 +44,8 @@
             </view>
             <view class="weui-cell__bd">河北省</view>
             <view class="weui-cell__ft">
-              <picker bindchange="bindPickerChange" value="{{num}}" range="{{array}}" range-key='NAME' data-id="{{school_id}}" id="{{array[num].DIC_ID}}">
-                <view>{{array[num].NAME}}</view>
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='NAME' data-id="{{school_id}}" id="{{array[index].DIC_ID}}">
+                <view>{{array[index].NAME}}</view>
             </picker>
             </view>
         </view>

@@ -42,13 +42,16 @@ Page({
     msgView: {},
     RecordStatus: RecordStatus,
     RecordDesc: RecordDesc,
-    recordStatus: RecordStatus.HIDE,
+    recordStatus: RecordStatus.HIDE
   },
   toDto: function (list) {
     if (!list) return list;
     list.forEach(function (obj) {
       if (obj.CREATETIME) {
         obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME));
+      }
+      if (obj.REC_ID) {
+        obj.REC_ID = obj.REC_ID
       }
     });
     return list;
@@ -57,7 +60,7 @@ Page({
     var that = this;
     that.setData({
       ruser_id: options.user_id,
-      suser_id: util.getInfoFromStorage("user_id")
+      suser_id: util.getInfoFromStorage("user_id"),
     });
     
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(role){
@@ -80,7 +83,8 @@ Page({
           });
         }
         
-        console.log(res);
+        console.log(res.chatRecords);
+        
         if(that.data.role == 1) {
           //为学生
           that.setData({
@@ -126,7 +130,6 @@ Page({
 
               var chatRecords = that.data.chatRecords;
               chatRecords.push(record);
-
               that.setData({
                 chatRecords: chatRecords
               });

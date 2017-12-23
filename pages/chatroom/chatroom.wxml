@@ -8,8 +8,8 @@
             </view>
         </view>
     </view>
-<scroll-view scroll-y="true" class="scroll_view" class="{{ view }}" bindtap="cancelEmoji" scroll-into-view="{{ toView }}">
-    <view class="message" wx:for="{{ chatRecords }}" wx:key="" id="{{ suser_id }}">
+<scroll-view scroll-y="true" class="scroll_view" class="{{ view }}" bindtap="cancelEmoji" scroll-into-view="{{ chatRecords.length > 0 ? 'rec_' + chatRecords[chatRecords.length - 1].REC_ID : '' }}"  >
+    <view class="message" wx:for="{{ chatRecords }}" wx:key="" id="rec_{{ item.REC_ID }}">
       <view class="main" class="{{ item.style }}">
         <view class="time">
           <text>{{item.CREATETIME}}</text>
@@ -39,8 +39,7 @@
         <form bindreset="cleanInput">
             <view class="f-row">
                 <input wx:if="{{!showRecordHandler}}" class="f news" type="text" value="{{ inputMessage }}"
-                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage"
-                       bindtap="focus" bindfocus="focus"/>
+                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage" bindfocus="focus"/>
                 <button wx:else class="f btn-recording" catchtouchstart="handleRecording"
                         catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
                 </button>
