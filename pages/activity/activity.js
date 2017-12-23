@@ -12,12 +12,29 @@ Page({
     var a = e.currentTarget.dataset.id
     util.navigateTo('../activity/content/content', { a: a })
   },
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.HEADURL) {
+        obj.HEADURL = util.setStaticUrl(obj.HEADURL);
+      }
+      if (obj.CREATETIME) {
+        obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME));
+      }
+      if (obj.MODIFYTIME){
+        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME))
+      }
+    });
+    return list;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
+    
     util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
+      console.log(res.data.results)
       var contents = that.toDto(res.data.results);
       var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
       var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
