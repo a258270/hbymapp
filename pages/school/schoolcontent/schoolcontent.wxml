@@ -12,7 +12,7 @@
       <text>{{name}}</text> 
     </view>
     <view class='logo-image'>
-      <image src="/images/zonghe.png"></image>
+      
     </view>
   </view>
 </view>

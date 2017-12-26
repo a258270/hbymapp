@@ -53,7 +53,8 @@ Page({
     b2Schools_8_major_id: "",
     b2Schools_9_major_id: "",
     b2Schools_10_major_id: "",
-    examinee: {}
+    examinee: {},
+    banner: util.setStaticUrl("/static/ymplant/images/tubiao3/2-1.jpg")
   },
   onLoad: function () {
     var that = this;

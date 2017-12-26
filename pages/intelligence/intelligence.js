@@ -17,7 +17,8 @@ Page({
     properties_id: "",
     majors_id: "",
     examinee: {},
-    arrangment_id: "hjj4e5vr0c"
+    arrangment_id: "hjj4e5vr0c",
+    banner: util.setStaticUrl("/static/ymplant/img/sye/banner/zbanner.jpg")
   },
   bindPickerChange: function (e) {
     this.setData({

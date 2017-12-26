@@ -11,7 +11,7 @@ Page({
     activeIndex: 0,
     index:0,
     ckecked:true,
-    icon:"/images/地址.png",
+    icon:"/images/address.png",
     array:[]
   },
  

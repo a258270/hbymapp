@@ -4,7 +4,7 @@
             <text class="desc">{{RecordDesc[recordStatus]}}</text>
             <view class="dot" catchtouchstart="handleRecording" catchtouchmove="handleRecordingMove"
                   catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">
-                <image class="icon-mic" src="../../images/mic@2x.png"/>
+                <image class="icon-mic" src="/images/mic@2x.png"/>
             </view>
         </view>
     </view>
@@ -17,7 +17,7 @@
         <view class="user">
           <text>{{ name }}</text>
         </view> 
-        <image class="avatar" src="../../images/number.png"/>
+        <image class="avatar" src="/images/number.png"/>
         <view class="msg">
             <view class="template" wx:for="{{ item.CONTENT }}" wx:key="">
               <template is="{{ item.type }}" data="{{ item }}"/>
@@ -32,19 +32,19 @@
     </template>
     
     <template name="emoji">
-        <image class="avatar" src="{{'../../images/faces/' + item.data }}"
+        <image class="avatar" src="{{'/images/faces/' + item.data }}"
                style="width: 25px;height: 25px;margin: 0 0 2px 0;float: left;"/>
     </template>
     <view class="room_bar">
         <form bindreset="cleanInput">
             <view class="f-row">
                 <input wx:if="{{!showRecordHandler}}" class="f news" type="text" value="{{ inputMessage }}"
-                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage" bindfocus="focus"/>
+                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage"/>
                 <button wx:else class="f btn-recording" catchtouchstart="handleRecording"
                         catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
                 </button>
                 <view class="open_emoji" bindtap="openEmoji">
-                  <image src="../../images/Emoji.png"/>
+                  <image src="/images/Emoji.png"/>
                 </view>
                 <button class="send_btn" bindtap="sendMessage" formType="reset">发送</button>
             </view>

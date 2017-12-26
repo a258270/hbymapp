@@ -1,6 +1,6 @@
 <!--pages/intelligence/intelligence.wxml-->
 <view class="head">
-  <image src="../../images/智能填报banner.png"></image>
+  <image src="{{banner}}"></image>
 </view>
 <view class="content1">
   <view class="content1-left">

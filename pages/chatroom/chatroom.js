@@ -83,7 +83,6 @@ Page({
           });
         }
         
-        console.log(res.chatRecords);
         
         if(that.data.role == 1) {
           //为学生

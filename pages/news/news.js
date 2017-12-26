@@ -83,13 +83,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if (!this.data.isLoadingMore) {
-      this.setData({
-        isLoadingMore: true
-      });
+    // if (!this.data.isLoadingMore) {
+    //   this.setData({
+    //     isLoadingMore: true
+    //   });
 
-      this.pullSchoolInfos();
-    }
+    //   this.pullSchoolInfos();
+    // }
   },
 
   /**
@@ -101,60 +101,60 @@ Page({
 /**
    * 设置参数
    */
-setSearchParam: function() {
-  var that = this;
-  var param = this.data.searchParam;
-  if (param.currentPage) {
-    param.currentPage = parseInt(param.currentPage) + 1;
-  }
-  that.setData({
-    searchParam: param
-  });
-},
+// setSearchParam: function() {
+//   var that = this;
+//   var param = this.data.searchParam;
+//   if (param.currentPage) {
+//     param.currentPage = parseInt(param.currentPage) + 1;
+//   }
+//   that.setData({
+//     searchParam: param
+//   });
+// },
 /**
  * 更新参数
  */
-reloadSearchParam: function(param) {
-  var that = this;
-  var paramObj = {};
+// reloadSearchParam: function(param) {
+//   var that = this;
+//   var paramObj = {};
 
-  if (that.data.searchParam.currentPage <= param.totalPage) {
-    paramObj.currentPage = param.pageNumber + 1;
+//   if (that.data.searchParam.currentPage <= param.totalPage) {
+//     paramObj.currentPage = param.pageNumber + 1;
 
-    that.setData({
-      searchParam: paramObj
-    });
-  }
+//     that.setData({
+//       searchParam: paramObj
+//     });
+//   }
 
-},
-setResults(list){
-  var that = this;
-  var oldList = that.data.news;
-  var newList = that.toDto(list);
-  newList.forEach(function (index, element) {
-    oldList.push(index);
-  });
+// },
+// setResults(list){
+//   var that = this;
+//   var oldList = that.data.news;
+//   var newList = that.toDto(list);
+//   newList.forEach(function (index, element) {
+//     oldList.push(index);
+//   });
 
-  return oldList;
-},
+//   return oldList;
+// },
 /**
  * 拉取新数据
  */
-pullSchoolInfos: function() {
-  var that = this;
+// pullSchoolInfos: function() {
+//   var that = this;
 
-  that.setSearchParam();
+//   that.setSearchParam();
 
-  util.sendRequest('/wechat/applet/news/get', that.data.searchParam, 'POST', false, function (res) {
-    that.setData({
-      news: that.setResults(res.data.results)
-    });
+//   util.sendRequest('/wechat/applet/news/get', that.data.searchParam, 'POST', false, function (res) {
+//     that.setData({
+//       news: that.setResults(res.data.results)
+//     });
 
-    that.reloadSearchParam(res.data);
+//     that.reloadSearchParam(res.data);
 
-    that.setData({
-      isLoadingMore: false
-    });
-  });
-}
+//     that.setData({
+//       isLoadingMore: false
+//     });
+//   });
+// }
 })
