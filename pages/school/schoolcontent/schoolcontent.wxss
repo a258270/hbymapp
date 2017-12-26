@@ -5,11 +5,7 @@ page{
 }
 .banner{
   width:100%;
-  height:260rpx;
-}
-.banner image{
-  width:100%;
-  height:100%;
+  height:300rpx;
 }
 .logo{
   width:92%;
@@ -40,33 +36,11 @@ page{
   font-size:30rpx;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   
-}
-.logo-image{
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 .logo-text{
   font-size:35rpx;
-}
-.logo-image image{
-  margin-top:30rpx;
-  width:20%;
-  height:40rpx;
-}
-.logo-image text{
-  margin-top:30rpx;
-  width:40%;
-  height:50rpx;
-  background-color: rgb(91,192,222);
-  font-size:28rpx;
-  border-radius: 10rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .line{
   width:100%;

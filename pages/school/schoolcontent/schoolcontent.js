@@ -27,6 +27,7 @@ Page({
     var that=this
     var id=options.a
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
+      console.log(res)
       that.setData({
         logo: util.setStaticUrl(res.HEADURL),
         name: res.NAME,
@@ -34,7 +35,8 @@ Page({
         types: res.SCTYPE_VALUE,
         date:res.CREATEDATE,
         subject:res.SUBJECTION,
-        school_id:res.SCHOOL_ID
+        school_id:res.SCHOOL_ID,
+        address:res.ADDRESS
       })
     })
     util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){

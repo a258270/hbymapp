@@ -55,6 +55,7 @@ Page({
   select:function(){
     var that = this;
     util.sendRequest('/wechat/applet/school/gethasteachers', { NAME: that.data.inputVal }, 'POST', false, function (res) {
+
       that.setData({
         schools: that.toDto(res.data.results)
       });
@@ -398,6 +399,7 @@ Page({
     that.setSearchParam();
     
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
+      console.log(res)
       that.setData({
         schools: that.setResults(res.data.results, isClear)
       });

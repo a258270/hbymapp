@@ -54,20 +54,20 @@
       {
         "pagePath": "pages/contacts/contacts",
         "text": "联系人",
-        "iconPath": "img/contact.png",
-        "selectedIconPath": "img/contacts.png"
+        "iconPath": "images/contact.png",
+        "selectedIconPath": "images/contacts.png"
       },
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "img/homepages.png",
-        "selectedIconPath": "img/homepage.png"
+        "iconPath": "images/homepages.png",
+        "selectedIconPath": "images/homepage.png"
       },
       {
         "pagePath": "pages/person/person",
         "text": "我的",
-        "iconPath": "img/personals.png",
-        "selectedIconPath": "img/personal.png"
+        "iconPath": "images/personals.png",
+        "selectedIconPath": "images/personal.png"
       }
     ]
   }

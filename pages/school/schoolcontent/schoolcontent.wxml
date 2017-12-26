@@ -1,7 +1,7 @@
 <!--pages/school/schoolcontent/schoolcontent.wxml-->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class="banner">
-  <image src='/images/school-banner.png'></image>
+  <image src='/images/school-banner.png' style="width:100%;height:100%"></image>
 </view>
 <view class='logo'>
   <view class='logo-left'>
@@ -10,9 +10,6 @@
   <view class='logo-right'>
     <view class='logo-text'>
       <text>{{name}}</text> 
-    </view>
-    <view class='logo-image'>
-      
     </view>
   </view>
 </view>
