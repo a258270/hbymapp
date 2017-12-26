@@ -1,4 +1,5 @@
 // pages/person/power/power.js
+var util = require('../../../utils/util')
 Page({
 
   /**
@@ -13,14 +14,22 @@ Page({
       { src: '/images/quanxian05.png', title: '百校问答' },
       { src: '/images/quanxian06.png', title: '性格测试' }, 
       { src: '/images/quanxian07.png', title: '无限视频' },
-    ]
+    ],
+    isReg: false,
+    isLoaded: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
+      that.setData({
+        isLoaded: true,
+        isReg: res.data
+      });
+    });
   },
 
   /**
@@ -70,5 +79,13 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  formSubmitForReg: function(e) {
+    util.sendRequest("/wechat/applet/user/vip", e.detail.value, "POST", true, function(res){
+      util.showSuccess();
+      wx.navigateBack({
+        delta: 1
+      })
+    });
   }
 })

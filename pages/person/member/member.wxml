@@ -1,16 +1,1 @@
 <!--pages/person/member/member.wxml-->
-<view class="weui-cells__title">您当前身份属于普通会员，请购买黄金会员后提升权限</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_input weui-cell_warn">
-    <view class="weui-cell__hd">
-        <view class="weui-label">卡号</view>
-    </view>
-    <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入卡号"/>
-    </view>
-    <view class="weui-cell__ft">
-        <icon type="warn" size="23" color="#E64340"></icon>
-    </view>
-  </view>
-</view>
-<button class="weui-btn" type="primary">保存</button>
