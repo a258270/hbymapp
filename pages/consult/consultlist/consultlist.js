@@ -7,7 +7,6 @@ Page({
    */
   data: {
     src1:"/images/school-banner.png",
-    logo: "/images/10.png",
     name: "",
     region: "",
     types: ""
@@ -24,6 +23,10 @@ Page({
     });
     return list;
   },
+  chat:function(e){
+    var user_id = e.currentTarget.dataset.id;
+    util.navigateTo("/pages/chatroom/chatroom",{user_id:user_id})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -31,6 +34,7 @@ Page({
     var that=this;
     var id = options.a
     util.sendRequest("/wechat/applet/complete_tea/get",{SCHOOL_ID:id},"POST",true,function(res){
+      console.log(res.data)
       that.setData({
         teacher:that.toDto(res.data)
       })

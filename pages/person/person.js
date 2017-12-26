@@ -7,7 +7,7 @@ Page({
    */
   data: {
     //用户头像
-    logo:"../../images/touxiang.png",
+    logo:"/images/touxiang.png",
     //信息完整度
     completeCount: 0,
     //高考分数
