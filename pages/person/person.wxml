@@ -106,7 +106,7 @@
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </navigator>
-              <navigator url="../person/power/power" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                   <view class="weui-cell__hd"><image src="/images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
                       <view>账号安全</view>
