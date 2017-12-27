@@ -110,6 +110,7 @@ Page({
       }
       if(role==2){
         util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
+          console.log(obj)
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             completeCount2: obj.completeCount,

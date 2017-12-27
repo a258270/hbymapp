@@ -24,6 +24,7 @@ Page({
   formSubmit: function (e) {
     e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
     util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function(res){
+     
       wx.navigateBack({
         delta: 1
       });

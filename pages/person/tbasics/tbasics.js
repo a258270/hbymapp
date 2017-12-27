@@ -23,7 +23,8 @@ Page({
   },
   formSubmit: function (e) {
     e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
-    util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function (res) {
+    util.sendRequest("/plant/teacher/api/basic", e.detail.value, "POST", true, function (res) {
+      console.log(res)
       wx.navigateBack({
         delta: 1
       });
@@ -41,8 +42,7 @@ Page({
       });
 
       util.sendRequest("/wechat/applet/user/getteachercomplete", {}, "POST", true, function (res) {
-        console.log(res)
-        var userTmp = { NICKNAME: "", SEX: "11",  IDCARD: "未设置", EMAIL: "未设置", PHONE: "未设置" };
+        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12", IDCARD: "未设置", EMAIL: "未设置", PHONE: "未设置" };
         if (res.NICKNAME) {
           userTmp.NICKNAME = res.NICKNAME;
         }
@@ -55,6 +55,13 @@ Page({
                 sexIndex: index
               });
             }
+          });
+        }
+
+        if (res.BIRTHDAY) {
+          userTmp.BIRTHDAY = res.BIRTHDAY;
+          that.setData({
+            birthday: userTmp.BIRTHDAY
           });
         }
 
