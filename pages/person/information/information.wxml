@@ -1,33 +1,36 @@
 <view class="page">
 <form bindsubmit="formSubmit">
-  <view class="page__bd">
-    <view class="weui-cells weui-cells_after-title">
-      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">考试类型</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">
-            <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE">
-              <view>{{majortypeObjs[majortypeIndex].NAME}}</view>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>考试类型</text>
+          <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE">
+              <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view>
             </picker>
-          </view>
-      </navigator>
-      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">考试所在地</view>
-          <view class="weui-cell__ft">
-            <picker bindchange="bindPickerChange" value="{{provinceIndex}}" range="{{provinceObjs}}" range-key='NAME' id="EXAMAREA" name="EXAMAREA">
-        <view>{{provinceObjs[provinceIndex].NAME}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>考生所在地</text>
+          <picker bindchange="bindPickerChange" value="{{provinceIndex}}" range="{{provinceObjs}}" range-key='NAME' id="EXAMAREA" name="EXAMAREA">
+        <view class='picker'>{{provinceObjs[provinceIndex].NAME}}</view>
       </picker>
-          </view>
-      </navigator>
-      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__bd">年级</view>
-          <view class="weui-cell__ft">
-            <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
-        <view>{{gradeObjs[gradeIndex].NAME}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>年级</text>
+          <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
+        <view class='picker'>{{gradeObjs[gradeIndex].NAME}}</view>
       </picker>
-          </view>
-      </navigator>
-    </view>
-    <view class="weui-cells__title"></view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class="weui-cells__title"></view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
@@ -67,7 +70,6 @@
       </view>
     </view>
     <view class="weui-cells__tips">*该成绩用于高校检索查询</view>
-  </view>
 <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
 </view>

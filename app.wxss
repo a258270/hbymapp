@@ -23,7 +23,9 @@
     font-size: 20px;
     font-weight: 400;
 }
-
+picker{
+  width:77%;
+}
 .page__desc {
     margin-top: 5px;
     color: #888888;

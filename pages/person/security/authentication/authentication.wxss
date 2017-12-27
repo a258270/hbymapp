@@ -2,6 +2,3 @@
 .weui-cells{
   font-size:30rpx;
 }
-button{
-  font-size:28rpx;
-}

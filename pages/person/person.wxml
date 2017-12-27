@@ -1,6 +1,7 @@
 <!--pages/person/person.wxml-->
 <view wx:if="{{role==1}}">
-<view class="head" style="background-image:url('/images/banner.png'); background-repeat:round">
+<view class="head">
+  <image src="/images/banner.png"></image>
   <view class="head-left">
     <view class='image'><image src="{{logo}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
     <view class='text'>

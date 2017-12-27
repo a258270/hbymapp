@@ -54,7 +54,7 @@ Page({
   },
   select: function () {
     var that = this;
-    util.sendRequest('/wechat/applet/school/gethasteachers', { NAME: that.data.inputVal }, 'POST', false, function (res) {
+    util.sendRequest('/wechat/applet/school/get', { NAME: that.data.inputVal }, 'POST', false, function (res) {
       that.setData({
         schools: that.toDto(res.data.results)
       });
@@ -69,7 +69,7 @@ Page({
   },
   grade: function () {
     var that = this;
-    util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST', false, function (res) {
+    util.sendRequest('/wechat/applet/school/get', {}, 'POST', false, function (res) {
       that.setData({
       });
     })
@@ -396,7 +396,7 @@ Page({
 
     that.setSearchParam();
 
-    util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
+    util.sendRequest('/wechat/applet/school/get', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
         schools: that.setResults(res.data.results, isClear)
       });

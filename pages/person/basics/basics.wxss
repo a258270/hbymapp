@@ -6,12 +6,8 @@
   justify-content: space-between;
 }
 .picker{
-  width:200rpx;
   height:48rpx;
   text-align: right;
-}
-button{
-  font-size:28rpx;
 }
 .weui-cells{
   font-size:28rpx;
