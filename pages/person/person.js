@@ -19,7 +19,8 @@ Page({
     //是否为vip
     isVip: false,
     //用户身份
-    role: 0
+    role: 0,
+    vipname: "普通会员"
   },
 
   /**
@@ -80,22 +81,39 @@ Page({
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
       var role=res.data
       if(role==1){
-        util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (res) {
+        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
+          if(obj.data == "UA") {
+            that.setData({
+              vipname: "白银会员"
+            });
+          }
+          else if(obj.data == "UB") {
+            that.setData({
+              vipname: "黄金会员"
+            });
+          }
+          else if(obj.data == "UC") {
+            that.setData({
+              vipname: "黑钻会员"
+            });
+          }
+        });
+        util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
           that.setData({
-            logo: util.setStaticUrl(res.complete.HEADURL),
-            completeCount: res.completeCount,
-            nickname: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无",
-            examScore: res.examinee.EXAMSCORE ? res.examinee.EXAMSCORE : 0,
-            valiablePocket: res.pocket.BALANCE ? res.pocket.BALANCE : 0
+            logo: util.setStaticUrl(obj.complete.HEADURL),
+            completeCount: obj.completeCount,
+            nickname: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
+            examScore: obj.examinee.EXAMSCORE ? obj.examinee.EXAMSCORE : 0,
+            valiablePocket: obj.pocket.BALANCE ? obj.pocket.BALANCE : 0
           });
         });
       }
       if(role==2){
-        util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (res) {
+        util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
           that.setData({
-            logo2: util.setStaticUrl(res.complete.HEADURL),
-            completeCount2: res.completeCount,
-            nickname2: res.complete.NICKNAME ? res.complete.NICKNAME : "暂无"
+            logo2: util.setStaticUrl(obj.complete.HEADURL),
+            completeCount2: obj.completeCount,
+            nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无"
           })
         })
       }

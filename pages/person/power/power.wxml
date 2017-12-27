@@ -1,7 +1,7 @@
 <!--pages/person/power/power.wxml-->
 <view wx:if="{{isReg && isLoaded}}">
   <view class='head'>
-    <text>尊敬的<text style='color:orange'>黄金会员</text>，您可享受到如下服务：</text>
+    <text>尊敬的<text style='color:orange'>{{vipname}}</text>，您可享受到如下服务：</text>
   </view>
   <view class="page">
     <view class="page__bd">

@@ -77,9 +77,10 @@ var login = function () {
           }
           else {
             //完成关联信息
-            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (res) {
-              setInfoToStorage("user_id", res.user_id);
+            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (obj) {
+              setInfoToStorage("user_id", obj.user_id);
               getApp().startSocket();
+              switchTab({ url: "/pages/index/index" });
             });
           }
         });

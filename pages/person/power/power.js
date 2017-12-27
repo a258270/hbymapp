@@ -16,7 +16,8 @@ Page({
       { src: '/images/quanxian07.png', title: '无限视频' },
     ],
     isReg: false,
-    isLoaded: false
+    isLoaded: false,
+    vipname: "普通会员"
   },
 
   /**
@@ -29,6 +30,26 @@ Page({
         isLoaded: true,
         isReg: res.data
       });
+
+      if(that.data.isReg) {
+        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+          if (obj.data == "UA") {
+            that.setData({
+              vipname: "白银会员"
+            });
+          }
+          else if (obj.data == "UB") {
+            that.setData({
+              vipname: "黄金会员"
+            });
+          }
+          else if (obj.data == "UC") {
+            that.setData({
+              vipname: "黑钻会员"
+            });
+          }
+        });
+      }
     });
   },
 

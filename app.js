@@ -13,7 +13,7 @@ App({
     if(!that.globalData.socketFlag){
       that.globalData.socketFlag = true;
       that.globalData.globalSocket = wx.connectSocket({
-        url: 'wss://192.168.1.111/plant/chat/' + utils.getInfoFromStorage("user_id"),
+        url: 'wss://www.gaokgh.com.cn/plant/chat/' + utils.getInfoFromStorage("user_id"),
         header: {
           'content-type': 'application/json',
           'Cookie': 'new.cookie.id=' + utils.getSessionId()
