@@ -95,7 +95,7 @@ var login = function () {
  * 完善信息操作
  */333
 var toComplete = function () {
-  redirectTo('../login/login')
+  redirectTo('/pages/login/login')
 }
 
 /**
