@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src1:"/images/school-banner.png",
+    src1:"/images/school.jpg",
     name: "",
     region: "",
     types: ""

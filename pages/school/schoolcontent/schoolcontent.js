@@ -7,12 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["往年分数线", "基本信息","院系与专业"],
+    tabs: ["往年分数线", "基本信息","学校资料"],
     activeIndex: 0,
     index:0,
     ckecked:true,
     icon:"/images/address.png",
-    array:[]
+    array:[],
+    icon1: "/images/yuanxiao.png"
   },
  
   tabClick: function (e) {
@@ -29,6 +30,8 @@ Page({
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
       console.log(res)
       that.setData({
+        subjecttypes: res.subjecttypes,
+        properties: res.properties,
         logo: util.setStaticUrl(res.HEADURL),
         name: res.NAME,
         region: res.PROVINCE_VALUE,
@@ -39,11 +42,12 @@ Page({
         address:res.ADDRESS
       })
     })
-    util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){
-      var article=res.CONTENT;
-      WxParse.wxParse('article', 'html', article, that, 5);
-    })
+    // util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){
+    //   var article=res.CONTENT;
+    //   WxParse.wxParse('article', 'html', article, that, 5);
+    // })
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
+      console.log(res);
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
     })

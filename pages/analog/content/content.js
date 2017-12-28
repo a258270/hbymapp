@@ -19,7 +19,6 @@ Page({
     that.setData({
       param: options
     });
-
     util.sendRequest("/wechat/applet/report/getmajors", {SCHOOL_ID: options.school_id}, "POST", true, function(res) {
       if(options.selected && options.selected != "") {
         options.selected = options.selected.split(",");
@@ -126,5 +125,5 @@ Page({
     prevPage.data[that.data.param.key + "_id"] = valurIdStr;
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     prevPage.setData(prevPage.data);
-  }
+  },
 })

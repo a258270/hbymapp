@@ -29,7 +29,7 @@
   width:60%;
   margin-left:30rpx;
   margin-top: -60rpx;
-  color:black;
+  color:white;
   font-size:32rpx;
   display: flex;
   flex-direction: column;

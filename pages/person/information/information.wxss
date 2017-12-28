@@ -14,3 +14,6 @@
 .weui-input{
   text-align: right;
 }
+picker{
+  width:77%;
+}
