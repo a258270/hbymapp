@@ -9,7 +9,6 @@
   height:300rpx;
   position:fixed;
   top:0;
-  z-index:-1;
 }
 .icon-property{
   width:40rpx;

@@ -95,7 +95,13 @@ var login = function () {
  * 完善信息操作
  */333
 var toComplete = function () {
-  redirectTo('/pages/login/login')
+  var pages = getCurrentPages();
+  if(pages[pages.length - 1].route != "pages/login/login"){
+    switchTab({
+      url: '/pages/index/index',
+      successFn: function () { navigateTo('/pages/login/login'); }
+    })
+  }
 }
 
 /**
@@ -261,10 +267,14 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           }
           if (res.data.hasErrors) {
             //需要登录，详情查看后台LoginIntercetor
-            if (res.data.errorCode == noLoginCode)
+            if (res.data.errorCode == noLoginCode){
               login();
-            else if (res.data.errorCode == noCompleteCode)
+            }
+              
+            else if (res.data.errorCode == noCompleteCode){
               toComplete();
+            }
+              
             else if (res.data.errorCode == notAcceptCode)
               console.error("接口：" + url + "缺少参数");
             else
@@ -298,11 +308,16 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
  * 错误提示框
  * msg: 提示内容
  */
-var showError = function (msg) {
+var showError = function (msg, url) {
   wx.showModal({
     title: '提示',
     content: msg,
-    showCancel: false
+    showCancel: false,
+    success: function(){
+      if(url) {
+        navigateTo(url);
+      }
+    }
   })
 }
 
@@ -457,9 +472,9 @@ var confirm = function (option) {
 
 var switchTab = function (options) {
   options.url = options.url ? options.url : "";
-  options.successFn = options.successFn ? options.successFn : function () { };
-  options.failFn = options.failFn ? options.failFn : function () { };
-  options.completeFn = options.completeFn ? options.completeFn : function () { };
+  options.success = options.successFn ? options.successFn : function () { };
+  options.fail = options.failFn ? options.failFn : function () { };
+  options.complete = options.completeFn ? options.completeFn : function () { };
   wx.switchTab(options);
 }
 

@@ -32,11 +32,32 @@ Page({
     })
   },
   onReady: function () {
-    //utils.showSuccess();
-    
+    var that = this;
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+      that.setData({
+        notice: that.toDto(res.data.results)
+      });
+    })
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "5" }, 'POST', false, function (res) {
+      that.setData({
+        news: that.toDto(res.data.results)
+      });
+    })
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
+      that.setData({
+        activity: that.toDto(res.data.results)
+      });
+    })
   },
   consultation:function(){
-    utils.navigateTo("../consult/consult")
+    utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
+      if(!res.data){
+        utils.showError("请先登录账号");
+        return false;
+      }
+      utils.navigateTo("../consult/consult")
+    });
+    
   },
   analog:function(){
     utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
@@ -111,21 +132,6 @@ Page({
     return list;
   },
   onLoad:function(e) {
-    var that=this;
-    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
-      that.setData({
-        notice: that.toDto(res.data.results)
-      });
-    })
-    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize:"5"}, 'POST', false, function (res) {
-      that.setData({ 
-        news: that.toDto(res.data.results)
-      });
-    })
-    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
-      that.setData({
-        activity: that.toDto(res.data.results)
-      });
-    })
+    
   },
 });

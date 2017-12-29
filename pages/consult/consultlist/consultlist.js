@@ -24,8 +24,16 @@ Page({
     return list;
   },
   chat:function(e){
-    var user_id = e.currentTarget.dataset.id;
-    util.navigateTo("/pages/chatroom/chatroom",{user_id:user_id})
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(res){
+      if(res.data != 1) {
+        util.showError("仅有学生身份方可在线咨询");
+        return false;
+      }
+
+      var user_id = e.currentTarget.dataset.id;
+      util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+    });
+    
   },
   /**
    * 生命周期函数--监听页面加载

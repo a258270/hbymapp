@@ -2,7 +2,10 @@
 var utils = require('utils/util.js');
 App({
   onLaunch: function () {
-    utils.login();
+    wx.login();
+    wx.setEnableDebug({
+      enableDebug: false
+    })
   },
   globalData: {
     socketFlag: false,
