@@ -2,7 +2,7 @@
 .weui-navbar{
   width:80%;
   margin:0 10%;
-  font-size:28rpx;
+  font-size:35rpx;
 }
 .weui-navbar__item{
   border:1rpx solid rgb(90,180,170);
@@ -25,4 +25,13 @@
 }
 .childs{
   color:#999999;
+}
+.weui-cell:before{
+  border-top:1rpx solid #EEEEEE;
+}
+.weui-cells:after{
+  border-bottom:1rpx solid #EEEEEE;
+}
+.weui-cells:before{
+  border-top:1rpx solid #EEEEEE;
 }

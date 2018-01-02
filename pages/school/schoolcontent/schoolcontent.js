@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["往年分数线", "基本信息","学校资料"],
+    tabs: ["录取", "基本信息","学校资料"],
     activeIndex: 0,
     index:0,
     ckecked:true,

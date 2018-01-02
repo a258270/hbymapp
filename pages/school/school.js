@@ -17,7 +17,10 @@ Page({
     provinces: [],
     arrangments: [],
     subjecttypes: [],
-    properties: []
+    properties: [],
+    showView:true,
+    showView1: true,
+    showView2: true
   },
   upper: function (e) {
   },
@@ -55,6 +58,7 @@ Page({
   select: function () {
     var that = this;
     util.sendRequest('/wechat/applet/school/get', { NAME: that.data.inputVal }, 'POST', false, function (res) {
+
       that.setData({
         schools: that.toDto(res.data.results)
       });
@@ -139,6 +143,24 @@ Page({
       })
     })
 
+  },
+  changeArrow: function () {
+    var that = this;
+    that.setData({
+      showView: (!that.data.showView)
+    })
+  },
+  changeArrow1: function () {
+    var that = this;
+    that.setData({
+      showView1: (!that.data.showView1)
+    })
+  },
+  changeArrow2: function () {
+    var that = this;
+    that.setData({
+      showView2: (!that.data.showView2)
+    })
   },
   tap_ch: function (e) {
     var that = this;
@@ -325,7 +347,7 @@ Page({
       }
     });
     if (province_search != "") province_search = province_search.substring(0, province_search.length - 1);
-    param.PROVINCE = province_search;
+    param.provinces = province_search;
 
     var subjecttype_search = "";
     that.data.subjecttypes.forEach(function (element) {
@@ -334,7 +356,7 @@ Page({
       }
     });
     if (subjecttype_search != "") subjecttype_search = subjecttype_search.substring(0, subjecttype_search.length - 1);
-    param.SUBJECTTYPE = subjecttype_search;
+    param.subjecttypes = subjecttype_search;
 
     var arrangment_search = "";
     that.data.arrangments.forEach(function (element) {
@@ -343,7 +365,7 @@ Page({
       }
     });
     if (arrangment_search != "") arrangment_search = arrangment_search.substring(0, arrangment_search.length - 1);
-    param.ARRANGMENT = arrangment_search;
+    param.arrangments = arrangment_search;
 
     var property_search = "";
     that.data.properties.forEach(function (element) {
@@ -352,7 +374,7 @@ Page({
       }
     });
     if (property_search != "") property_search = property_search.substring(0, property_search.length - 1);
-    param.PROPERTY = property_search;
+    param.properties = property_search;
 
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
@@ -397,8 +419,10 @@ Page({
     that.setSearchParam();
 
     util.sendRequest('/wechat/applet/school/get', that.data.searchParam, 'POST', false, function (res) {
+      console.log(res.data.totalRecord)
       that.setData({
-        schools: that.setResults(res.data.results, isClear)
+        schools: that.setResults(res.data.results, isClear),
+        num: res.data.totalRecord
       });
 
       that.reloadSearchParam(res.data);

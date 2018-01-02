@@ -56,7 +56,25 @@
   display: flex;
   flex-direction:row;
   align-items:center;
+  justify-content: flex-start;
   position: relative;
+}
+.notices{
+  background-color:#FEFDA1;
+  padding: 0rpx 35rpx;
+  border-top: 20rpx solid #F7F7F7;
+  border-bottom: 20rpx solid #F7F7F7;
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: flex-start;
+  position: relative;
+}
+.more1{
+  font-size:50rpx;
+  color:rgb(90,180,170);
+  position: absolute;
+  right: 20rpx;
 }
 .icon{
   width: 35rpx;

@@ -40,7 +40,8 @@
     "pages/chatroom/chatroom",
     "pages/intelligence/major/major",
     "pages/person/tbasics/tbasics",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/person/information/content/content"
   ],
   "window": {
     "backgroundTextStyle": "light",

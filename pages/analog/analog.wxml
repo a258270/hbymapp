@@ -30,7 +30,7 @@
       <form bindsubmit='b1Submit'>
           <view class="weui-cells__title">志愿A</view>
         <view class="weui-cells weui-cells_after-title">
-            <view url="/pages/analog/analogs/content/content" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">
                   <picker bindchange="bindPickerChange" value="{{b1Schools_1_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_1">
                     <view>{{b1Schools[b1Schools_1_index].NAME? b1Schools[b1Schools_1_index].NAME : '请选择院校'}}</view>

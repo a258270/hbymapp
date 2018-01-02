@@ -11,6 +11,7 @@
 }
 .weui-cells{
   font-size:28rpx;
+  
 }
 picker{
   width:77%;

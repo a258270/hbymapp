@@ -93,6 +93,7 @@ Page({
 
     var that = this;
     var majors = that.data.majors, values = e.detail.value;
+    console.log(values);
     if(values.length > 6) {
       util.showError("最多选择6个专业");
       return false;

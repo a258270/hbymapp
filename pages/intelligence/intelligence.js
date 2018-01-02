@@ -21,11 +21,12 @@ Page({
     banner: util.setStaticUrl("/static/ymplant/img/sye/banner/zbanner.jpg")
   },
   bindPickerChange: function (e) {
+    var that= this;
     this.setData({
       index: e.detail.value
     });
     this.setData({
-      arrangment_id: batch[e.detail.value].DIC_ID
+      arrangment_id: that.data.batch[e.detail.value].DIC_ID
     });
   },
   result:function(){

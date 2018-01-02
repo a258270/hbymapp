@@ -87,7 +87,7 @@
   width:92%;
   margin:4% 4% 0 4%;
   background-color:white;
-
+  
 }
 .weui-navbar{
   width:80%;

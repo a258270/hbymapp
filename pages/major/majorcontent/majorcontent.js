@@ -13,11 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var id = options.a
+    var that=this;
+    var id = options.a;
+    var name=options.name;
+    var parentName = options.parentName;
+    console.log(name)
     util.sendRequest("/wechat/applet/major/getmajorbyfatherid", {MAJOR_ID:id},"POST",true,function(res){
       that.setData({
-        major:res.data
+        major:res.data,
+        parentName: parentName,
+        name:name
       })
     })
   },

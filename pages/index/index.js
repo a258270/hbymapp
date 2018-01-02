@@ -1,4 +1,5 @@
 //index.js
+var WxParse = require('../../wxParse/wxParse.js');
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 const app = getApp()
 var utils = require('../../utils/util.js')
@@ -25,6 +26,10 @@ Page({
     // 公告 结束
 
   },
+  noticecontent:function(e){
+    var a = e.currentTarget.dataset.id;
+    utils.navigateTo("/pages/notice/noticecontent/noticecontent",{a:a})
+  },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -34,6 +39,11 @@ Page({
   onReady: function () {
     var that = this;
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+      var content = res.data.results;
+      for(var i=0;i<content.length;i++){
+          var article=content[i].CONTENT;
+      }
+      WxParse.wxParse('article', 'html', article, that, 10);
       that.setData({
         notice: that.toDto(res.data.results)
       });
@@ -46,7 +56,7 @@ Page({
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8", pageSize: "6" }, 'POST', false, function (res) {
       that.setData({
         activity: that.toDto(res.data.results)
-      });
+      });                        
     })
   },
   consultation:function(){
@@ -103,7 +113,7 @@ Page({
     utils.navigateTo("../major/major")
   },
   noticemore:function(){
-    utils.navigateTo("../notice/notice")
+    
   },
   newsmore:function(){
     utils.navigateTo("../news/news")

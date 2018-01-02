@@ -1,4 +1,4 @@
-// pages/major/major.js
+ // pages/major/major.js
 var util=require("../../utils/util")
 var sliderWidth = 96;
 Page({
@@ -10,7 +10,9 @@ Page({
   data: {
     tabs: ["本科", "专科"],
     activeIndex: 0,
-    checked:false
+    checked:false,
+    major:[],
+    zmajor:[]
   },
 
   /**
@@ -115,11 +117,21 @@ Page({
     })
   },
   toDetails: function (e) {
-    var curId = e.currentTarget.dataset.id;
-    util.navigateTo("/pages/major/majorcontent/majorcontent", {a:curId});
+    var that = this
+    var curId = e.currentTarget.id;
+    var name = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.name;
+    var parentName = that.data.major[index].NAME;
+    console.log(parentName)
+    util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId, name: name, parentName: parentName});
   },
   toDetail: function (e) {
-    var curId = e.currentTarget.dataset.id;
-    util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId });
+    var that=this;
+    var curId = e.currentTarget.id;
+    var name = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.name;
+    var parentName = that.data.zmajor[index].NAME;
+    console.log(parentName)
+    util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId, name: name, parentName: parentName });
   }
 })

@@ -17,7 +17,10 @@ Page({
     provinces: [],
     arrangments: [],
     subjecttypes: [],
-    properties: []
+    properties: [],
+    showView:true,
+    showView1: true,
+    showView2: true
   },
   upper: function (e) {
   },
@@ -141,6 +144,24 @@ Page({
       })
     })
     
+  },
+  changeArrow:function(){
+    var that=this;
+    that.setData({
+      showView: (!that.data.showView)
+    })
+  },
+  changeArrow1: function () {
+    var that = this;
+    that.setData({
+      showView1: (!that.data.showView1)
+    })
+  },
+  changeArrow2: function () {
+    var that = this;
+    that.setData({
+      showView2: (!that.data.showView2)
+    })
   },
   tap_ch:function(e){
     var that = this;
@@ -401,7 +422,8 @@ Page({
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
       console.log(res)
       that.setData({
-        schools: that.setResults(res.data.results, isClear)
+        schools: that.setResults(res.data.results, isClear),
+        num: res.data.totalRecord
       });
 
       that.reloadSearchParam(res.data);

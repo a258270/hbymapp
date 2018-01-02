@@ -29,9 +29,18 @@ Page({
         util.showError("仅有学生身份方可在线咨询");
         return false;
       }
-
-      var user_id = e.currentTarget.dataset.id;
-      util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+      util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res){
+       console.log(res)
+       var card=res.yxzxk;
+       if(card <= 0){
+         util.showError("院校咨询卡数量不足！")
+       }
+       else{
+         var user_id = e.currentTarget.dataset.id;
+         util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+       }
+      })
+      
     });
     
   },
