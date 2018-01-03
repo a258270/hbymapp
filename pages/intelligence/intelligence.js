@@ -21,7 +21,7 @@ Page({
     banner: util.setStaticUrl("/static/ymplant/img/sye/banner/zbanner.jpg")
   },
   bindPickerChange: function (e) {
-    var that= this;
+    var that = this;
     this.setData({
       index: e.detail.value
     });

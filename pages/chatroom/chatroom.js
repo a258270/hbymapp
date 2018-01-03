@@ -110,6 +110,9 @@ Page({
           title: that.data.complete_info.NICKNAME ? "与 " + that.data.complete_info.NICKNAME + " 聊天" : ""
         });
 
+        if(!getApp().globalData.globalSocket) {
+          getApp().startSocket();
+        }
         var socket = getApp().globalData.globalSocket;
         socket.onMessage(function (e) {
           console.log("chat:" + e.data);

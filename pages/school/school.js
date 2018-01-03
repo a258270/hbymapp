@@ -409,9 +409,17 @@ Page({
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
 
+    if (that.data.hot != null)
       param.HOT = that.data.hot;
-      param.GRADE=that.data.grade;
+    else
+      delete param.HOT;
 
+    if (that.data.grade != null)
+      param.GRADE=that.data.grade;
+    else
+      delete param.GRADE;
+
+    console.log(param);
     that.setData({
       searchParam: param
     });
