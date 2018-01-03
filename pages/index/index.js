@@ -40,6 +40,7 @@ Page({
   onReady: function () {
     var that = this;
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+      console.log(res)
       that.setData({
         notice: that.toDto(res.data.results)
       });
@@ -110,6 +111,15 @@ Page({
   },
   noticemore:function(){
     
+  },
+  phone:function(){
+    utils.showError("系统正在维护中，该功能暂时无法使用~！")
+  },
+  teacher:function(){
+    utils.showError("系统正在维护中，该功能暂时无法使用~！")
+  },
+  test:function(){
+    utils.showError("系统正在维护中，该功能暂时无法使用~！")
   },
   newsmore:function(){
     utils.navigateTo("../news/news")

@@ -21,8 +21,8 @@ Page({
     showView:true,
     showView1: true,
     showView2: true,
-    hot:true,
-    grade:true
+    hot:null,
+    grade:null,
   },
   upper: function (e) {
   },
@@ -111,20 +111,37 @@ Page({
     var a = e.currentTarget.dataset.id;
     util.navigateTo('/pages/school/schoolcontent/schoolcontent', { a: a })
   },
-  hot:function(){
-    var that=this;
-    that.setData({
-      hot:!that.data.hot
-    });
-
+  hot: function () {
+    var that = this;
+    if (that.data.hot == null) {
+      that.setData({
+        hot: true,
+        grade:null
+      })
+    }
+    else {
+      that.setData({
+        hot: !that.data.hot,
+        grade: null
+      })
+    }
     that.clearCurPage();
     that.pullSchoolInfos(true);
   },
   grade: function () {
     var that = this;
-    that.setData({
-      grade: !that.data.grade
-    });
+    if (that.data.grade == null) {
+      that.setData({
+        grade: true,
+        hot:null
+      })
+    }
+    else {
+      that.setData({
+        grade: !that.data.grade,
+        hot: null
+      })
+    }
 
     that.clearCurPage();
     that.pullSchoolInfos(true);
@@ -391,13 +408,9 @@ Page({
 
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
-    if(that.data.hot = false){
+
       param.HOT = that.data.hot;
-    }
-    if(that.data.grade = false){
-      param.GRADE = that.data.grade
-    }
-    
+      param.GRADE=that.data.grade;
 
     that.setData({
       searchParam: param
@@ -439,7 +452,6 @@ Page({
     that.setSearchParam();
 
     util.sendRequest('/wechat/applet/school/get', that.data.searchParam, 'POST', false, function (res) {
-      console.log(res.data.totalRecord)
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord

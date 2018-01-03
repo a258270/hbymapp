@@ -21,8 +21,8 @@ Page({
     showView:true,
     showView1: true,
     showView2: true,
-    hot:true,
-    grade:true
+    hot:null,
+    grade:null
   },
   upper: function (e) {
   },
@@ -72,13 +72,6 @@ Page({
       var value2 = b[property];
       return value1 - value2;
     }
-  },
-  grade:function(){
-    var that=this;
-    util.sendRequest('/wechat/applet/school/gethasteachers', {}, 'POST', false, function (res) {
-      that.setData({
-      });
-    })
   },
   openTm: function(){
     var that = this;
@@ -256,20 +249,37 @@ Page({
     that.clearCurPage();
     that.pullSchoolInfos(true); 
   },  
-  hot:function(){
-    var that=this;
-    that.setData({
-      hot:!that.data.hot
-    })
-
+  hot: function () {
+    var that = this;
+    if (that.data.hot == null) {
+      that.setData({
+        hot: true,
+        grade: null
+      })
+    }
+    else {
+      that.setData({
+        hot: !that.data.hot,
+        grade: null
+      })
+    }
     that.clearCurPage();
     that.pullSchoolInfos(true);
   },
   grade: function () {
     var that = this;
-    that.setData({
-      grade: !that.data.grade
-    })
+    if (that.data.grade == null) {
+      that.setData({
+        grade: true,
+        hot: null
+      })
+    }
+    else {
+      that.setData({
+        grade: !that.data.grade,
+        hot: null
+      })
+    }
 
     that.clearCurPage();
     that.pullSchoolInfos(true);

@@ -17,8 +17,8 @@
     </view>  
 </view>
 <view class="header">
-  <view class="header-left" bindtap='hot' id="{{hot}}">浏览量<view class="class-after {{hot?'':'.rotate_180'}}" ></view></view>
-  <view class="header-center" bindtap='grade' id="{{grade}}">分数<view class="class-after {{grade?'':'.rotate_180'}}" ></view></view>
+  <view class="header-left" bindtap='hot'>热度<view class="class-after {{hot?'.rotate_180':''}}" ></view></view>
+  <view class="header-center" bindtap='grade'>名称<view class="class-after {{grade?'rotate_180':'.'}}" ></view></view>
   <view class="header-right" bindtap="tap_ch">
   <view class="verta"></view>                       
     <text>筛选</text>

@@ -15,7 +15,7 @@
     <image class="tpia" src='../../images/consultation.png'></image> 
     <view class='navigation-text'>院校咨询</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap='teacher'>
     <image class="tpia" src='../../images/guidance.png'></image> 
     <view class='navigation-text'>名师指导</view>
   </view>
@@ -35,11 +35,11 @@
     <image class="tpia" src='../../images/Intelligence.png'></image> 
     <view class='navigation-text'>智能推荐</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap='test'>
     <image class="tpia" src='../../images/character.png'></image> 
     <view class='navigation-text'>性格测试</view>
   </view>
-  <view class='navigation'>
+  <view class='navigation' bindtap='phone'>
     <image class="tpia" src='../../images/service.png'></image> 
     <view class='navigation-text'>在线客服</view>
   </view>
@@ -47,14 +47,14 @@
 <!-- 导航 链接 结束 -->
 
 <!-- 公告 开始 -->
- <view class='notices' > 
+ <view class='notices'> 
    <image class="icon" src='/images/notice.png'></image> 
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
      <block wx:for="{{notice}}" wx:key="title">
        <view>
          <swiper-item>
            <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
-              {{item.SUBTITLE}}
+              {{item.ABSTRACT}}
            </view>
          </swiper-item>
        </view>
