@@ -40,11 +40,6 @@ Page({
   onReady: function () {
     var that = this;
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
-      var content = res.data.results;
-      for(var i=0;i<content.length;i++){
-          var article=content[i].CONTENT;
-      }
-      WxParse.wxParse('article', 'html', article, that, 10);
       that.setData({
         notice: that.toDto(res.data.results)
       });

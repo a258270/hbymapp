@@ -48,13 +48,13 @@
 
 <!-- 公告 开始 -->
  <view class='notices' > 
-   <image class="icon" src='../../images/notice.png'></image> 
+   <image class="icon" src='/images/notice.png'></image> 
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
      <block wx:for="{{notice}}" wx:key="title">
        <view>
          <swiper-item>
            <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
-              <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+              {{item.SUBTITLE}}
            </view>
          </swiper-item>
        </view>

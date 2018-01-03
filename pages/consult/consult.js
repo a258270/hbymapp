@@ -20,7 +20,9 @@ Page({
     properties: [],
     showView:true,
     showView1: true,
-    showView2: true
+    showView2: true,
+    hot:true,
+    grade:true
   },
   upper: function (e) {
   },
@@ -252,10 +254,28 @@ Page({
     });
     
     that.clearCurPage();
-    that.pullSchoolInfos(true);
+    that.pullSchoolInfos(true); 
   },  
-  
-  /**
+  hot:function(){
+    var that=this;
+    that.setData({
+      hot:!that.data.hot
+    })
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
+  },
+  grade: function () {
+    var that = this;
+    that.setData({
+      grade: !that.data.grade
+    })
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
+  },
+
+   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -379,6 +399,10 @@ Page({
 
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
+
+    param.HOT=that.data.hot;
+    param.GRADE=that.data.grade
+    
 
     that.setData({
       searchParam: param

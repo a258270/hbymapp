@@ -20,7 +20,9 @@ Page({
     properties: [],
     showView:true,
     showView1: true,
-    showView2: true
+    showView2: true,
+    hot:true,
+    grade:true
   },
   upper: function (e) {
   },
@@ -71,13 +73,6 @@ Page({
       return value1 - value2;
     }
   },
-  grade: function () {
-    var that = this;
-    util.sendRequest('/wechat/applet/school/get', {}, 'POST', false, function (res) {
-      that.setData({
-      });
-    })
-  },
   openTm: function () {
     var that = this;
     this.setData({
@@ -115,6 +110,24 @@ Page({
   school:function(e){
     var a = e.currentTarget.dataset.id;
     util.navigateTo('/pages/school/schoolcontent/schoolcontent', { a: a })
+  },
+  hot:function(){
+    var that=this;
+    that.setData({
+      hot:!that.data.hot
+    });
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
+  },
+  grade: function () {
+    var that = this;
+    that.setData({
+      grade: !that.data.grade
+    });
+
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -378,6 +391,13 @@ Page({
 
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
+    if(that.data.hot = false){
+      param.HOT = that.data.hot;
+    }
+    if(that.data.grade = false){
+      param.GRADE = that.data.grade
+    }
+    
 
     that.setData({
       searchParam: param
