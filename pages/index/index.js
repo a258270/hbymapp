@@ -18,7 +18,8 @@ Page({
     indicatorDots: false,
     autoplay: true,
     interval: 2000,
-    duration: 1000
+    duration: 1000,
+    circular: true
     // 首页轮播图 开始
 
     // 公告 开始

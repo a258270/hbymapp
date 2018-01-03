@@ -30,7 +30,6 @@ Page({
         return false;
       }
       util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res){
-       console.log(res)
        var card=res.yxzxk;
        if(card <= 0){
          util.showError("院校咨询卡数量不足！")

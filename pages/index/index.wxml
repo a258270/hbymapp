@@ -1,7 +1,7 @@
  <!-- 轮播图 开始  -->
  <import src="../../wxParse/wxParse.wxml" />
 <swiper indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
       <image src="{{item}}" style='width:100%;height:100%;' class="slide-image"/>
