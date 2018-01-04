@@ -47,7 +47,7 @@
 <!-- 导航 链接 结束 -->
 
 <!-- 公告 开始 -->
- <view class='notices'> 
+ <view class='notices' hidden='{{!notice || notice.length == 0}}'> 
    <image class="icon" src='/images/notice.png'></image> 
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
      <block wx:for="{{notice}}" wx:key="title">

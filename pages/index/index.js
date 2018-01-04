@@ -39,12 +39,6 @@ Page({
   },
   onReady: function () {
     var that = this;
-    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
-      
-      that.setData({
-        notice: that.toDto(res.data.results)
-      });
-    })
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "5" }, 'POST', false, function (res) {
       that.setData({
         news: that.toDto(res.data.results)
@@ -54,6 +48,15 @@ Page({
       that.setData({
         activity: that.toDto(res.data.results)
       });                        
+    })
+  },
+  onShow: function() {
+    var that = this;
+    utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
+
+      that.setData({
+        notice: that.toDto(res.data.results)
+      });
     })
   },
   consultation:function(){
@@ -109,7 +112,13 @@ Page({
   major:function(){
     utils.navigateTo("../major/major")
   },
-  noticemore:function(){
+  noticemore:function(e){
+    var that = this;
+    utils.sendRequest("/wechat/applet/news/addggnewsview", {}, "POST", false, function(res){
+      that.setData({
+        notice: []
+      });
+    });
     
   },
   phone:function(){
