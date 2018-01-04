@@ -119,7 +119,6 @@ Page({
         notice: []
       });
     });
-    
   },
   phone:function(){
     utils.showError("系统正在维护中，该功能暂时无法使用~！")

@@ -87,7 +87,7 @@
   </view>
 </view>
 <view class="page-body">
-  <view class="demo-text-1"><text>属性</text><view class="weui-cell__ft_in-access {{showView2?'':'.rotate_90'}}" bindtap='changeArrow2'></view></view>
+  <view class="demo-text-1"><text>属性</text><view bindtap='changeArrow2'></view></view>
   <view class="demo-text-2">
     <checkbox-group bindchange="changeProperty">  
         <view class="service_selection1">  

@@ -40,11 +40,12 @@ Page({
           nonceStr: nonceStr,
           package: packageStr,
           signType: signType,
-          paySign: signType,
-          success: function (res) {
-            util.showSuccess()
+          paySign: paySign,
+          success: function (obj) {
+            util.showSuccess();
           },
-          fail: function (res) {
+          fail: function (obj) {
+            util.showError("发起支付失败");
           }
         })
     })

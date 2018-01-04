@@ -81,6 +81,41 @@ var login = function () {
               setInfoToStorage("user_id", obj.user_id);
               getApp().startSocket();
               switchTab({ url: "/pages/index/index" });
+              //获取角色信息
+              sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function(role){
+                if(role.data == 1) {
+                  wx.getUserInfo({
+                    success: function (res) {
+                      var userInfo = res.userInfo;
+                      var avatarUrl = userInfo.avatarUrl
+                      var gender = userInfo.gender //性别 0：未知、1：男、2：女
+
+                      sendRequest("/wechat/applet/user/hasheadurl", {}, "POST", false, function(hasHead){
+                        if(!hasHead.data) {
+                          wx.downloadFile({
+                            url: avatarUrl,
+                            success: function (img) {
+                              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+                              if (img.statusCode === 200) {
+                                uploadFile("/wechat/applet/user/uploadhead", img.tempFilePath, "HEADURL", {});
+                              }
+                            }
+                          });
+                        }
+                      });
+                      sendRequest("/wechat/applet/user/hasnickname", {}, "POST", false, function (hasNick) {
+                        if(!hasNick.data){
+                          if (gender == 1) gender = 11;
+                          else if(gender == 2) gender = 12;
+                          else gender = 11;
+
+                          sendRequest("/wechat/applet/user/addnickname", {SEX: gender}, "POST", false);
+                        }
+                      });
+                    }
+                  })
+                }
+              });
             });
           }
         });
@@ -172,8 +207,9 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
           mask: true
         });
       }
+      console.log()
       wx.uploadFile({
-        url: url, //仅为示例，非真实的接口地址
+        url: url,
         filePath: file,
         name: name,
         formData: formData,

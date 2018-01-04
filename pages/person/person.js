@@ -52,8 +52,6 @@ Page({
       sizeType: ['compressed'],
       sourceType: [type],
       success: function (res) {
-        console.log(res);
-
         util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(result){
           that.getUserInfo();
         });
