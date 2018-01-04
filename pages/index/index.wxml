@@ -54,7 +54,7 @@
        <view>
          <swiper-item>
            <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
-              {{item.ABSTRACT}}
+              {{item.ABSTRACT?item.ABSTRACT:item.TITLE}}
            </view>
          </swiper-item>
        </view>
