@@ -103,13 +103,13 @@ var login = function () {
                           });
                         }
                       });
-                      sendRequest("/wechat/applet/user/hasnickname", {}, "POST", false, function (hasNick) {
-                        if(!hasNick.data){
+                      sendRequest("/wechat/applet/user/hassex", {}, "POST", false, function (hasSex) {
+                        if (!hasSex.data){
                           if (gender == 1) gender = 11;
                           else if(gender == 2) gender = 12;
                           else gender = 11;
 
-                          sendRequest("/wechat/applet/user/addnickname", {SEX: gender}, "POST", false);
+                          sendRequest("/wechat/applet/user/addsex", {SEX: gender}, "POST", false);
                         }
                       });
                     }
