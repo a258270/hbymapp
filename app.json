@@ -41,7 +41,11 @@
     "pages/intelligence/major/major",
     "pages/person/tbasics/tbasics",
     "pages/register/register",
-    "pages/person/information/content/content"
+    "pages/person/information/content/content",
+    "pages/imitate/school/school",
+    "pages/imitate/school/content/content",
+    "pages/imitate/imitate",
+    "pages/person/goods/payment/payment"
   ],
   "window": {
     "backgroundTextStyle": "light",

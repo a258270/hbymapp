@@ -19,10 +19,10 @@ Page({
         obj.HEADURL = util.setStaticUrl(obj.HEADURL);
       }
       if (obj.CREATETIME) {
-        obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME));
+        obj.CREATETIME = util.formatDate(new Date(obj.CREATETIME));
       }
       if (obj.MODIFYTIME){
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME))
+        obj.MODIFYTIME = util.formatDate(new Date(obj.MODIFYTIME))
       }
     });
     return list;

@@ -67,14 +67,14 @@ Page({
       }
     });
 
-    util.sendRequest("/wechat/applet/report/getschools", {}, "POST", true, function(res) {
+    util.sendRequest("/wechat/applet/report/getschools", {}, "POST", true, function (res) {
 
       that.setData({
         b1Schools: res.b1schools,
         b2Schools: res.b2schools
       })
     });
-    
+
   },
   tabClick: function (e) {
     this.setData({
@@ -86,7 +86,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -94,7 +94,7 @@ Page({
    */
   onShow: function () {
     var that = this;
-    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function(res) {
+    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
       that.setData({
         examinee: res
       });
@@ -105,37 +105,37 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     var that = this;
 
     var curId = e.currentTarget.id;
@@ -143,27 +143,27 @@ Page({
     this.data[curId + "_index"] = e.detail.value;
     this.setData(this.data);
   },
-  bindMajorSelect: function(e) {
+  bindMajorSelect: function (e) {
     var curId = e.currentTarget.id;//控件id
     var curIndex = this.data[curId.replace("_major", "_index")];//选取学校的index
-    if(curIndex == "-1") {
+    if (curIndex == "-1") {
       util.showError("请选择院校");
       return false;
     }
-    if(curId.substring(1, 2) == "1") {
+    if (curId.substring(1, 2) == "1") {
       var school_id = this.data.b1Schools[curIndex].SCHOOL_ID;
     }
-    else{
+    else {
       var school_id = this.data.b2Schools[curIndex].SCHOOL_ID;
     }
 
-    util.navigateTo("/pages/analog/content/content", { school_id: school_id, key: curId, selected: this.data[curId.replace("_major", "_major_id")]});
+    util.navigateTo("/pages/analog/content/content", { school_id: school_id, key: curId, selected: this.data[curId.replace("_major", "_major_id")] });
   },
-  b1Submit: function() {
+  b1Submit: function () {
     var that = this;
     util.confirm({
       content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
-      confirmFn: function() {
+      confirmFn: function () {
         var b1Schools_1_index = that.data.b1Schools_1_index;
         var b1Schools_2_index = that.data.b1Schools_2_index;
         var b1Schools_3_index = that.data.b1Schools_3_index;
@@ -216,7 +216,7 @@ Page({
       }
     });
   },
-  b2Submit: function() {
+  b2Submit: function () {
     var that = this;
     util.confirm({
       content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
@@ -308,7 +308,7 @@ Page({
       }
     });
   },
-  toExaminee: function() {
+  toExaminee: function () {
     util.navigateTo("/pages/person/information/information");
   }
 })

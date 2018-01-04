@@ -1,38 +1,22 @@
-// pages/activity/content/content.js
-var util = require("../../../utils/util");
-var WxParse = require('../../../wxParse/wxParse.js');
+// pages/imitate/school/content/content.js
+var util=require("../../../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+  school:[]
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this
-    var id=options.a;
-    util.sendRequest("/wechat/applet/news/getnewsbyid",{ NEWS_ID:id },"POST",false,function(res){
-      var imgReg = new RegExp("<img.*?src\\s*=\\s*(.*?)[^>]*?>", "ig");
-      var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
-      var article=res.CONTENT;
-      res.MODIFYTIME = util.formatDate(new Date(res.MODIFYTIME))
-      var arr;
-      var results;
-      var srcs = new Set();
-      while (arr = imgReg.exec(article)) {
-        srcs.add(srcReg.exec(arr[0])[1]);
-        srcReg.lastIndex = 0;
-      }
-      srcs.forEach(function (element) {
-        article = article.replace(element, util.setStaticUrl(element));
-      });
-      WxParse.wxParse('article', 'html', article, that, 20);
+    util.sendRequest("/wechat/applet/school/get", {}, "POST",true,function(res){
       that.setData({
-        content: res
+        school:res.data.results
       })
     })
   },

@@ -7,9 +7,9 @@ Page({
    */
   data: {
     //用户头像
-    logo:"/images/touxiang.png",
+    logo:"/images/school.jpg",
     //信息完整度
-    completeCount: 0,
+    completeCount: 0,                              
     //高考分数
     examScore: 0,
     //账户余额

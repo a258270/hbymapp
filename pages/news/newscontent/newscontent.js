@@ -17,7 +17,7 @@ Page({
         obj.IMGURL = util.setStaticUrl(obj.IMGURL);
       }
       if (obj.MODIFYTIME) {
-        obj.MODIFYTIME = util.formatTime(new Date(obj.MODIFYTIME));
+        obj.MODIFYTIME = util.formatDate(new Date(obj.MODIFYTIME));
       }
     });
     return list;

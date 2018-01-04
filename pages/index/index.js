@@ -40,7 +40,7 @@ Page({
   onReady: function () {
     var that = this;
     utils.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
-      console.log(res)
+      
       that.setData({
         notice: that.toDto(res.data.results)
       });
@@ -142,7 +142,7 @@ Page({
         obj.IMGURL = utils.setStaticUrl(obj.IMGURL);
       }
         if (obj.MODIFYTIME){
-          obj.MODIFYTIME = utils.formatTime(new Date(obj.MODIFYTIME));
+          obj.MODIFYTIME = utils.formatDate(new Date(obj.MODIFYTIME));
         }
     });
     return list;

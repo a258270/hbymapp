@@ -1,17 +1,16 @@
 <!--pages/person/person.wxml-->
 <view wx:if="{{role==1}}">
 <view class="head">
-  <image class='img_background' src="/images/banner.png"></image>
   <view class="head-left">
-    <view class='image'><image src="{{logo}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
+    <view class='image'><image src="{{logo}}" bindtap="chooseImageTap"></image></view>
     <view class='text'>
       <view class='text-top'><text>{{nickname}}</text></view>
       <view class='text-bottom' wx:if="{{role == 1}}"><text>{{vipname}}</text></view>
     </view>
   </view>
   <view class="head-right">
-    <view class='number'>{{completeCount}}%</view>
-    <view class='texts'>信息完整度</view>
+    <view class='number'>{{completeCount}}<text style="font-size:60rpx">%</text></view>
+    <view class='texts'>资料完整度</view>
   </view>
 </view>
 <view class="center" wx:if="{{role == 1}}">

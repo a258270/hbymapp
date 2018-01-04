@@ -1,28 +1,26 @@
-// pages/person/goods/goods.js
-var util = require('../../../utils/util')
+// pages/imitate/school/school.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pocket: {}
+  school_1:"请选择院校",
+  major_1: "请选择专业",
+  major_2: "请选择专业",
+  major_3: "请选择专业",
+  major_4: "请选择专业",
+  major_5: "请选择专业",
+  major_6: "请选择专业",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      that.setData({
-        pocket: res
-      });
-    });
+  
   },
-  pay:function(){
-     util.navigateTo("/pages/person/goods/payment/payment")
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
